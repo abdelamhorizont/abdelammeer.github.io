@@ -21,7 +21,7 @@ let col0, col1, col2;
 let loadedCol0, loadedCol1, loadedCol2, loadedShapeCol;
 let loadedShapeColBlack = 0
 
-let loadBool = false;
+let loadBool = true;
 
 let mouthBool = false;
 let mouthOpen;

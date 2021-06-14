@@ -90,7 +90,7 @@ drawTextureShapes();
 drawlines();
 drawSoftShapes();
 
-randomShape();
+// randomShape();
 
 // worm();
 }
