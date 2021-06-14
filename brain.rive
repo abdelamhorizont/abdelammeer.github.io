@@ -4,11 +4,13 @@
 > topic kennenlernen
     // * Trigger wildcard für alles
     + *
-    * <get name> == undefined => wie ist das Wetter eigentlich heute?
-    * <get name> != undefined => <get name>, wie ist das Wetter heute?
-    - was bedeutet eigentlich {random}(Hypotaxie|Gleichschaltung|Nihhilismus){/random}? 
+    // * <get name> == undefined => wie ist das Wetter eigentlich heute?
+    // * <get name> != undefined => <get name>, wie ist das Wetter heute?
+    // - was bedeutet eigentlich {random}(Hypotaxie|Gleichschaltung|Nihhilismus){/random}? 
     - keine Ahnung was du meinst
     - was willst du?
+    - crazy
+    - nice
 
     //Array mit unterschiedlichen Triggern
     + [*] (hi|hallo|hello|hey|jo|yo|shalom|salam|salamualaikum|konnichiwa) [*]

@@ -1,6 +1,6 @@
-let particlesS = new Array(0);
-let particlesM = new Array(2);
-let particlesL = new Array(1);
+// let particlesS = new Array(0);
+let particlesM = new Array(3);
+// let particlesL = new Array(0);
 let worms = new Array(1);
 
 let texBG;
@@ -13,7 +13,7 @@ class Particle {
     this.size = size;
     this.xNoise = new NoiseLoop(0.2, widthStart + this.size, widthEnd - this.size);
     this.yNoise = new NoiseLoop(0.2, heightStart + this.size, heightEnd - this.size);
-    this.rNoise = new NoiseLoop(0.2, 0, innerWidth);
+    this.rNoise = new NoiseLoop(0.2, 0, innerWidth * 1.5);
     this.brush = brush;
     this.xPos = [];
     this.yPos = [];
@@ -33,7 +33,7 @@ class Particle {
     push();
     for (var i = 0; i < tail; i++) {
       if(this.xPos[i] != null){
-        tex.tint(100, 1);
+        tex.tint(100, 0.5);
         tex.image(this.brush, this.xPos[i], this.yPos[i],  this.radius[i],  this.radius[i]);
       }
     }
@@ -58,7 +58,6 @@ class Particle {
 
     let opa = map(noise(frameCount/30), 0, 1, 10, 400);
 
-
     for (var i = 0; i < tail; i++) {
       if(this.xPos[i] != null){
         tint(100, 1);
@@ -77,15 +76,15 @@ class Particle {
 function render() {
   let a = frameCount/80 * TWO_PI;
 
-  for (let p of particlesL) {
-    p.render(a, 3);
-  }
+  // for (let p of particlesL) {
+  //   p.render(a, 3);
+  // }
   for (let p of particlesM) {
     p.render(a, 3);
   }
-  for (let p of particlesS) {
-    p.render(a, 3);
-  }
+  // for (let p of particlesS) {
+  //   p.render(a, 3);
+  // }
 
 }
 
@@ -107,23 +106,23 @@ function worm(){
 function createParticles(shape) {
   //Particles for the texture
 
-  let small = eval(shape.layer[0].colors[3]);
+  // let small = eval(shape.layer[0].colors[3]);
   let middle = eval(shape.layer[0].colors[4]);
-  let big = eval(shape.layer[0].colors[5]);
+  // let big = eval(shape.layer[0].colors[5]);
 
   // let worm = eval(shape.layer[0].colors[3]);
   
-  for (let i = 0; i < particlesS.length; i++) {
-    particlesS[i] = new Particle(small, innerWidth/10, -innerWidth/2, -innerHeight/2, innerWidth, innerHeight);
-  }
+  // for (let i = 0; i < particlesS.length; i++) {
+  //   particlesS[i] = new Particle(small, innerWidth/10, -innerWidth/2, -innerHeight/2, innerWidth, innerHeight);
+  // }
   for (let i = 0; i < particlesM.length; i++) {
     particlesM[i] = new Particle(middle, innerWidth/4, -innerWidth/2, -innerHeight/2, innerWidth, innerHeight);
   }
-  for (let i = 0; i < particlesL.length; i++) {
-    particlesL[i] = new Particle(big, innerWidth, -innerWidth*2, -innerHeight*2, innerWidth*2, innerHeight*2);
-  }  
+  // for (let i = 0; i < particlesL.length; i++) {
+  //   particlesL[i] = new Particle(big, innerWidth, -innerWidth*2, -innerHeight*2, innerWidth*2, innerHeight*2);
+  // }  
 
   for (let i = 0; i < worms.length; i++) {
-    worms[i] = new Particle(small, innerWidth/8, -innerWidth, -innerHeight, innerWidth, innerHeight);
+    worms[i] = new Particle(middle, innerWidth/8, -innerWidth, -innerHeight, innerWidth, innerHeight);
   }  
 }

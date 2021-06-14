@@ -29,7 +29,7 @@ let animals;
 
 function preload() {
 	gelbBrush = loadImage('assets/gelb.png');
-	rosaBrush = loadImage('assets/rosa.png');
+	rosaBrush = loadImage('assets/rosa2.png');
 	rotBrush = loadImage('assets/rot.png');
 	orangeBrush = loadImage('assets/orange.png');
 	blackBrush = loadImage('assets/black2.png');
@@ -169,4 +169,6 @@ function inputValues() {
 
 function windowResized() {
 	resizeCanvas(innerWidth, innerHeight);
+	tex.resizeCanvas(innerWidth, innerHeight);
+
 }
