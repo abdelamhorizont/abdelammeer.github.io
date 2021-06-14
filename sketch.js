@@ -47,9 +47,9 @@ function setup() {
 	createCanvas(innerWidth, innerHeight, WEBGL);
 	colorMode(HSB);
 
-	capture = createCapture(VIDEO);
-	capture.position(0,0);
-	capture.hide();
+	// capture = createCapture(VIDEO);
+	// capture.position(0,0);
+	// capture.hide();
 
 	frameRate(20);
 

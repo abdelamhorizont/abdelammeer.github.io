@@ -103,7 +103,7 @@ function drawLoadedShapes(shape) {
 
     loadedShapeCol = color(loadedCol0, loadedCol1, loadedShapeColBlack)
 
-    tex.fill(100);
+    tex.fill(0);
     tex.noStroke();
     textur(loadedShapeCol);
     // tex.image(capture, 0, 0, innerWidth, innerHeight);
