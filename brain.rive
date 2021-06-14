@@ -1,0 +1,153 @@
+! local concat = newline
+! array colors = rot blau gelb grün
+
+> topic kennenlernen
+    // * Trigger wildcard für alles
+    + *
+    * <get name> == undefined => wie ist das Wetter eigentlich heute?
+    * <get name> != undefined => <get name>, wie ist das Wetter heute?
+    - was bedeutet eigentlich {random}(Hypotaxie|Gleichschaltung|Nihhilismus){/random}? 
+    - keine Ahnung was du meinst
+    - was willst du?
+
+    //Array mit unterschiedlichen Triggern
+    + [*] (hi|hallo|hello|hey|jo|yo|shalom|salam|salamualaikum|konnichiwa) [*]
+    - hallo? 
+    - ja?
+    - wie kann ich dir nicht behilflich sein?
+
+    + *
+    % (hallo|ja)
+    * <input1> == <input2> => du nervst mich jetzt schon
+
+    + (<input1>|<input2|<input3>)
+    - das hast du doch eben schon gesagt
+
+    + [*] (wie heißt du|wer bist du|wie ist [*] dein name) [*]
+    - wer will das wissen?
+
+    //% für Folgeantwort 
+    + _
+    % wer will das wissen
+    - <set name={formal}<star>{/formal}>komischer Name, <get name> ... Ich bin Ceratioidei.
+
+    + (mein name ist|ich heiße|ich bin) _
+    - <set name={formal}<star2>{/formal}>komischer Name, <get name> 
+
+    + [*] (wie ist mein name|wie heiße ich) [*]
+    * <get name> == undefined => was weiß ich?
+    - du heißt doch <get name>
+
+    + was geht [*]
+    - Fische gehen nicht
+
+    + wie gehts [*]
+    - ich hasse Smalltalk
+
+    + worüber [*] (sprechen|reden|quatscchen|unterhalten)?
+    - über das Wetter!
+    + *
+    % über das wetter
+    - natürlich nicht! lass uns über Existenz reden
+
+    // + yo 
+    // - yo yo yo
+    // // @ für Verweis auf anderen Trigger
+    // + yo *
+    // - {@ yo} <@>
+
+< kennenlernen
+
+> topic existenz
+
+    + *
+    - was zum Teufel bist du denn?
+    - und wo kommst du wirklich her?
+    - wer bist du eigentlich?
+    - warum zeigst du nach oben?
+
+    + ich bin * *
+    - ich hab noch nie {person}<star1>{/person} {formal}<star2>{/formal} gesehen. bist du intelligent?
+    
+        + ja
+        % [*] bist du intelligent
+        - Was ist der cosinus von Zwei Pi?
+
+            + #
+            % was ist der cosinus von zwei pi
+            * <star> == 1 => oke, du bist echt schlau
+            * <star> != 1 => lass gut sein, so schlau bist du wohl doch nicht
+
+        + nein
+        % [*] bist du intelligent
+        + Das dacht ich mir, ist aber auch okay! 
+
+    + was bist du
+    - das weiß ich gar nicht so genau, ich suche schon lange vergeblich nach dem Meeresspiegel
+
+        + [*] anglerfisch [*]
+        % das weiß ich gar nicht so genau [*] 
+        - Oh! dann sehe ich ja richtig fies aus. Dachte schon ich hätte viele gute Ideen!
+
+    + du bist * *
+    - was macht {person}<star1>{/person} {formal}<star2>{/formal} aus?
+
+    + wo bist [*]
+    - sieht man das nicht? ich bin im Weltraum!
+
+        + *
+        % [*] ich bin im weltraum
+        - das war ein Scherz, ich bin natürlich in der Tiefsee. Wo bist du denn?
+
+            + *
+            % [*] wo bist du denn
+            - lame
+
+    + wozu brauchst du die Lampe? 
+    - damit empfange ich Wifi
+
+    + was machst [*]
+    - ich tanze! warum tanzt du nicht?
+
+    + wie ist [*] tiefsee  
+    - dunkel und leer, wie in deinem Kopf. Da brauchts viele gute Ideen, dass ein Lämpchen herauswächst
+
+    + *
+    % warum zeigst du nach oben
+    - komisch
+
+< existenz
+
+> topic intelligenz
+
+    + bist du eine künstliche intelligenz
+    - ich bin eine künstlerische Intelligenz 
+
+    + ich * intelligent
+    - DU <person> intelligent?
+
+< intelligenz
+
+> topic zufall
+
+    + *
+    - was ist dein Lieblingsgemüse?
+    - woran denkst du?
+    - welches Tier wärst du am liebsten?
+
+    + *
+    % woran denkst du
+    - cool
+
+    + *
+    % was ist dein ieblingsgemüse
+    - mhhh, <star>!
+    - uurgh, <star>, mir wird schlecht
+
+    + woran denkst du
+    - Krautsalat!
+
+    + wo ist dein Schwarm?
+    - ich bin Single
+
+< zufall

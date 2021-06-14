@@ -1,0 +1,9 @@
+Problems:
+
+2. Slider Values werden nicht erkannt. (in console.log aber schon)
+
+3. SpeechRec funktioniert noch nicht, muss wohl irgendwie getriggert werden.
+
+4. WebSpeech funktioniert nicht richtig in Firefox
+
+5. mehrere Shapes und typus speichern

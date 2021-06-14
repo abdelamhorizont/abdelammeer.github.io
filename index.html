@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>brushes</title>
+	<!-- <script src="libraries/p5.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+	<script src=" 	https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.js"></script>
+	<!-- <script src="libraries/p5.dom.js"></script> -->
+	<script src="libraries/p5.sound.js"></script>
+	<script src="libraries/p5.speech.js"></script>
+	<script src="sketch.js"></script>
+	<script src="NoiseLoop.js"></script>
+	<script src="Particle.js"></script>
+	<script src="brushes.js"></script>
+	<script src="shapes.js"></script>
+	<script src="bot.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.0/p5.easycam.js"></script>
+	<script src="https://unpkg.com/rivescript@latest/dist/rivescript.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="mystyle.css">
+	<link rel="stylesheet" href="menu.css">
+
+</head>
+
+<body>
+	<div id="bot">
+		<button id="talk" onclick="recordAudio()"></button>
+
+		<input id="user_input" value="" autofocus />		
+
+		<!-- <p id="special">Wirre Wölkchen ziehen sich zusammen zu belanglosen Gedanken. Gedanken lösen sich auf, bilden nicht greifbare Formen. Formen verschmelzen, formen unbeständige Bilder.  -->
+		</p>
+
+		<p id="output"></p>
+	
+		<table>	
+		<tr>
+		</tr>
+		</table>
+	
+	</div>
+
+	<!-- checkboxes for different shapes -->
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<form>
+			<input type="checkbox" id="shapesCheckbox" name="shapes" value="false">
+			<label for="shapesCheckbox"> shapes</label><br>
+			<input type="checkbox" id="softShapesCheckbox" name="softShapes" value="false">
+			<label for="softShapesCheckbox"> soft Shapes</label><br>
+			<input type="checkbox" id="textureShapesCheckbox" name="textureShapes" value="false">
+			<label for="textureShapesCheckbox"> texture Shapes</label>
+			<input type="checkbox" id="lineCheckbox" name="line" value="false">
+			<label for="lineCheckbox"> line </label>
+		</form>
+
+		<div class="slidecontainer">
+
+			<input type="submit" style="display: none" />
+			<input id="brush_input" value="rosaBrush" />
+			<!-- <label for="brush_input">brush_input </label> -->
+
+			<input type="submit" style="display: none" />
+			<input id="shapeCol" value="col1" />
+
+			<input type="range" min="0" max="1" value="0.08" step="0.01" class="slider" id="opacitySlider"> <br>
+			<label for="opacitySlider"> Opacity: <span id="opacitySliderValue"></span> </label><br>
+
+			<input type="range" min="1" max="300" value="100" class="slider" id="RadiusSlider"> <br>
+			<label for="RadiusSlider"> Radius: <span id="RadiusSliderValue"></span> </label><br>
+
+			<input type="range" min="0.10" max="0.80" value="0.35" step="0.01" class="slider" id="OscSlider"> <br>
+			<label for="OscSlider"> Osc: <span id="OscSliderValue"></span></label><br>
+		</div>
+
+		<button id="moveButton" onclick="moveit()">move</button>
+		<button id="saveButton" onclick="createFile()">save</button>
+		<button id="load" value="true">load</button>
+	</div>
+
+	<span id="menuButton" onclick="openNav()">&#9776;</span>
+
+	<script>
+		let menuBool = true;
+
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
+			menuBool = false;
+		}
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+			menuBool = true;
+		}
+
+	</script>
+
+</body>
+
+</html>

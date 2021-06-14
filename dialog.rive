@@ -1,0 +1,57 @@
+! local concat = newline
+
+// * Trigger wildcard für alles
++ *
+- nice
+- crazy
+
++ [*] (hi|hallo|hello|hey|jo|yo|shalom|salam|salamualaikum|konnichiwa) [*]
+- hallo? ... wer ist da?
+
++ [*] _
+% hallo wer ist da
+- <set name={formal}<star>{/formal}>was ist denn ein <get name>? Du bist ja furchtbar hässlich!.
+
++ selber du fischgesicht
+- jetzt bin ich aber beleidigt
+
++ weißt du [*] aussiehst
+- ich suche schon lange vergeblich nach dem Meeresspiegel
+
++ naja schöne zähne
+- dankeschön! Zahnpflege ist mir sehr wichtig!
+
++ wer oder was bist du
+- dumme frage, ich bin ich. was genau bist du denn?
+
++ stimmt, darauf habe ich auch keine einfache Antwort 
+
++ [*] laterne [*]
+- durchaus praktisch wenn man in der Tiefsee lebt aber Angst im Dunkeln hat. Es ist quasi eine kleine Sonne. 
+
+    + hast du
+    - was?
+
+    + angst im dunkeln
+    - nein. ... man sieht halt absolut nichts, hört ständig komische Stimmen und manchmal begegnet man 
+    ^ komischen Wesen wie dir. schon gruselig.
+
++ was macht man [*] 
+- man schwimmt hallt so rum, auf der Suche nach Futter oder nach Dates.
+^ aber manchmal hab ich das Gefühl, man kommt nicht so richtig weiter im Leben. weißt du wie ich meine?
+
++ kann ich [*] verstehen
+- ich kann mich ja echt nicht beschweren aber. ich kann mich nicht mal am Bauch kratzen wenn es mich juckt. 
+^ das ist echt scheiße! ich hätte gerne zwei Hände!
+
++ nicht schlecht
+- ich wusste gar nicht dass ich das kann! nice, oppornierbare Daumen! 
+
++ was machst du jetzt damit?
+- 10 Finger, jetzt kann ich endlich zählen! das Dezimalsystem finde ich aber etwas umständlich
+- jetzt kann ich endlich richtig nachdenken
+- Daumen hoch!
+- hi-five!
+- face palm
+- endlich kann ich Ohrfeigen verteilen
+

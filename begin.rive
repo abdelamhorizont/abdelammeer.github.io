@@ -1,0 +1,21 @@
+// Chatbot's brain
+! version = 2.0
+! local concat = none
+
+! sub bin's = bin es
+! sub geht's = geht es
+
+! person ich = du
+! person bin = bist
+! person aus = in
+! person ein = einen
+! person eine = eine
+
+> begin
+
+  + request
+  // - {ok}
+  - {topic=kennenlernen} {ok}
+
+
+< begin
