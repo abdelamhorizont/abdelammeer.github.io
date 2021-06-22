@@ -9,6 +9,7 @@ let continuous;
 let interim
 let user_input;
 let input;
+let myWords = [""];
 
 let botAnswers = [];
 
@@ -17,9 +18,9 @@ function bot() {
     bot = new RiveScript({ utf8: true });
     bot.unicodePunctuation = new RegExp(/[.,!?;:]/g);
 
-    // bot.loadFile("begin.rive").then(loading_done).catch(loading_error);
+    bot.loadFile("begin.rive").then(loading_done).catch(loading_error);
     bot.loadFile("brain.rive").then(loading_done).catch(loading_error);
-    bot.loadFile("dialog.rive").then(loading_done).catch(loading_error);
+    // bot.loadFile("dialog.rive").then(loading_done).catch(loading_error);
 
     speech = new p5.Speech();
     speechRec = new p5.SpeechRec('de-DE');
@@ -40,6 +41,9 @@ function bot() {
 
     function chat() {
         input = user_input.value();
+        myWords = input.split(" ");
+        console.log(myWords);
+
         bot.sortReplies();
 
         if (keyCode === ENTER) {

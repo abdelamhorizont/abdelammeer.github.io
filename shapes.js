@@ -19,7 +19,7 @@ var counter3 = 0;
 
 let col0, col1, col2;
 let loadedCol0, loadedCol1, loadedCol2, loadedShapeCol;
-let loadedShapeColBlack = 0
+let loadedShapeColBlack = 0;
 
 let loadBool = true;
 
@@ -45,7 +45,7 @@ function loadShapes() {
     tex = createGraphics(innerWidth, innerHeight);
     tex.colorMode(HSB);
 
-    col0 = [360, 67, 64];   //red
+    col0 = [0,0,60];   //gray
     col1 = [329, 67, 94];   //pink
     col2 = [329, 18, 95];   //light rosa
 
@@ -97,15 +97,15 @@ function drawLoadedShapes(shape) {
     loadedCol1 = shape.layer[0].colors[0][1];
     loadedCol2 = shape.layer[0].colors[0][2];
 
-    if (loadedShapeColBlack <= loadedCol2) {
-        loadedShapeColBlack += 1;
-    }
+    // if (loadedShapeColBlack < loadedCol2) {
+        loadedShapeColBlack = map(sin(frameCount/10) * noise(frameCount/50), -1, 1, 20, loadedCol2);
+        loadedShapeCol = color(loadedCol0, loadedCol1, loadedShapeColBlack)
+    // }
 
-    loadedShapeCol = color(loadedCol0, loadedCol1, loadedShapeColBlack)
 
     tex.fill(0);
     tex.noStroke();
-    textur(loadedShapeCol);
+    textur(loadedShapeCol, shape);
     // tex.image(capture, 0, 0, innerWidth, innerHeight);
 
     tex.push();
@@ -179,12 +179,18 @@ function drawLoadedShapes(shape) {
     plane(innerWidth, innerHeight);
 
     //plain shapes in color
+
     for (var j = 1; j < shape.layer[0].shapes.length; j++) {
         push();
         if (shape.layer[0].shapes[j] != undefined) {
 
             if (shape.layer[0].shapes[j].color != undefined) {
-                fill(shape.layer[0].shapes[j].color);
+
+                if (loadedShapeColBlack <= shape.layer[0].shapes[j].color[2]) {
+                    loadedShapeColBlack += 1;
+                }
+
+                fill(shape.layer[0].shapes[j].color[0],shape.layer[0].shapes[j].color[1], loadedShapeColBlack);
             }
 
             beginShape();
@@ -449,7 +455,7 @@ function drawRest(shape, layerNum) {
             fill(shape.layer[layerNum].shapes[j].color);
 
             beginShape();
-            for (var i = 0; i < shape.layer[layerNum].shapes[j].pos.length; i++) {
+            for (var i = 0; i < shape.layer[layerNum].shapes[j].pos.length; i+= 3) {
                 if (shape.layer[layerNum].shapes[j].osc != 0) {
                     shape.layer[layerNum].shapes[j].addPos += shape.layer[layerNum].shapes[j].osc;
                 } else {
@@ -589,7 +595,7 @@ function softBrushContour(shape) {
 function drawTextureShapes() {
 
     for (var i = 0; i < textureShapes.length; i++) {
-        textur(col2);
+        textur(col0);
         textureMode(NORMAL);
         // tex,tint(329,100,100);
         texture(tex);

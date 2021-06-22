@@ -42,6 +42,22 @@ button#talk:hover {
     opacity: 1;
 }
 
+button#fullScreen {
+    position: relative; 
+    border: none;
+    bottom: -83%; 
+    left: 46%;
+
+    background-color: aliceblue;
+    background-size: cover;
+    /* background-image: url(assets/mic.png); */
+    background-blend-mode: difference;
+    opacity: 0.5;
+    
+    width: 30px;
+    height: 30px;
+}
+
 div#bot {
     mix-blend-mode: difference;
     position: fixed; 

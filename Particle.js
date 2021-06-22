@@ -1,7 +1,7 @@
 // let particlesS = new Array(0);
 let particlesM = new Array(3);
 // let particlesL = new Array(0);
-let worms = new Array(1);
+let worms = new Array(3);
 
 let texBG;
 
@@ -13,18 +13,19 @@ class Particle {
     this.size = size;
     this.xNoise = new NoiseLoop(0.2, widthStart + this.size, widthEnd - this.size);
     this.yNoise = new NoiseLoop(0.2, heightStart + this.size, heightEnd - this.size);
-    this.rNoise = new NoiseLoop(0.2, 0, innerWidth * 1.5);
+    this.rNoise = new NoiseLoop(0.2, 0, innerWidth * 3);
     this.brush = brush;
     this.xPos = [];
     this.yPos = [];
     this.radius = [];
   }
 
-  render(a, tail) {
+  render(brush, a, tail) {
     noStroke();
     let x = this.xNoise.value(a);
     let y = this.yNoise.value(a);
     let r = this.rNoise.value(a);
+    // let r = 500;
 
     this.xPos.push(x);
     this.yPos.push(y);
@@ -33,8 +34,9 @@ class Particle {
     push();
     for (var i = 0; i < tail; i++) {
       if(this.xPos[i] != null){
-        tex.tint(100, 0.5);
-        tex.image(this.brush, this.xPos[i], this.yPos[i],  this.radius[i],  this.radius[i]);
+        imageMode(CENTER);
+        tex.tint(100, 1);
+        tex.image(brush, this.xPos[i], this.yPos[i],  this.radius[i],  this.radius[i]);
       }
     }
     pop();
@@ -50,18 +52,16 @@ class Particle {
     noStroke();
     let x = this.xNoise.value(a);
     let y = this.yNoise.value(a);
-    let r = this.rNoise.value(a);
+    let r = this.rNoise.value(a)/4;
 
     this.xPos.push(x);
     this.yPos.push(y);
     this.radius.push(r);
 
-    let opa = map(noise(frameCount/30), 0, 1, 10, 400);
-
     for (var i = 0; i < tail; i++) {
       if(this.xPos[i] != null){
         tint(100, 1);
-        image(this.brush, this.xPos[i], this.yPos[i],  this.radius[i]/4,  this.radius[i]/4);
+        image(this.brush, this.xPos[i], this.yPos[i],  this.radius[i],  this.radius[i]);
       }
     }
 
@@ -73,14 +73,14 @@ class Particle {
   }
 }
 
-function render() {
-  let a = frameCount/80 * TWO_PI;
+function render(brush) {
+  let a = frameCount/100 * TWO_PI;
 
   // for (let p of particlesL) {
   //   p.render(a, 3);
   // }
   for (let p of particlesM) {
-    p.render(a, 3);
+    p.render(brush, a, 1);
   }
   // for (let p of particlesS) {
   //   p.render(a, 3);
@@ -88,10 +88,10 @@ function render() {
 
 }
 
-function textur(loadedColor) {
-  tex.background(loadedColor);
+function textur(loadedBGColor, shape) {
+  tex.background(loadedBGColor);
 
-  render(); 
+  render(eval(anim.layer[0].colors[4])); 
   // softBrushContour(Anglerfisch);
 }
 
@@ -116,7 +116,7 @@ function createParticles(shape) {
   //   particlesS[i] = new Particle(small, innerWidth/10, -innerWidth/2, -innerHeight/2, innerWidth, innerHeight);
   // }
   for (let i = 0; i < particlesM.length; i++) {
-    particlesM[i] = new Particle(middle, innerWidth/4, -innerWidth/2, -innerHeight/2, innerWidth, innerHeight);
+    particlesM[i] = new Particle(middle, innerWidth/4, -innerWidth/2, -innerHeight/2, innerWidth/2, innerHeight/2);
   }
   // for (let i = 0; i < particlesL.length; i++) {
   //   particlesL[i] = new Particle(big, innerWidth, -innerWidth*2, -innerHeight*2, innerWidth*2, innerHeight*2);

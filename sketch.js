@@ -37,10 +37,12 @@ function preload() {
 	testShape = loadJSON('shapes/test.json');
 
 	Anglerfisch = loadJSON('shapes/Anglerfisch.json');
-	Krabbe = loadJSON('shapes/Krabbe.json');
-	Qualle = loadJSON('shapes/Qualle.json');
-	
-	animals = ['Anglerfisch', 'Krabbe', 'Qualle', 'testShape'];
+	Königskrabbe = loadJSON('shapes/Krabbe.json');
+	Schirmqualle = loadJSON('shapes/Qualle.json');
+	Kamel = loadJSON('shapes/Kamel.json');
+	Schleiereule = loadJSON('shapes/Owl.json');
+
+	animals = ['Anglerfisch', 'Königskrabbe', 'Schirmqualle', 'testShape', 'Kamel', 'Schleiereule'];
 }
 
 function setup() {
@@ -68,17 +70,33 @@ function draw() {
 		drawLoadedShapes(anim);
 		drawMouth(anim);
 
-		for(var i = 2; i < anim.layer.length; i++){
-			if (input == anim.layer[i].name){
-				drawRest(anim, i);
-			}
-		}	
-
 		for(var i = 0; i < animals.length; i++){
-			if (input == animals[i]){
-				anim = eval(input);
+			for(var j = 0; j < myWords.length; j++){
+				if (myWords[j] == animals[i]){
+					anim = eval(myWords[j]);
+				}
 			}
 	    }
+
+		for(var i = 0; i < animals.length; i++){
+		  for(var k = 2; k < eval(animals[i]).layer.length; k++){
+
+			for(var j = 0; j < myWords.length; j++){
+				if (myWords[j] == eval(animals[i]).layer[k].name){
+					drawRest(eval(animals[i]), k);
+				}
+			}
+
+		  }	
+	    }
+
+		// for(var i = 2; i < anim.layer.length; i++){
+		// 	if (input == anim.layer[i].name){
+		// 		drawRest(anim, i);
+		// 	}
+		// }	
+
+
 	}
 
 // textur(col2);

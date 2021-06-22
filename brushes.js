@@ -14,7 +14,7 @@ class brushes {
     this.addOnadd = addOnadd;
     this.xNoise = new NoiseLoop(255, -30, 30);
     this.yNoise = new NoiseLoop(255, -30, 30);
-    this.move = true;
+    this.move = false;
     this.softRadius = softRadius;
     this.img = img;
     this.opacity = opacity;

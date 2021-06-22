@@ -34,18 +34,19 @@
 	<div id="bot">
 		<button id="talk" onclick="recordAudio()"></button>
 
-		<input id="user_input" value="" autofocus />		
+		<input id="user_input" value="" autofocus />
 
 		<!-- <p id="special">Wirre Wölkchen ziehen sich zusammen zu belanglosen Gedanken. Gedanken lösen sich auf, bilden nicht greifbare Formen. Formen verschmelzen, formen unbeständige Bilder.  -->
 		</p>
 
 		<p id="output"></p>
-	
-		<table>	
-		<tr>
-		</tr>
+		<button id="fullScreen" onclick="openFullscreen()"></button>
+
+		<table>
+			<tr>
+			</tr>
 		</table>
-	
+
 	</div>
 
 	<!-- checkboxes for different shapes -->
@@ -65,13 +66,12 @@
 		<div class="slidecontainer">
 
 			<input type="submit" style="display: none" />
-			<input id="brush_input" value="rosaBrush" />
-			<!-- <label for="brush_input">brush_input </label> -->
+			<input id="brush_input" value="blackBrush" />
 
 			<input type="submit" style="display: none" />
-			<input id="shapeCol" value="col1" />
+			<input id="shapeCol" value="col0" />
 
-			<input type="range" min="0" max="1" value="0.08" step="0.01" class="slider" id="opacitySlider"> <br>
+			<input type="range" min="0" max="1" value="0.06" step="0.01" class="slider" id="opacitySlider"> <br>
 			<label for="opacitySlider"> Opacity: <span id="opacitySliderValue"></span> </label><br>
 
 			<input type="range" min="1" max="300" value="100" class="slider" id="RadiusSlider"> <br>
@@ -90,6 +90,44 @@
 
 	<script>
 		let menuBool = true;
+		let elem = document.documentElement;
+		let fullScreenToggle = false;
+
+		/* View in fullscreen */
+		function openFullscreen() {
+			fullScreenToggle = !fullScreenToggle;
+			
+			if(fullScreenToggle){ 
+			if (elem.requestFullscreen) {
+				elem.requestFullscreen();
+			} else if (elem.webkitRequestFullscreen) { /* Safari */
+				elem.webkitRequestFullscreen();
+			} else if (elem.msRequestFullscreen) { /* IE11 */
+				elem.msRequestFullscreen();
+			}
+			}
+
+			if(fullScreenToggle){ 
+			if (document.exitFullscreen) {
+				document.exitFullscreen();
+			} else if (document.webkitExitFullscreen) { /* Safari */
+				document.webkitExitFullscreen();
+			} else if (document.msExitFullscreen) { /* IE11 */
+				document.msExitFullscreen();
+			}
+			}
+		}
+
+		/* Close fullscreen */
+		function closeFullscreen() {
+			if (document.exitFullscreen) {
+				document.exitFullscreen();
+			} else if (document.webkitExitFullscreen) { /* Safari */
+				document.webkitExitFullscreen();
+			} else if (document.msExitFullscreen) { /* IE11 */
+				document.msExitFullscreen();
+			}
+		}
 
 		function openNav() {
 			document.getElementById("mySidenav").style.width = "250px";

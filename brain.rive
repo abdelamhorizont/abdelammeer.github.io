@@ -31,7 +31,7 @@
     //% für Folgeantwort 
     + _
     % wer will das wissen
-    - <set name={formal}<star>{/formal}>komischer Name, <get name> ... Ich bin Ceratioidei.
+    - <set name={formal}<star>{/formal}>komischer Name, <get name>.
 
     + (mein name ist|ich heiße|ich bin) _
     - <set name={formal}<star2>{/formal}>komischer Name, <get name> 
@@ -63,10 +63,10 @@
 > topic existenz
 
     + *
-    - was zum Teufel bist du denn?
-    - und wo kommst du wirklich her?
-    - wer bist du eigentlich?
-    - warum zeigst du nach oben?
+    - was zum Teufel bist duuu denn?
+    // - und wo kommst du wirklich her?
+    // - wer bist du eigentlich?
+    // - warum zeigst du nach oben?
 
     + ich bin * *
     - ich hab noch nie {person}<star1>{/person} {formal}<star2>{/formal} gesehen. bist du intelligent?
