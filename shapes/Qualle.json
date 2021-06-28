@@ -4972,7 +4972,7 @@
               -315.5
             ]
           ],
-          "size": 100,
+          "size": 200,
           "opacity": 0.08,
           "color": "rosaBrush"
         },
@@ -5870,7 +5870,7 @@
               -236
             ]
           ],
-          "size": 100,
+          "size": 200,
           "opacity": 0.08
         },
         {
@@ -6222,7 +6222,7 @@
               -53.5
             ]
           ],
-          "size": 100,
+          "size": 200,
           "opacity": 0.08,
           "color": "rosaBrush"
         },
@@ -6607,7 +6607,7 @@
               -22.5
             ]
           ],
-          "size": 100,
+          "size": 200,
           "opacity": 0.08,
           "color": "rosaBrush"
         },
@@ -7096,7 +7096,7 @@
               -88
             ]
           ],
-          "size": 100,
+          "size": 200,
           "opacity": 0.08,
           "color": "rosaBrush"
         }

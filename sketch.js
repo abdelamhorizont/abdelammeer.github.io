@@ -27,8 +27,10 @@ let anim;
 let output;
 let animals;
 
+let ritaTest;
+
 function preload() {
-	gelbBrush = loadImage('assets/gelb.png');
+	gelbBrush = loadImage('assets/gelb2.png');
 	rosaBrush = loadImage('assets/rosa2.png');
 	rotBrush = loadImage('assets/rot.png');
 	orangeBrush = loadImage('assets/orange.png');
@@ -41,8 +43,10 @@ function preload() {
 	Schirmqualle = loadJSON('shapes/Qualle.json');
 	Kamel = loadJSON('shapes/Kamel.json');
 	Schleiereule = loadJSON('shapes/Owl.json');
+	Mensch = loadJSON('shapes/Mensch.json');
+	Koralle = loadJSON('shapes/Koralle.json');
 
-	animals = ['Anglerfisch', 'Königskrabbe', 'Schirmqualle', 'testShape', 'Kamel', 'Schleiereule'];
+	animals = ['Anglerfisch', 'Königskrabbe', 'Schirmqualle', 'testShape', 'Kamel', 'Schleiereule', 'Mensch', 'Koralle'];
 }
 
 function setup() {
@@ -60,6 +64,10 @@ function setup() {
 
 	loadShapes();
 	saveShapes();
+
+	textSize(20);
+    noStroke();
+  
 }
 
 function draw() {
@@ -111,6 +119,7 @@ drawSoftShapes();
 // randomShape();
 
 // worm();
+
 }
 
 function mouseDragged() {
@@ -189,4 +198,20 @@ function windowResized() {
 	resizeCanvas(innerWidth, innerHeight);
 	tex.resizeCanvas(innerWidth, innerHeight);
 
+}
+
+function ritaSetup(){
+	ritaTest = createGraphics(200,200);
+    ritaTest.background(50);
+
+	let s = "Der Elefant verschwand ploetzlich!";
+
+    let words = RiTa.tokenize(s);
+    for (let i=0; i < words.length; i++) {
+        ritaTest.text(words[i], 50, 50 + i*20);
+    }
+}
+
+function ritaDraw(){
+	image(ritaTest, 0,0, 400,400);
 }

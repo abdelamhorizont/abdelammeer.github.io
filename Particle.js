@@ -1,5 +1,5 @@
 // let particlesS = new Array(0);
-let particlesM = new Array(3);
+let particlesM = new Array(5);
 // let particlesL = new Array(0);
 let worms = new Array(3);
 

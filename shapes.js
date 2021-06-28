@@ -45,9 +45,9 @@ function loadShapes() {
     tex = createGraphics(innerWidth, innerHeight);
     tex.colorMode(HSB);
 
-    col0 = [0,0,60];   //gray
-    col1 = [329, 67, 94];   //pink
-    col2 = [329, 18, 95];   //light rosa
+    col0 = [256,60,100];   //lila
+    col1 = [34, 67, 94];   // orange
+    col2 = [329, 8, 9];   // light rosa
 
     if (anim.layer[1] != undefined) {
         mouthOpen = anim.layer[1].mouthOpen;
@@ -179,7 +179,6 @@ function drawLoadedShapes(shape) {
     plane(innerWidth, innerHeight);
 
     //plain shapes in color
-
     for (var j = 1; j < shape.layer[0].shapes.length; j++) {
         push();
         if (shape.layer[0].shapes[j] != undefined) {
@@ -271,9 +270,10 @@ function drawLoadedShapes(shape) {
             }
 
             // let x = map(noise(shape.softShapes[j].addPos / 10), 0, 1, 0, 5);
+            let minOp = map(sin(frameCount/10), 0, 1, 0, 0.04)
 
             osc = createVector(sin(shape.layer[0].softShapes[j].addPos) * 3, cos(shape.layer[0].softShapes[j].addPos) * 3);
-            tint(255, shape.layer[0].softShapes[j].opacity);
+            tint(255, shape.layer[0].softShapes[j].opacity - minOp);
             image(eval(shape.layer[0].softShapes[j].color), shape.layer[0].softShapes[j].pos[i][0], shape.layer[0].softShapes[j].pos[i][1], shape.layer[0].softShapes[j].size, shape.layer[0].softShapes[j].size);
 
             shape.layer[0].softShapes[j].pos[i][0] += osc.x;
@@ -452,6 +452,7 @@ function drawRest(shape, layerNum) {
     for (var j = 0; j < shape.layer[layerNum].shapes.length; j++) {
 
         if (shape.layer[layerNum].shapes[j].color != undefined) {
+            shape.layer[layerNum].shapes[j].color[3] = map(sin(frameCount/10), 0, 1, 0.8, 1);
             fill(shape.layer[layerNum].shapes[j].color);
 
             beginShape();

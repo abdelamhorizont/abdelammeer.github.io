@@ -1462,7 +1462,7 @@
               -312
             ]
           ],
-          "size": 131,
+          "size": 231,
           "opacity": 1,
           "color": "rosaBrush"
         },
@@ -1503,7 +1503,7 @@
               -341.5
             ]
           ],
-          "size": 131,
+          "size": 231,
           "opacity": 1,
           "color": "rosaBrush"
         },   
@@ -3660,7 +3660,7 @@
       "name": "Hände",
       "shapes": [
         {
-          "osc": 0.1,
+          "osc": 0.348,
           "addPos": 0,
           "pos": [
             [
@@ -5387,7 +5387,7 @@
           ]
         },
         {
-          "osc": 0.09,
+          "osc": 0.348,
           "addPos": 0,
           "pos": [
             [

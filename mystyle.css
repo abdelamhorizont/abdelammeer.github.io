@@ -48,14 +48,19 @@ button#fullScreen {
     bottom: -83%; 
     left: 46%;
 
-    background-color: aliceblue;
-    background-size: cover;
-    /* background-image: url(assets/mic.png); */
-    background-blend-mode: difference;
+    background-color: transparent;
+    background-size: contain;
+    background-image: url(assets/fullScreen.svg.png);
+    /* background-blend-mode: multiply; */
+
     opacity: 0.5;
     
     width: 30px;
     height: 30px;
+}
+
+button#fullScreen:hover {
+    opacity: 1;
 }
 
 div#bot {
