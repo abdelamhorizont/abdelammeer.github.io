@@ -1,0 +1,56 @@
+{
+  "layer": [
+    {
+      "colors": [
+        [
+          256,
+          60,
+          100
+        ],
+        [
+          34,
+          67,
+          94
+        ],
+        [
+          329,
+          8,
+          9
+        ],
+        "rosaBrush",
+        "rosaBrush",
+        "rosaBrush"
+      ],
+      "shapes": [
+        {
+          "osc": 0,
+          "addPos": 0,
+          "pos": [0,0]
+        }
+      ],
+      "lines": [
+        {
+          "color": 0,
+          "osc": 0,
+          "addPos": 0,
+          "pos": []
+        }
+      ],
+      "softShapes": [
+        {
+          "osc": 0,
+          "addPos": 0,
+          "color": "rosaBrush",
+          "pos": []
+        }
+      ],
+      "texShapes": [
+        {
+          "osc": 0,
+          "addPos": 0,
+          "pos": []
+        }
+      ]
+    }
+  ]
+}

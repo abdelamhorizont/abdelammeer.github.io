@@ -20,6 +20,9 @@ var counter3 = 0;
 let col0, col1, col2;
 let loadedCol0, loadedCol1, loadedCol2, loadedShapeCol;
 let loadedShapeColBlack = 0;
+let loadedShapeColB;
+let loadedShapeColCount = 0;
+let loadedShapeBool = false;
 
 let loadBool = true;
 
@@ -33,7 +36,7 @@ let phase = 0;
 let zoff = 0;
 
 function loadShapes() {
-    anim = Anglerfisch;
+    anim = Wüste;
     amplitude = new p5.Amplitude();
 
     textureShapes[0] = new Array();
@@ -45,9 +48,9 @@ function loadShapes() {
     tex = createGraphics(innerWidth, innerHeight);
     tex.colorMode(HSB);
 
-    col0 = [256,60,100];   //lila
-    col1 = [34, 67, 94];   // orange
-    col2 = [329, 8, 9];   // light rosa
+    col0 = [180,20,100];   // gelb
+    col1 = [200, 87, 94];   // gelb
+    col2 = [329, 8, 9];    // light rosa
 
     if (anim.layer[1] != undefined) {
         mouthOpen = anim.layer[1].mouthOpen;
@@ -97,11 +100,14 @@ function drawLoadedShapes(shape) {
     loadedCol1 = shape.layer[0].colors[0][1];
     loadedCol2 = shape.layer[0].colors[0][2];
 
-    // if (loadedShapeColBlack < loadedCol2) {
-        loadedShapeColBlack = map(sin(frameCount/10) * noise(frameCount/50), -1, 1, 20, loadedCol2);
+    if (loadedShapeColBlack <= loadedCol2) {
+        loadedShapeColBlack += 0.4;
         loadedShapeCol = color(loadedCol0, loadedCol1, loadedShapeColBlack)
-    // }
-
+    }  else {
+        loadedShapeColCount += 0.1;
+        loadedShapeColB = map(cos(loadedShapeColCount), 1, -1, loadedCol2, 20);
+        loadedShapeCol = color(loadedCol0, loadedCol1, loadedShapeColB)
+    }
 
     tex.fill(0);
     tex.noStroke();
@@ -185,11 +191,15 @@ function drawLoadedShapes(shape) {
 
             if (shape.layer[0].shapes[j].color != undefined) {
 
-                if (loadedShapeColBlack <= shape.layer[0].shapes[j].color[2]) {
-                    loadedShapeColBlack += 1;
-                }
+                // if (loadedShapeColBlack <= shape.layer[0].shapes[j].color[2]) {
+                //     loadedShapeColBlack += 1;
+                // }
 
-                fill(shape.layer[0].shapes[j].color[0],shape.layer[0].shapes[j].color[1], loadedShapeColBlack);
+                if (shape.layer[0].shapes[j].color != undefined) {
+                    shape.layer[0].shapes[j].color[2] = map(sin(frameCount/10), 0, 1, 80, 100);
+                    fill(shape.layer[0].shapes[j].color);
+                }
+                // fill(shape.layer[0].shapes[j].color[0],shape.layer[0].shapes[j].color[1], loadedShapeColBlack);
             }
 
             beginShape();

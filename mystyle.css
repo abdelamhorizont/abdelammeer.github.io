@@ -23,10 +23,10 @@ p#menuButton{
 }
 
 button#talk {
-    position: relative; 
+    position: absolute; 
     border: none;
     top: -1%; 
-    left: 54%;
+    right: 3%;
 
     background-color: aliceblue;
     background-size: cover;
@@ -43,10 +43,10 @@ button#talk:hover {
 }
 
 button#fullScreen {
-    position: relative; 
+    position: absolute; 
     border: none;
-    bottom: -83%; 
-    left: 46%;
+    bottom: 5%; 
+    right: 3%;
 
     background-color: transparent;
     background-size: contain;
@@ -66,8 +66,8 @@ button#fullScreen:hover {
 div#bot {
     mix-blend-mode: difference;
     position: fixed; 
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     
     top: 0%;
     margin: 2%;
@@ -77,19 +77,19 @@ div#bot {
 #user_input{
     position: relative; 
     border: none;
-    top: -1%; 
+    top: 4%; 
     /* width: 98%; */
 
     background-color: transparent;
     color: white;
+    opacity: 0.9;
 
-    font-family: Arial;
-    font-weight: thin;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
     text-align: center;
-    font-size: 1.8em;
+    font-size: 2.6em;
 
     word-break: keep-all;
-
 }
 
 #user_input:focus{
@@ -103,48 +103,48 @@ p#output {
     margin-right: 5%;
 
     font-family: Signifier;
-    font-size: 3em;
+    font-size: 3.3em;
     color: white;
+    opacity: 0.9;
+
     /* text-shadow: 0px 0px 15px white; */
 
     word-break: keep-all;
-
-    bottom: -83%; 
+    bottom: -75%; 
 }
 
-p#special {
-    position: relative; 
-    width: 95%;
-    margin-right: 0%;
+.centerText #centerText{
+    position: absolute; 
+    display: grid;
+    place-items: center;
+    margin: 35vh 0vw;
+    width: 100%;
+}
 
+#centerText {
     font-family: Signifier;
-    font-size: 8em;
-    line-height: 60%;
+    font-size: 4.5em;
+    line-height: 90%;
+    text-align: center;
 
     color: white;
     opacity: 0.8;
-    /* text-shadow: 0px 0px 15px white; */
-
+    mix-blend-mode: difference;
+    text-shadow: 0px 0px 15px white;
     word-break: keep-all;
 
-    bottom: -10%; 
-
+    animation-name: fade;
+    animation-duration: 3s;
 }
 
+::selection {
+    background: transparent;
+}
 
-td {
-    vertical-align: bottom;
-
-    position: relative; 
-    width: 500px;
-    height: 300px;
-
-    font-family: Signifier;
-    font-size: 9.7em;
-    color: white;
-    text-shadow: 0px 0px 15px white;
-
-    word-break: keep-all;
-
-    top: 10%; 
+@keyframes fade{
+    from{
+        opacity: 0;
+    } to {
+        opacity: 0.8;
+    }
 }
