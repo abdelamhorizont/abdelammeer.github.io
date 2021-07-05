@@ -36,7 +36,7 @@ let phase = 0;
 let zoff = 0;
 
 function loadShapes() {
-    anim = Wüste;
+    anim = nichts;
     amplitude = new p5.Amplitude();
 
     textureShapes[0] = new Array();
