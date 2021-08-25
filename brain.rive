@@ -1,7 +1,7 @@
 ! local concat = newline
 ! array colors = rot blau gelb grün
 
-> topic kennenlernen
+// > topic kennenlernen
     // * Trigger wildcard für alles
     + *
     // * <get name> == undefined => wie ist das Wetter eigentlich heute?
@@ -16,11 +16,12 @@
     + [*] (hi|hallo|hello|hey|jo|yo|shalom|salam|salamualaikum|konnichiwa) [*]
     - hallo? 
     - ja?
-    - wie kann ich dir nicht behilflich sein?
+    // - hallo Schirmqualle ohne Hirn
+    // - wie kann ich dir nicht behilflich sein?
 
     + *
-    % (hallo|ja)
-    * <input1> == <input2> => du nervst mich jetzt schon
+    % hallo
+    - du nervst mich jetzt schon
 
     + (<input1>|<input2|<input3>)
     - das hast du doch eben schon gesagt
@@ -28,10 +29,17 @@
     + [*] (wie heißt du|wer bist du|wie ist [*] dein name) [*]
     - wer will das wissen?
 
-    //% für Folgeantwort 
-    + _
-    % wer will das wissen
-    - <set name={formal}<star>{/formal}>komischer Name, <get name>.
+        + _
+        % wer will das wissen
+        - <set name={formal}<star>{/formal}>komischer Name, <get name>, bist du so ein Chatbot?
+
+        + *
+        % [*] bist du so ein Chatbot
+        - naja, du wirkst nicht besonders schlau
+
+        + und du
+        % [*] du wirkst nicht besonders schlau
+        - ich bin ein Anglerfisch
 
     + (mein name ist|ich heiße|ich bin) _
     - <set name={formal}<star2>{/formal}>komischer Name, <get name> 
@@ -47,10 +55,10 @@
     - ich hasse Smalltalk
 
     + worüber [*] (sprechen|reden|quatscchen|unterhalten)?
-    - über das Wetter!
-    + *
-    % über das wetter
-    - natürlich nicht! lass uns über Existenz reden
+    // - über das Wetter!
+    // + *
+    // % über das wetter
+    - lass uns über Existenz reden {topic=existenz}
 
     // + yo 
     // - yo yo yo
@@ -58,18 +66,22 @@
     // + yo *
     // - {@ yo} <@>
 
-< kennenlernen
+// < kennenlernen
 
 > topic existenz
 
     + *
-    - was zum Teufel bist duuu denn?
-    - hallo? 
-    - ja?
-    - wie kann ich dir nicht behilflich sein?
-    // - und wo kommst du wirklich her?
-    // - wer bist du eigentlich?
-    // - warum zeigst du nach oben?
+    // - was zum Teufel bist duuu denn?
+    // - hallo? 
+    // - ja?
+    // - wie kann ich dir nicht behilflich sein?
+    - wo kommst du wirklich her?
+    - wer bist du eigentlich?
+    - warum bist du vertikal?
+
+    + [*] du
+    % wo kommst du wirklich her
+    - Das ist Gegenstand aktueller Forschung. Alle Atome die nämlich schwerer als Eisen sind, müssen aus Sternexplosionen hergelangt sein.
 
     + ich bin * *
     - ich hab noch nie {person}<star1>{/person} {formal}<star2>{/formal} gesehen. bist du intelligent?
@@ -115,7 +127,7 @@
     - ich tanze! warum tanzt du nicht?
 
     + wie ist [*] tiefsee  
-    - dunkel und leer, wie in deinem Kopf. Da brauchts viele gute Ideen, dass ein Lämpchen herauswächst
+    - dunkel und leer, wie in deinem Kopf. Da brauchts viele gute Ideen, wenn dir ein Lämpchen herauswächst
 
     + *
     % warum zeigst du nach oben

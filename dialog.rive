@@ -4,16 +4,34 @@
 + *
 - nice
 - crazy
+- okay?
 
 + [*] (hi|hallo|hello|hey|jo|yo|shalom|salam|salamualaikum|konnichiwa) [*]
-- hallo? ... wer ist da?
+- öö. hi?
 
-+ [*] _
-% hallo wer ist da
-- <set name={formal}<star>{/formal}>was ist denn ein <get name>? Du bist ja furchtbar hässlich!.
+// + [*] _
+// % hallo wer ist da
+// - <set name={formal}<star>{/formal}>was ist denn ein <get name>? Du bist ja furchtbar hässlich!.^
 
-+ selber du fischgesicht
-- jetzt bin ich aber beleidigt
++ [*] (wie heißt du|wer bist du|wie ist [*] dein name) [*]
+- wer will das wissen?
+
+        + _
+        % wer will das wissen
+        - <set name={formal}<star>{/formal}>komischer Name, <get name>, bist du so ein Chatbot?
+
+        + öhh nein
+        % [*] bist du so ein chatbot
+        - was gibt‘s da nachzudenken? du wirkst nicht besonders intelligent
+
+// + selber du fischgesicht
+// - jetzt bin ich aber beleidigt
+
++ bist du denn intelligent
+- und ob! intelligent und bildhübsch!
+
++ bist du ein chatbot
+- neeeein, ich bin ein Anglerfisch
 
 + weißt du [*] aussiehst
 - ich suche schon lange vergeblich nach dem Meeresspiegel
@@ -24,7 +42,8 @@
 + wer oder was bist du
 - dumme frage, ich bin ich. was genau bist du denn?
 
-+ stimmt, darauf habe ich auch keine einfache Antwort 
++ stimmt darauf habe ich auch keine antwort 
+- siehsch mal
 
 + [*] laterne [*]
 - durchaus praktisch wenn man in der Tiefsee lebt aber Angst im Dunkeln hat. Es ist quasi eine kleine Sonne. 
@@ -48,7 +67,7 @@
 - ich wusste gar nicht dass ich das kann! nice, oppornierbare Daumen! 
 
 + was machst du jetzt damit?
-- 10 Finger, jetzt kann ich endlich zählen! das Dezimalsystem finde ich aber etwas umständlich
+- 10 Finger, jetzt kann ich endlich zählen! das Dezimalsystem finde ich aber umständlich
 - jetzt kann ich endlich richtig nachdenken
 - Daumen hoch!
 - hi-five!

@@ -24,12 +24,16 @@ let fishAdd1 = 0, fishAdd2 = 0;
 let fisch, testShape, ghost;
 let anim;
 
-let output;
 let animals;
 
-let ritaTest;
-
 function preload() {
+	mySound1 = loadSound('sounds/Amazonian_Boto_30_06_21.m4a');
+	mySound2 = loadSound('sounds/antarctic_seals_30_06_21.m4a');
+	mySound3 = loadSound('sounds/humpback_whale_song_30_06_21.m4a');
+	mySound4 = loadSound('sounds/mamiraua_in-air_25_08_17.m4a');
+	mySound5 = loadSound('sounds/mobutu_monument-dr_congo_13_05_19.m4a');
+	mySound6 = loadSound('sounds/underwater_cave_recordings_03_12_20.m4a');
+
 	loadedText = loadStrings('assets/text.txt');
 
 	gelbBrush = loadImage('assets/gelb2.png');
@@ -47,11 +51,19 @@ function preload() {
 	Schirmqualle = loadJSON('shapes/Qualle.json');
 	Kamel = loadJSON('shapes/Kamel.json');
 	Schleiereule = loadJSON('shapes/Owl.json');
+	Legehenne = loadJSON('shapes/Henne.json');
+	Honigbiene = loadJSON('shapes/Honigbiene.json');
+
 	Mensch = loadJSON('shapes/Mensch.json');
+	Geist = loadJSON('shapes/ghost.json');
 
 	Koralle = loadJSON('shapes/Koralle.json');
 	Wüste = loadJSON('shapes/Wüste.json');
-	animals = ['Anglerfisch', 'Königskrabbe', 'Schirmqualle', 'testShape', 'Kamel', 'Schleiereule', 'Mensch', 'Koralle', 'Wüste', 'nichts'];
+
+	animals = ['Anglerfisch', 'Königskrabbe', 'Honigbiene', 'Schirmqualle', 'Legehenne', 'testShape', 'Kamel', 'Schleiereule', 'Mensch', 'Geist', 'Koralle', 'Wüste', 'nichts'];
+	video = createCapture(VIDEO, videoReady);
+	video.hide();
+
 }
 
 function setup() {
@@ -63,9 +75,9 @@ function setup() {
 	// capture.hide();
 
 	frameRate(20);
+	bot();
 
 	buttons();
-	bot();
 
 	loadShapes();
 	saveShapes();
@@ -73,28 +85,66 @@ function setup() {
 	textSize(20);
 	noStroke();
 
-	// typeSetup();
+	// soundSetup(mySound6);
+
+	personSetup();
+
+	// chat();
+
+	typeSetup();
+
 }
 
 function draw() {
 	background(0);
 	inputValues();
 
+	speechToImage();
+
+	drawShapes();
+	drawTextureShapes();
+	drawlines();
+	drawSoftShapes();
+
+	// textur(col0);
+	// texture(tex);
+	// plane(innerWidth, innerHeight);
+
+	typeDraw();
+
+	worm();
+	
+	// randomShape();
+
+	// soundDraw(mySound6);
+
+}
+
+function speechToImage(){
 	if (loadBool) {
+
 		drawLoadedShapes(anim);
 		drawMouth(anim);
+
 
 		for (var i = 0; i < animals.length; i++) {
 			for (var j = 0; j < myWords.length; j++) {
 				if (myWords[j] == animals[i]) {
 					anim = eval(myWords[j]);
 
-					loadedShapeColBlack = 0;
-					loadedShapeColCount;
-					user_input.value('');
+					blackCount = animals.indexOf(animals[i]);
+				}  
+			}	
+			for (var j = 0; j < myWordsOutput.length; j++) {
+				if(myWordsOutput[j] == animals[i]){
+					anim = eval(myWordsOutput[j]);
+
+					blackCount = animals.indexOf(animals[i]);
 				}
 			}
 		}
+
+		personDraw();
 
 		for (var i = 0; i < animals.length; i++) {
 			for (var k = 2; k < eval(animals[i]).layer.length; k++) {
@@ -102,6 +152,14 @@ function draw() {
 				for (var j = 0; j < myWords.length; j++) {
 					if (myWords[j] == eval(animals[i]).layer[k].name) {
 						drawRest(eval(animals[i]), k);
+
+					}
+				}
+
+				for (var j = 0; j < myWordsOutput.length; j++) {
+					if (myWordsOutput[j] == eval(animals[i]).layer[k].name) {
+						drawRest(eval(animals[i]), k);
+
 					}
 				}
 
@@ -109,28 +167,16 @@ function draw() {
 		}
 
 	}
-
-	// textur(col2);
-	// texture(tex);
-	// plane(innerWidth, innerHeight);
-
-	drawShapes();
-	drawTextureShapes();
-	drawlines();
-	drawSoftShapes();
-
-	// randomShape();
-	// worm();
-
-	// typeDraw();
 }
 
 function mouseDragged() {
 	shapesDragged();
+
 }
 
 function mouseReleased() {
 	shapesReleased();
+	// oscSound.amp(0.1, 0.5);
 }
 
 function checked() {

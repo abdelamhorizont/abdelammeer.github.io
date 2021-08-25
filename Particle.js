@@ -52,7 +52,7 @@ class Particle {
     noStroke();
     let x = this.xNoise.value(a);
     let y = this.yNoise.value(a);
-    let r = this.rNoise.value(a)/4;
+    let r = this.rNoise.value(a)/14;
 
     this.xPos.push(x);
     this.yPos.push(y);
@@ -61,7 +61,7 @@ class Particle {
     for (var i = 0; i < tail; i++) {
       if(this.xPos[i] != null){
         tint(100, 1);
-        image(this.brush, this.xPos[i], this.yPos[i],  this.radius[i],  this.radius[i]);
+        mensch.image(this.brush, this.xPos[i], this.yPos[i],  this.radius[i],  this.radius[i]);
       }
     }
 
@@ -92,14 +92,13 @@ function textur(loadedBGColor, shape) {
   tex.background(loadedBGColor);
 
   render(eval(anim.layer[0].colors[4])); 
-  // softBrushContour(Anglerfisch);
 }
 
 function worm(){
   let a = frameCount/100 * TWO_PI;
 
   for (let p of worms) {
-		p.worm(a, 20);
+		p.worm(a, 15);
 	  }
 }
 
@@ -123,6 +122,6 @@ function createParticles(shape) {
   // }  
 
   for (let i = 0; i < worms.length; i++) {
-    worms[i] = new Particle(middle, innerWidth/8, -innerWidth, -innerHeight, innerWidth, innerHeight);
+    worms[i] = new Particle(gelbBrush, innerWidth/8, -innerWidth, -innerHeight, innerWidth, innerHeight);
   }  
 }

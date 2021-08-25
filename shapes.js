@@ -18,10 +18,10 @@ var counter2 = 0;
 var counter3 = 0;
 
 let col0, col1, col2;
-let loadedCol0, loadedCol1, loadedCol2, loadedShapeCol;
-let loadedShapeColBlack = 0;
+let loadedShapeCol;
+let loadedShapeColBlack = [];
 let loadedShapeColB;
-let loadedShapeColCount = 0;
+let loadedShapeColCount = [];
 let loadedShapeBool = false;
 
 let loadBool = true;
@@ -30,10 +30,16 @@ let mouthBool = false;
 let mouthOpen;
 let amplitude;
 
-let x = 0;
+let dissolve = false;
 
 let phase = 0;
 let zoff = 0;
+
+let BGWhite = 0;
+let Brightness = 0;
+let blackCount = 0;
+let softBrushBrightness = [];
+let loadedSoftColCount = 0;
 
 function loadShapes() {
     anim = nichts;
@@ -48,12 +54,18 @@ function loadShapes() {
     tex = createGraphics(innerWidth, innerHeight);
     tex.colorMode(HSB);
 
-    col0 = [180,20,100];   // gelb
-    col1 = [200, 87, 94];   // gelb
-    col2 = [329, 8, 9];    // light rosa
+    col0 = [52,87,94];   // gelb
+    col1 = [329, 30, 94];   // gelb
+    col2 = [59, 80, 97];    // light rosa
 
     if (anim.layer[1] != undefined) {
         mouthOpen = anim.layer[1].mouthOpen;
+    }
+
+    for (var j = 0; j < animals.length; j++) {
+        loadedShapeColBlack[j] = 0;
+        loadedShapeColCount[j] = 0;
+        softBrushBrightness[j] = 0.1;
     }
 }
 
@@ -94,22 +106,39 @@ function saveShapes() {
 }
 
 function drawLoadedShapes(shape) {
+
+    for (var j = 0; j < myWords.length; j++) {
+        if (myWords[j] == 'ciao') {
+            dissolve = true;
+            user_input.value('');
+        }
+    }
+
     //draw on tex canvas  
+    loadedCol = shape.layer[0].colors[0];
 
-    loadedCol0 = shape.layer[0].colors[0][0];
-    loadedCol1 = shape.layer[0].colors[0][1];
-    loadedCol2 = shape.layer[0].colors[0][2];
+    loadedShapeColBlack[blackCount] += 0.1;
+    loadedShapeCol = color(loadedCol[0], loadedCol[1], loadedShapeColBlack[blackCount]);
 
-    if (loadedShapeColBlack <= loadedCol2) {
-        loadedShapeColBlack += 0.4;
-        loadedShapeCol = color(loadedCol0, loadedCol1, loadedShapeColBlack)
-    }  else {
-        loadedShapeColCount += 0.1;
-        loadedShapeColB = map(cos(loadedShapeColCount), 1, -1, loadedCol2, 20);
-        loadedShapeCol = color(loadedCol0, loadedCol1, loadedShapeColB)
+    if (loadedShapeColBlack[blackCount] > loadedCol[2][0]) {
+        loadedShapeColCount[blackCount] += 0.05;
+        loadedShapeColB = map(cos(loadedShapeColCount[blackCount]), 1, -1, loadedCol[2][0], loadedCol[2][1]);
+
+        loadedShapeCol = color(loadedCol[0], loadedCol[1], loadedShapeColB);
+    }
+
+    if (dissolve) {
+        let colCh = map(sin(frameCount / 100), -1, 1, 0, 360);
+        Brightness++;
+        loadedShapeCol = color(colCh, 15, Brightness);
     }
 
     tex.fill(0);
+    if (dissolve) {
+        BGWhite++;
+        tex.fill(BGWhite);
+    }
+
     tex.noStroke();
     textur(loadedShapeCol, shape);
     // tex.image(capture, 0, 0, innerWidth, innerHeight);
@@ -132,21 +161,10 @@ function drawLoadedShapes(shape) {
     tex.vertex(innerWidth / 2, -innerHeight / 2);
 
     tex.vertex(-innerWidth / 2, -innerHeight / 2);
-    // tex.vertex(-innerWidth / 2, -innerHeight / 2);
 
     tex.beginContour();
     tex.vertex(shape.layer[0].shapes[0].pos[0][0], shape.layer[0].shapes[0].pos[0][1]);
     tex.vertex(shape.layer[0].shapes[0].pos[0][0], shape.layer[0].shapes[0].pos[0][1]);
-
-    // animation rising oscillation 
-    // if (shapeOscAdd < shape.layer[0].shapes[0].osc) {
-    //     shapeOscAdd += 0.01;
-    // }
-
-    // display animation drawing shape
-    // if (shapeLength < shape.layer[0].shapes[0].pos.length) {
-    //     shapeLength += 1;
-    // }
 
     shapeLength = shape.layer[0].shapes[0].pos.length;
 
@@ -155,15 +173,19 @@ function drawLoadedShapes(shape) {
 
             if (shape.layer[0].shapes[0].osc != 0) {
                 shape.layer[0].shapes[0].addPos += shape.layer[0].shapes[0].osc;
-                // shape.layer[0].shapes[0].addPos += shapeOscAdd;
+                // shape.layer[0].shapes[0].addPos += noise(i) ;
+
             } else {
                 shape.layer[0].shapes[0].addPos += float(OscSlider.value);
             }
 
-            // let x = map(noise(shape.shapes[0].addPos / 10), 0, 1, 0, 5);
-            x = map(sin(frameCount / 50), -1, 1, 2, 5);
-
             osc = createVector(sin(shape.layer[0].shapes[0].addPos) * 4, cos(shape.layer[0].shapes[0].addPos) * 4);
+
+            if (dissolve) {
+                let x = map(sin(i / 20), 0, 1, -2, 2);
+                let y = map(cos(i / 20), 0, 1, -2, 2);
+                osc = createVector(noise(shape.layer[0].shapes[0].addPos) * x, noise(shape.layer[0].shapes[0].addPos) * y);
+            }
 
             tex.curveVertex(shape.layer[0].shapes[0].pos[i][0], shape.layer[0].shapes[0].pos[i][1]);
 
@@ -188,18 +210,30 @@ function drawLoadedShapes(shape) {
     for (var j = 1; j < shape.layer[0].shapes.length; j++) {
         push();
         if (shape.layer[0].shapes[j] != undefined) {
-
             if (shape.layer[0].shapes[j].color != undefined) {
 
-                // if (loadedShapeColBlack <= shape.layer[0].shapes[j].color[2]) {
-                //     loadedShapeColBlack += 1;
-                // }
+                shapeShapesCol = shape.layer[0].shapes[j].color;
+                loadedShapeColBlack[blackCount] += 0.1;
+                fill(shapeShapesCol[0], shapeShapesCol[1], loadedShapeColBlack[blackCount]);
 
-                if (shape.layer[0].shapes[j].color != undefined) {
-                    shape.layer[0].shapes[j].color[2] = map(sin(frameCount/10), 0, 1, 80, 100);
-                    fill(shape.layer[0].shapes[j].color);
+
+                if (loadedShapeColBlack[blackCount] > shapeShapesCol[2]) {
+                    fill(shapeShapesCol[0], shapeShapesCol[1], shapeShapesCol[2]);
                 }
-                // fill(shape.layer[0].shapes[j].color[0],shape.layer[0].shapes[j].color[1], loadedShapeColBlack);
+
+                if (shapeShapesCol[2][1] != undefined) {
+                    if (loadedShapeColBlack[blackCount] > shapeShapesCol[2][0]) {
+
+                        shapeShapesColB = map(cos(loadedShapeColCount[blackCount]), 1, -1, shapeShapesCol[2][0], shapeShapesCol[2][1]);
+                        fill(shapeShapesCol[0], shapeShapesCol[1], shapeShapesColB);
+                    }
+                }
+
+                if (dissolve) {
+                    let colCh = map(sin(frameCount / 100), -1, 1, 0, 360);
+                    fill(colCh, 15, Brightness);
+                }
+
             }
 
             beginShape();
@@ -210,8 +244,13 @@ function drawLoadedShapes(shape) {
                     shape.layer[0].shapes[j].addPos += float(OscSlider.value);
                 }
 
-                // let x = map(noise(shape.shapes[j].addPos / 10), 0, 1, 0, 5);
-                osc = createVector(sin(shape.layer[0].shapes[j].addPos) * 3, cos(shape.layer[0].shapes[j].addPos) * 3);
+                osc = createVector(sin(shape.layer[0].shapes[j].addPos) * 4, cos(shape.layer[0].shapes[j].addPos) * 4);
+
+                if (dissolve) {
+                    let x = map(sin(i / 10), 0, 1, -2, 2);
+                    let y = map(cos(i / 10), 0, 1, -2, 2);
+                    osc = createVector(noise(shape.layer[0].shapes[j].addPos) * x, noise(shape.layer[0].shapes[j].addPos) * y);
+                }
 
                 curveVertex(shape.layer[0].shapes[j].pos[i][0], shape.layer[0].shapes[j].pos[i][1]);
 
@@ -234,6 +273,12 @@ function drawLoadedShapes(shape) {
             noFill();
             strokeWeight(15);
             stroke(loadedShapeCol);
+
+            if (dissolve) {
+                let colCh = map(sin(frameCount / 100), -1, 1, 0, 360);
+                stroke(colCh, 15, Brightness);
+            }
+
         }
 
         beginShape();
@@ -247,6 +292,14 @@ function drawLoadedShapes(shape) {
 
             x = map(sin(frameCount / 50), -1, 1, 2, 5);
             osc = createVector(sin(shape.layer[0].lines[j].addPos) * x, cos(shape.layer[0].lines[j].addPos) * x);
+
+
+            if (dissolve) {
+                let x = map(sin(i / 10), 0, 1, -2, 2);
+                let y = map(cos(i / 10), 0, 1, -2, 2);
+                osc = createVector(noise(shape.layer[0].shapes[j].addPos) * x + noise(frameCount) * 5, noise(shape.layer[0].shapes[j].addPos) * y + noise(frameCount) * 5);
+            }
+
             curveVertex(shape.layer[0].lines[j].pos[i][0], shape.layer[0].lines[j].pos[i][1]);
 
             // push();
@@ -279,11 +332,30 @@ function drawLoadedShapes(shape) {
                 shape.layer[0].softShapes[j].addPos += float(OscSlider.value);
             }
 
-            // let x = map(noise(shape.softShapes[j].addPos / 10), 0, 1, 0, 5);
-            let minOp = map(sin(frameCount/10), 0, 1, 0, 0.04)
-
+            let minOp = map(sin(frameCount / 10), 0, 1, 0, 0.04)
             osc = createVector(sin(shape.layer[0].softShapes[j].addPos) * 3, cos(shape.layer[0].softShapes[j].addPos) * 3);
-            tint(255, shape.layer[0].softShapes[j].opacity - minOp);
+
+            if (dissolve) {
+                let x = map(sin(i / 10), 0, 1, -2, 2);
+                let y = map(cos(i / 10), 0, 1, -2, 2);
+                osc = createVector(noise(shape.layer[0].softShapes[j].addPos) * x, noise(shape.layer[0].softShapes[j].addPos) * y);
+            }
+
+            softBrushBrightness[blackCount] += 0.0008;
+            tint(255, softBrushBrightness[blackCount]);
+
+            if (softBrushBrightness[blackCount] > shape.layer[0].softShapes[j].opacity) {              
+                tint(255, shape.layer[0].softShapes[j].opacity - minOp);
+            }
+
+            if (shape.layer[0].softShapes[j].opacity[1] != undefined) {
+                if (softBrushBrightness[blackCount] > shape.layer[0].softShapes[j].opacity[0]) {
+                    loadedSoftColCount += 0.01
+                    loadedShapeColB = map(cos(loadedSoftColCount), 1, -1, shape.layer[0].softShapes[j].opacity[0], shape.layer[0].softShapes[j].opacity[1]);
+                    tint(255, loadedShapeColB);
+                }
+            }
+
             image(eval(shape.layer[0].softShapes[j].color), shape.layer[0].softShapes[j].pos[i][0], shape.layer[0].softShapes[j].pos[i][1], shape.layer[0].softShapes[j].size, shape.layer[0].softShapes[j].size);
 
             shape.layer[0].softShapes[j].pos[i][0] += osc.x;
@@ -307,9 +379,13 @@ function drawLoadedShapes(shape) {
             }
 
             let u = map(i, 0, shape.layer[0].texShapes[j].pos.length, 0, TWO_PI);
-
-            // let x = map(noise(shape.layer[0].texShapes[j].addPos / 10), 0, 1, 0, 5);
             osc = createVector(sin(shape.layer[0].texShapes[j].addPos) * 4, cos(shape.layer[0].texShapes[j].addPos) * 4);
+
+            if (dissolve) {
+                let x = map(sin(i / 10), 0, 1, -2, 2);
+                let y = map(cos(i / 10), 0, 1, -2, 2);
+                osc = createVector(noise(shape.layer[0].texShapes[j].addPos) * x, noise(shape.layer[0].texShapes[j].addPos) * y);
+            }
 
             vertex(shape.layer[0].texShapes[j].pos[i][0], shape.layer[0].texShapes[j].pos[i][1], 0, (1 - cos(u)) / 2, (1 + sin(u)) / 2);
             // image(rosaBrush, shape.softShapes[j].pos[i][0], shape.softShapes[j].pos[i][1], shape.softShapes[j].size, shape.softShapes[j].size);
@@ -323,133 +399,166 @@ function drawLoadedShapes(shape) {
 
 function drawMouth(shape) {
 
-    // let level = amplitude.getLevel();
-    // let size = map(level, 0, 1, 100, 800);
-    // plane(size);
-
     if (shape.layer[1] != undefined) {
-
         push();
+
         if (mouthBool) {
             mouthOpen = map(sin(frameCount * 5), -1, 1, 0.2, 0.6);
+
         }
         scale(1, mouthOpen);
 
-        //draw on tex canvas  
-        if (loadBool) {
-            // softBrushContour(shape);
-
-            //tex shapes
-            for (var j = 0; j < shape.layer[1].texShapes.length; j++) {
-                textur(loadedShapeCol);
-                textureMode(NORMAL);
-                // tex.image(capture, 0, 0, innerWidth, innerHeight);
-                texture(tex);
-                beginShape();
-                for (var i = 0; i < shape.layer[1].texShapes[j].pos.length; i++) {
-                    // shape.texShapes[j].addPos += float(OscSlider.value);
-                    if (shape.layer[1].texShapes[j].osc != 0) {
-                        shape.layer[1].texShapes[j].addPos += shape.layer[1].texShapes[j].osc;
-                    } else {
-                        shape.layer[1].texShapes[j].addPos += float(OscSlider.value);
-                    }
-
-                    let u = map(i, 0, shape.layer[1].texShapes[j].pos.length, 0, TWO_PI);
-
-                    // let x = map(noise(shape.texShapes[j].addPos / 10), 0, 1, 0, 5);
-                    osc = createVector(sin(shape.layer[1].texShapes[j].addPos) * 4, cos(shape.layer[1].texShapes[j].addPos) * 4);
-
-                    vertex(shape.layer[1].texShapes[j].pos[i][0], shape.layer[1].texShapes[j].pos[i][1], 0, (1 - cos(u)) / 2, (1 + sin(u)) / 2);
-                    // image(rosaBrush, shape.softShapes[j].pos[i][0], shape.softShapes[j].pos[i][1], shape.softShapes[j].size, shape.softShapes[j].size);
-
-                    shape.layer[1].texShapes[j].pos[i][0] += osc.x;
-                    shape.layer[1].texShapes[j].pos[i][1] += osc.y;
+        //tex shapes
+        for (var j = 0; j < shape.layer[1].texShapes.length; j++) {
+            textur(loadedShapeCol);
+            textureMode(NORMAL);
+            // tex.image(capture, 0, 0, innerWidth, innerHeight);
+            texture(tex);
+            beginShape();
+            for (var i = 0; i < shape.layer[1].texShapes[j].pos.length; i++) {
+                // shape.texShapes[j].addPos += float(OscSlider.value);
+                if (shape.layer[1].texShapes[j].osc != 0) {
+                    shape.layer[1].texShapes[j].addPos += shape.layer[1].texShapes[j].osc;
+                } else {
+                    shape.layer[1].texShapes[j].addPos += float(OscSlider.value);
                 }
-                endShape(CLOSE);
-            }
 
-            //lines
-            for (var j = 0; j < shape.layer[1].lines.length; j++) {
-                push();
-                noFill();
-                strokeWeight(15);
-                stroke(shape.layer[1].lines[j].color);
+                let u = map(i, 0, shape.layer[1].texShapes[j].pos.length, 0, TWO_PI);
+                osc = createVector(sin(shape.layer[1].texShapes[j].addPos) * 4, cos(shape.layer[1].texShapes[j].addPos) * 4);
 
-                beginShape();
-                for (var i = 0; i < shape.layer[1].lines[j].pos.length; i++) {
-                    if (shape.layer[1].lines[j].pos[i] != undefined) {
-
-                        if (shape.layer[1].lines[j].osc != 0) {
-                            shape.layer[1].lines[j].addPos += shape.layer[1].lines[j].osc;
-                        } else {
-                            shape.layer[1].lines[j].addPos += float(OscSlider.value);
-                        }
-
-                        // let x = map(noise(shape.shapes[j].addPos / 10), 0, 1, 0, 5);
-                        osc = createVector(sin(shape.layer[1].lines[j].addPos) * 3, cos(shape.layer[1].lines[j].addPos) * 3);
-
-                        curveVertex(shape.layer[1].lines[j].pos[i][0], shape.layer[1].lines[j].pos[i][1]);
-
-                        // plane(10);
-
-                        shape.layer[1].lines[j].pos[i][0] += osc.x;
-                        shape.layer[1].lines[j].pos[i][1] += osc.y;
-                    }
+                if (dissolve) {
+                    let x = map(sin(i / 10), 0, 1, -2, 2);
+                    let y = map(cos(i / 10), 0, 1, -2, 2);
+                    osc = createVector(noise(shape.layer[1].texShapes[j].addPos) * x, noise(shape.layer[1].texShapes[j].addPos) * y);
                 }
-                endShape();
-                fill(255);
-                pop();
-            }
 
-            //soft shapes
+                vertex(shape.layer[1].texShapes[j].pos[i][0], shape.layer[1].texShapes[j].pos[i][1], 0, (1 - cos(u)) / 2, (1 + sin(u)) / 2);
+                // image(rosaBrush, shape.softShapes[j].pos[i][0], shape.softShapes[j].pos[i][1], shape.softShapes[j].size, shape.softShapes[j].size);
+
+                shape.layer[1].texShapes[j].pos[i][0] += osc.x;
+                shape.layer[1].texShapes[j].pos[i][1] += osc.y;
+            }
+            endShape(CLOSE);
+        }
+        //lines
+        for (var j = 0; j < shape.layer[1].lines.length; j++) {
             push();
-            for (var j = 0; j < shape.layer[1].softShapes.length; j++) {
-                for (var i = 0; i < shape.layer[1].softShapes[j].pos.length; i++) {
-                    // shape.softShapes[j].addPos += float(OscSlider.value);
-                    // shape.softShapes[j].addPos += 0.1;
-                    if (shape.layer[1].softShapes[j].osc != 0) {
-                        shape.layer[1].softShapes[j].addPos += shape.layer[1].softShapes[j].osc;
+            noFill();
+            strokeWeight(15);
+            stroke(shape.layer[1].lines[j].color);
+
+            beginShape();
+            for (var i = 0; i < shape.layer[1].lines[j].pos.length; i++) {
+                if (shape.layer[1].lines[j].pos[i] != undefined) {
+
+                    if (shape.layer[1].lines[j].osc != 0) {
+                        shape.layer[1].lines[j].addPos += shape.layer[1].lines[j].osc;
                     } else {
-                        shape.layer[1].softShapes[j].addPos += float(OscSlider.value);
+                        shape.layer[1].lines[j].addPos += float(OscSlider.value);
                     }
 
-                    // let x = map(noise(shape.softShapes[j].addPos / 10), 0, 1, 0, 5);
-                    osc = createVector(sin(shape.layer[1].softShapes[j].addPos) * 3, cos(shape.layer[1].softShapes[j].addPos) * 3);
-                    tint(255, shape.layer[1].softShapes[j].opacity);
-                    image(eval(shape.layer[1].softShapes[j].color), shape.layer[1].softShapes[j].pos[i][0], shape.layer[1].softShapes[j].pos[i][1], shape.layer[1].softShapes[j].size, shape.layer[1].softShapes[j].size);
+                    // let x = map(noise(shape.shapes[j].addPos / 10), 0, 1, 0, 5);
+                    osc = createVector(sin(shape.layer[1].lines[j].addPos) * 3, cos(shape.layer[1].lines[j].addPos) * 3);
 
-                    shape.layer[1].softShapes[j].pos[i][0] += osc.x;
-                    shape.layer[1].softShapes[j].pos[i][1] += osc.y;
+                    curveVertex(shape.layer[1].lines[j].pos[i][0], shape.layer[1].lines[j].pos[i][1]);
+
+                    // plane(10);
+
+                    shape.layer[1].lines[j].pos[i][0] += osc.x;
+                    shape.layer[1].lines[j].pos[i][1] += osc.y;
                 }
             }
+            endShape();
+            fill(255);
             pop();
+        }
 
-            //plain shapes in color
-            for (var j = 1; j < shape.layer[1].shapes.length; j++) {
+        //plain shapes in color
+        for (var j = 1; j < shape.layer[1].shapes.length; j++) {
 
-                if (shape.layer[1].shapes[j].color != undefined) {
-                    fill(shape.layer[1].shapes[j].color);
-                }
+            // if (shape.layer[1].shapes[j].color != undefined) {
+            //     fill(shape.layer[1].shapes[j].color);
+            // }
 
-                beginShape();
-                for (var i = 0; i < shape.layer[1].shapes[j].pos.length; i++) {
+            if (shape.layer[1].shapes[j].color != undefined) {
+                shapeShapesCol = shape.layer[1].shapes[0].color;
+                if (shapeShapesCol[2][1] != undefined) {
+                    shapeShapesColB = map(cos(loadedShapeColCount), 0, 1, shapeShapesCol[2][0], shapeShapesCol[2][1]);
+                    // fill(shapeShapesCol[0], shapeShapesCol[1], shapeShapesColB);
 
-                    if (shape.layer[1].shapes[j].osc != 0) {
-                        shape.layer[1].shapes[j].addPos += shape.layer[1].shapes[j].osc;
-                    } else {
-                        shape.layer[1].shapes[j].addPos += float(OscSlider.value);
+                    loadedShapeColBlack[blackCount] += 0.1;
+                    fill(shapeShapesCol[0], shapeShapesCol[1], loadedShapeColBlack[blackCount]);
+
+
+                    if (loadedShapeColBlack[blackCount] > shapeShapesCol[2]) {
+                        fill(shapeShapesCol[0], shapeShapesCol[1], shapeShapesCol[2]);
                     }
 
-                    osc = createVector(sin(shape.layer[1].shapes[j].addPos) * 3, cos(shape.layer[1].shapes[j].addPos) * 3);
+                    if (shapeShapesCol[2][1] != undefined) {
+                        if (loadedShapeColBlack[blackCount] > shapeShapesCol[2][0]) {
+                            // loadedShapeColCount += 0.05;
 
-                    curveVertex(shape.layer[1].shapes[j].pos[i][0], shape.layer[1].shapes[j].pos[i][1]);
+                            shapeShapesColB = map(cos(loadedShapeColCount[blackCount]), 1, -1, shapeShapesCol[2][0], shapeShapesCol[2][1]);
+                            fill(shapeShapesCol[0], shapeShapesCol[1], shapeShapesColB);
+                        }
+                    }
 
-                    shape.layer[1].shapes[j].pos[i][0] += osc.x;
-                    shape.layer[1].shapes[j].pos[i][1] += osc.y;
+                    if (dissolve) {
+                        let colCh = map(sin(frameCount / 80), -1, 1, 0, 360);
+                        fill(colCh, 15, 90);
+                    }
                 }
-                endShape(CLOSE);
+            }
+
+            beginShape();
+            for (var i = 0; i < shape.layer[1].shapes[j].pos.length; i++) {
+
+                if (shape.layer[1].shapes[j].osc != 0) {
+                    shape.layer[1].shapes[j].addPos += shape.layer[1].shapes[j].osc;
+                } else {
+                    shape.layer[1].shapes[j].addPos += float(OscSlider.value);
+                }
+
+                osc = createVector(sin(shape.layer[1].shapes[j].addPos) * 3, cos(shape.layer[1].shapes[j].addPos) * 3);
+
+                if (dissolve) {
+                    let x = map(sin(i / 10), 0, 1, -1, 1);
+                    let y = map(cos(i / 10), 0, 1, -1, 1);
+                    osc = createVector(noise(shape.layer[1].shapes[j].addPos) * x + noise(frameCount) * 5, noise(shape.layer[1].shapes[j].addPos) * y + noise(frameCount) * 5);
+                }
+
+                curveVertex(shape.layer[1].shapes[j].pos[i][0], shape.layer[1].shapes[j].pos[i][1]);
+
+                shape.layer[1].shapes[j].pos[i][0] += osc.x;
+                shape.layer[1].shapes[j].pos[i][1] += osc.y;
+            }
+            endShape(CLOSE);
+        }
+        //soft shapes
+        push();
+        for (var j = 0; j < shape.layer[1].softShapes.length; j++) {
+            for (var i = 0; i < shape.layer[1].softShapes[j].pos.length; i++) {
+                // shape.softShapes[j].addPos += float(OscSlider.value);
+                // shape.softShapes[j].addPos += 0.1;
+                if (shape.layer[1].softShapes[j].osc != 0) {
+                    shape.layer[1].softShapes[j].addPos += shape.layer[1].softShapes[j].osc;
+                } else {
+                    shape.layer[1].softShapes[j].addPos += float(OscSlider.value);
+                }
+
+                let minOp = map(sin(frameCount / 10), 0, 1, 0, 0.04)
+
+                // let x = map(noise(shape.softShapes[j].addPos / 10), 0, 1, 0, 5);
+                osc = createVector(sin(shape.layer[1].softShapes[j].addPos) * 3, cos(shape.layer[1].softShapes[j].addPos) * 3);
+                tint(255, shape.layer[1].softShapes[j].opacity - minOp);
+                image(eval(shape.layer[1].softShapes[j].color), shape.layer[1].softShapes[j].pos[i][0], shape.layer[1].softShapes[j].pos[i][1], shape.layer[1].softShapes[j].size, shape.layer[1].softShapes[j].size);
+
+                shape.layer[1].softShapes[j].pos[i][0] += osc.x;
+                shape.layer[1].softShapes[j].pos[i][1] += osc.y;
             }
         }
+        pop();
+
         pop();
     }
 }
@@ -462,11 +571,21 @@ function drawRest(shape, layerNum) {
     for (var j = 0; j < shape.layer[layerNum].shapes.length; j++) {
 
         if (shape.layer[layerNum].shapes[j].color != undefined) {
-            shape.layer[layerNum].shapes[j].color[3] = map(sin(frameCount/10), 0, 1, 0.8, 1);
-            fill(shape.layer[layerNum].shapes[j].color);
+            // shape.layer[layerNum].shapes[j].color[3] = map(sin(frameCount/10), 0, 1, 0.8, 1);
+            // fill(shape.layer[layerNum].shapes[j].color);
+
+            if (shape.layer[layerNum].shapes[j].color != undefined) {
+                shapeShapesCol = shape.layer[layerNum].shapes[j].color;
+                if (shapeShapesCol[2][1] != undefined) {
+                    shapeShapesColB = map(sin(frameCount / 10), 0, 1, shapeShapesCol[2][0], shapeShapesCol[2][1]);
+                    fill(shapeShapesCol[0], shapeShapesCol[1], shapeShapesColB);
+                } else {
+                    fill(shapeShapesCol[0], shapeShapesCol[1], shapeShapesCol[2]);
+                }
+            }
 
             beginShape();
-            for (var i = 0; i < shape.layer[layerNum].shapes[j].pos.length; i+= 3) {
+            for (var i = 0; i < shape.layer[layerNum].shapes[j].pos.length; i += 3) {
                 if (shape.layer[layerNum].shapes[j].osc != 0) {
                     shape.layer[layerNum].shapes[j].addPos += shape.layer[layerNum].shapes[j].osc;
                 } else {
@@ -567,6 +686,214 @@ function drawRest(shape, layerNum) {
         }
     }
 
+}
+
+function drawAllLines(shape) {
+
+    for (var k = 0; k < 3; k++) {
+
+        layerNum = k;
+
+        //plain shapes in color
+        for (var j = 0; j < shape.layer[layerNum].shapes.length; j++) {
+            if (shape.layer[layerNum].shapes[j].color != undefined) {
+
+                push();
+
+                fill(255);
+                noFill();
+                strokeWeight(1);
+                stroke(255);
+
+                beginShape();
+                for (var i = 0; i < shape.layer[layerNum].shapes[j].pos.length; i += 3) {
+                    if (shape.layer[layerNum].shapes[j].osc != 0) {
+                        shape.layer[layerNum].shapes[j].addPos += shape.layer[layerNum].shapes[j].osc;
+                    } else {
+                        shape.layer[layerNum].shapes[j].addPos += float(OscSlider.value);
+                    }
+
+                    let x = map(sin(i / 10), 0, 1, -2, 2);
+                    let y = map(cos(i / 10), 0, 1, -2, 2);
+
+                    osc = createVector(noise(shape.layer[layerNum].shapes[j].addPos) * x, noise(shape.layer[layerNum].shapes[j].addPos) * y);
+
+                    curveVertex(shape.layer[layerNum].shapes[j].pos[i][0], shape.layer[layerNum].shapes[j].pos[i][1]);
+
+                    // shape.layer[layerNum].shapes[j].pos[i][0] += osc.x;
+                    // shape.layer[layerNum].shapes[j].pos[i][1] += osc.y;
+                }
+                endShape(CLOSE);
+            }
+        }
+
+        //tex shapes
+        for (var j = 0; j < shape.layer[layerNum].texShapes.length; j++) {
+            push();
+
+            fill(255);
+            noFill();
+            strokeWeight(1);
+            stroke(255);
+
+            beginShape();
+            for (var i = 0; i < shape.layer[layerNum].texShapes[j].pos.length; i++) {
+                if (shape.layer[layerNum].texShapes[j].osc != 0) {
+                    shape.layer[layerNum].texShapes[j].addPos += shape.layer[layerNum].texShapes[j].osc;
+                } else {
+                    shape.layer[layerNum].texShapes[j].addPos += float(OscSlider.value);
+                }
+
+                let u = map(i, 0, shape.layer[layerNum].texShapes[j].pos.length, 0, TWO_PI);
+
+                // let x = map(noise(shape.texShapes[j].addPos / 10), 0, 1, 0, 5);
+                osc = createVector(sin(shape.layer[layerNum].texShapes[j].addPos) * 4, cos(shape.layer[layerNum].texShapes[j].addPos) * 4);
+
+                vertex(shape.layer[layerNum].texShapes[j].pos[i][0], shape.layer[layerNum].texShapes[j].pos[i][1], 0, (1 - cos(u)) / 2, (1 + sin(u)) / 2);
+                // image(rosaBrush, shape.softShapes[j].pos[i][0], shape.softShapes[j].pos[i][1], shape.softShapes[j].size, shape.softShapes[j].size);
+
+                // shape.layer[layerNum].texShapes[j].pos[i][0] += osc.x;
+                // shape.layer[layerNum].texShapes[j].pos[i][1] += osc.y;
+            }
+            endShape(CLOSE);
+        }
+
+        //lines
+        for (var j = 0; j < shape.layer[layerNum].lines.length; j++) {
+            push();
+
+            fill(255);
+            noFill();
+            strokeWeight(1);
+            stroke(255);
+
+            beginShape();
+            for (var i = 0; i < shape.layer[layerNum].lines[j].pos.length; i++) {
+
+                if (shape.layer[layerNum].lines[j].pos[i] != undefined) {
+
+                    if (shape.layer[layerNum].lines[j].osc != 0) {
+                        shape.layer[layerNum].lines[j].addPos += shape.layer[layerNum].lines[j].osc;
+                    } else {
+                        shape.layer[layerNum].lines[j].addPos += float(OscSlider.value);
+                    }
+
+                    // let x = map(noise(shape.shapes[j].addPos / 10), 0, 1, 0, 5);
+                    osc = createVector(sin(shape.layer[layerNum].lines[j].addPos) * 3, cos(shape.layer[layerNum].lines[j].addPos) * 3);
+
+                    curveVertex(shape.layer[layerNum].lines[j].pos[i][0], shape.layer[layerNum].lines[j].pos[i][1]);
+
+                    // shape.layer[layerNum].lines[j].pos[i][0] += osc.x;
+                    // shape.layer[layerNum].lines[j].pos[i][1] += osc.y;
+                }
+            }
+            endShape();
+            pop();
+        }
+
+    }
+}
+
+function drawAllSoft(shape) {
+
+    for (var k = 0; k < 3; k++) {
+
+        layerNum = k;
+
+        //plain shapes in color
+        for (var j = 0; j < shape.layer[layerNum].shapes.length; j++) {
+            if (shape.layer[layerNum].shapes[j].color != undefined) {
+
+                // beginShape();
+                for (var i = 0; i < shape.layer[layerNum].shapes[j].pos.length; i += 3) {
+                    if (shape.layer[layerNum].shapes[j].osc != 0) {
+                        shape.layer[layerNum].shapes[j].addPos += shape.layer[layerNum].shapes[j].osc;
+                    } else {
+                        shape.layer[layerNum].shapes[j].addPos += float(OscSlider.value);
+                    }
+
+
+                    let x = map(sin(i / 10), 0, 1, -2, 2);
+                    let y = map(cos(i / 10), 0, 1, -2, 2);
+
+                    osc = createVector(noise(shape.layer[layerNum].shapes[j].addPos) * x, noise(shape.layer[layerNum].shapes[j].addPos) * y);
+
+                    tint(255, 0.1);
+                    image(rosaBrush, shape.layer[layerNum].shapes[j].pos[i][0], shape.layer[layerNum].shapes[j].pos[i][1], 300, 300);
+
+                    // shape.layer[layerNum].shapes[j].pos[i][0] += osc.x;
+                    // shape.layer[layerNum].shapes[j].pos[i][1] += osc.y;
+                }
+                // endShape(CLOSE);
+            }
+        }
+
+        //tex shapes
+        for (var j = 0; j < shape.layer[layerNum].texShapes.length; j++) {
+            for (var i = 0; i < shape.layer[layerNum].texShapes[j].pos.length; i++) {
+
+                if (shape.layer[layerNum].texShapes[j].osc != 0) {
+                    shape.layer[layerNum].texShapes[j].addPos += shape.layer[layerNum].texShapes[j].osc;
+                } else {
+                    shape.layer[layerNum].texShapes[j].addPos += float(OscSlider.value);
+                }
+
+                // let x = map(noise(shape.texShapes[j].addPos / 10), 0, 1, 0, 5);
+                osc = createVector(sin(shape.layer[layerNum].texShapes[j].addPos) * 4, cos(shape.layer[layerNum].texShapes[j].addPos) * 4);
+
+                tint(255, 0.1);
+                image(rosaBrush, shape.layer[layerNum].texShapes[j].pos[i][0], shape.layer[layerNum].texShapes[j].pos[i][1], 300, 300);
+
+                // shape.layer[layerNum].texShapes[j].pos[i][0] += osc.x;
+                // shape.layer[layerNum].texShapes[j].pos[i][1] += osc.y;
+            }
+        }
+
+        //lines
+        for (var j = 0; j < shape.layer[layerNum].lines.length; j++) {
+            for (var i = 0; i < shape.layer[layerNum].lines[j].pos.length; i++) {
+
+                if (shape.layer[layerNum].lines[j].pos[i] != undefined) {
+
+                    if (shape.layer[layerNum].lines[j].osc != 0) {
+                        shape.layer[layerNum].lines[j].addPos += shape.layer[layerNum].lines[j].osc;
+                    } else {
+                        shape.layer[layerNum].lines[j].addPos += float(OscSlider.value);
+                    }
+
+                    // let x = map(noise(shape.shapes[j].addPos / 10), 0, 1, 0, 5);
+                    osc = createVector(sin(shape.layer[layerNum].lines[j].addPos) * 3, cos(shape.layer[layerNum].lines[j].addPos) * 3);
+
+                    tint(255, 0.1);
+                    image(rosaBrush, shape.layer[layerNum].lines[j].pos[i][0], shape.layer[layerNum].lines[j].pos[i][1], 300, 300);
+
+                    // shape.layer[layerNum].lines[j].pos[i][0] += osc.x;
+                    // shape.layer[layerNum].lines[j].pos[i][1] += osc.y;
+                }
+            }
+            pop();
+        }
+
+        //soft shapes
+        for (var j = 0; j < shape.layer[layerNum].softShapes.length; j++) {
+            for (var i = 0; i < shape.layer[layerNum].softShapes[j].pos.length; i++) {
+
+                if (shape.layer[layerNum].softShapes[j].osc != 0) {
+                    shape.layer[layerNum].softShapes[j].addPos += shape.layer[layerNum].softShapes[j].osc;
+                } else {
+                    shape.layer[layerNum].softShapes[j].addPos += float(OscSlider.value);
+                }
+
+                // let x = map(noise(shape.softShapes[j].addPos / 10), 0, 1, 0, 5);
+                osc = createVector(sin(shape.layer[layerNum].softShapes[j].addPos) * 3, cos(shape.layer[layerNum].softShapes[j].addPos) * 3);
+                tint(255, shape.layer[layerNum].softShapes[j].opacity);
+                image(eval(shape.layer[layerNum].softShapes[j].color), shape.layer[layerNum].softShapes[j].pos[i][0], shape.layer[layerNum].softShapes[j].pos[i][1], shape.layer[layerNum].softShapes[j].size, shape.layer[layerNum].softShapes[j].size);
+
+                shape.layer[layerNum].softShapes[j].pos[i][0] += osc.x;
+                shape.layer[layerNum].softShapes[j].pos[i][1] += osc.y;
+            }
+        }
+    }
 }
 
 function softBrushContour(shape) {
