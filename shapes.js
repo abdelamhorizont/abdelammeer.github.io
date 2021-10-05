@@ -141,7 +141,7 @@ function drawLoadedShapes(shape) {
         loadedShapeCol = color(colCh, 15, Brightness);
     }
 
-    tex.fill(255);
+    tex.fill(255,0,0);
     if (dissolve) {
         BGWhite++;
         tex.fill(BGWhite);
