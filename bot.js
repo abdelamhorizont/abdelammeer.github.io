@@ -23,12 +23,10 @@ function bot() {
 
     bot.loadFile("begin.rive").then(loading_done).catch(loading_error);
     // bot.loadFile("brain.rive").then(loading_done).catch(loading_error);
-    bot.loadFile("dialog.rive").then(loading_done).catch(loading_error);
+    // bot.loadFile("dialog.rive").then(loading_done).catch(loading_error);
+    bot.loadFile("random.rive").then(loading_done).catch(loading_error);
 
     speech = new p5.Speech();
-
-    // talk = new p5.Speech();
-    // talk.speak('haustür');
 
     speechRec = new p5.SpeechRec('de-DE');
 
@@ -60,8 +58,7 @@ function bot() {
             bot.reply('local-user', input).then(function (reply) {
                 // console.log("The bot says: " + reply);
                 speech.speak('' + reply);
-                // polySynth.play('&4', 0.1, 0, 0.2);
-
+                
                 for (var i = 0; i < reply.length; i++) {
                     // output.html(reply);
 
@@ -89,10 +86,8 @@ function bot() {
             }
 
             bot.reply('local-user', input).then(function (reply) {
-                // console.log("The bot says: " + reply);
-                // output.html(reply);
-                speech.speak(reply);
 
+                speech.speak(reply);
                 for (var i = 0; i < reply.length; i++) {
                     // output.html(reply);
 
@@ -105,7 +100,6 @@ function bot() {
             });
 
             bot.sortReplies();
-         
         }
     }
 }
@@ -115,7 +109,7 @@ function voiceReady() {
     console.log('voice is Ready!');
     // speech.listVoices();
     speech.setVoice('Google Deutsch');
-    speech.setPitch(0.2);
+    speech.setPitch(1);
 
 }
 
@@ -151,5 +145,4 @@ function loading_error(error, filename, lineno) {
 
 function moveMouth() {
     mouthBool = !mouthBool;
-    console.log(mouthBool);
 }

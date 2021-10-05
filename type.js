@@ -32,11 +32,8 @@ function typeDraw() {
     outputDraw();
 
     for (var j = 0; j < myWords.length; j++) {
-        if (myWords[j] == 'hallo') {
+        if (myWords[j] == 'text') {
             typeShowBool = true;
-            user_input.value('');
-            speech.speak('haustür');
-
         }
     }
 }
@@ -122,11 +119,12 @@ function centerTextdraw() {
 
                     letters[i][j][k].style('letter-spacing', spacing[i][j][k] + 'em');
                     letters[i][j][k].style('opacity', '0');
+
                 }
             }
         }
 
-        if (frameCount % 5 == 0) {
+        if (frameCount % 1 == 0) {
             wordCount++;
         }
 
@@ -144,19 +142,16 @@ function centerTextdraw() {
             letters[sentCount][wordCount][k].style('opacity', '0');
             letters[sentCount][wordCount][k].style('animation', 'fade 3s linear 0s 1 normal');
             letters[sentCount][wordCount][k].style('animation-fill-mode', 'forwards');
+
         }
 
-        // if (sentCount == letters.length && wordCount == letters[sentCount].length) {
         if (textAnimCount == 1) {
             for (var k = 0; k < letters[sentCount][wordCount].length; k++) {
 
-                // letters[sentCount][wordCount][k].style('opacity', '0');
                 letters[sentCount][wordCount][k].style('animation', 'fadeBack 3s linear 0s 1 normal');
-                // letters[sentCount][wordCount][k].style('animation-fill-mode', 'forwards');
+                dissolve = true;
 
-                // letters[sentCount][wordCount][k].style('color', 'blue');
             }
         }
-        // }
     }
 }

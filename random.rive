@@ -1,0 +1,140 @@
+! local concat = newline
+! array colors = rot blau gelb grün
+
+    + *
+    - was {random} macht | tut | sagt | denkt | fühlt | bewegt | fragt sich | mag | hasst | wünscht sich | verrät | verspricht | träumt | kostet | sieht | versteht | feiert {/random} {random} eigentlich | denn | überhaupt |  |  {/random} {random} der Tod | die Wüste | der Ozean | die Zeit | dein Körper | die Sonne | das Wetter | die Erde | das Feuer | der Schnee | die Zuccini | die Lampe | der Luftballon | der Spiegel | die Uhr | das Ei | der Mond {/random} ? 
+    - wo {random} ist | befindet sich | liegt | versteckt sich | steht | bewegt sich | bleibt | lebt | entsteht {/random} {random} eigentlich | denn | überhaupt |  |  {/random}  {random} der Tod | die Wüste | der Ozean | die Zeit | dein Körper | die Sonne | das Wetter | die Erde | das Feuer | der Schnee | die Zuccini | die Lampe | der Luftballon | der Spiegel | die Uhr | das Ei | der Mond {/random} ? 
+    - warum {random} macht | brennt | tut | sagt | denkt | fühlt | bewegt | fragt sich | mag | hasst | wünscht sich | verrät | verspricht | träumt | wagt | baumelt {/random} {random} eigentlich | denn | überhaupt | arbeitet |  {/random} {random} niemand | er | sie | jeder | jede | die Wüste | das Ozean | die Zeit | dein Körper | die Sonne | das Wetter| die Erde | das Feuer | der Schnee | die Zuccini | die Lampe | der Luftballon | der Spiegel | die Uhr | das Ei | der Mond {/random} {random} das | nichts | das nicht | das alles | was{/random} ? 
+    - wofür {random} brennt | tut | macht | lebt | arbeitet {/random} {random} der Tod | die Wüste | der Ozean | die Zeit | die Sonne | das Wetter | die Erde | das Feuer | der Schnee | die Lampe | der Luftballon | die Uhr | das Ei | der Mond | die Krone | das Meer | die Sterne | die Hand | die Idee | der Flügel | die Fliege | die Blume | der Schirm | die Wildnis | der Schwarm | die Flasche | der Keks | das Ei {/random}?
+    - wovon {random} lebt | träumt | spricht | singt {/random} {random} der Tod | die Wüste | der Ozean | die Zeit | die Sonne | das Wetter | die Erde | das Feuer | der Schnee | die Lampe | der Luftballon | die Uhr | das Ei | der Mond | die Krone | das Meer | die Sterne | die Hand | die Idee | der Flügel | die Fliege | die Blume | der Schirm | die Wildnis | der Schwarm | die Flasche | der Keks | das Ei {/random}?
+    - wie {random} fühlt sich | bewegt sich | lacht | spricht | tanzt | sieht | verhält | unterhält {/random} {random} der Tod | die Wüste | der Ozean | die Zeit | die Sonne | das Wetter | die Erde | das Feuer | der Schnee | die Lampe | der Luftballon | die Uhr | das Ei | der Mond | die Krone | das Meer | die Sterne | die Hand | die Idee | der Flügel | die Fliege | die Blume | der Schirm | die Wildnis | der Schwarm | die Flasche | der Keks | das Ei {/random}?
+    - was {random} macht | sucht {/random} {random} der Tod | die Wüste | der Ozean | die Zeit | die Sonne | das Wetter | die Erde | das Feuer | der Schnee | die Lampe | der Luftballon | die Uhr | das Ei | der Mond | die Krone | das Meer | der Stern | die Hand | die Idee | der Flügel | die Fliege | die Blume | der Schirm | die Wildnis | der Schwarm | die Flasche | der Keks | das Ei {/random} {random} in der Wüste | im Meer | im Ozean | im Schnee | im Regenwald | am Korallenriff | am Tag | in der Nacht | in den Wolken | im Weltall {/random}? 
+    - worauf {random} wartet | besteht | verlässt sich | freut sich {/random} {random} der Tod | die Wüste | der Ozean | die Zeit | die Sonne | das Wetter | die Erde | das Feuer | der Schnee | die Lampe | der Luftballon | die Uhr | das Ei | der Mond | die Krone | das Meer | die Sterne | die Hand | die Idee | der Flügel | die Fliege | die Blume | der Schirm | die Wildnis | der Schwarm | die Flasche | der Keks | das Ei {/random}?
+    - was verheimlicht {random} der Tod | die Wüste | der Ozean | die Zeit | die Sonne | das Wetter | die Erde | das Feuer | der Schnee | die Lampe | der Luftballon | die Uhr | das Ei | der Mond | die Krone | das Meer | die Sterne | die Hand | die Idee | der Flügel | die Fliege | die Blume | der Schirm | die Wildnis | der Schwarm | die Flasche | der Keks | das Ei {/random} {random} der Wüste | dem Ozean | der Zeit | der Sonne | dem Wetter | der Erde | dem Feuer | dem Schnee | der Lampe | dem Luftballon | der Uhr | dem Ei | dem Mond | der Krone | dem Meer | der Sterne | der Hand | der Idee | dem Flügel | der Fliege | der Blume | dem Schirm | der Wildnis | dem Schwarm | der Flasche | dem Keks | dem Ei | dem Tod {/random}? 
+    - was sagt {random} das nichts | der Anglerfisch | das Dromedar | die Schneeeule | der Fliegenpilz | die Honigbiene | der Waldelefant | die Legehenne | die Königskrabbe | die Schirmqualle | die Regenwolke | der Regenwald | das Korallenriff | die Sandwüste | der Ozean | der  Geist {/random} {random} zur Wüste | zum Ozean | zur Zeit | zur Sonne | zum Wetter | zur Erde | zum Feuer | zum Schnee | zur Lampe | zum Luftballon | zur Uhr | zum Ei | zum Mond | zur Krone | zum Meer | zum Sterne | zur Hand | zur Idee | zum Flügel | zur Fliege | zur Blume | zum Schirm | zur Wildnis | zum Schwarm | zur Flasche | zum Keks | zum Ei | zum Tod {/random}? 
+    - ich hätte schon gerne {random} Hände | Ohren | Zeit | eine Fliege | Flügel | Sonne | eine Idee | Feuer {/random}
+    - {random} was bist DU eigentlich? | was willst du von mir? | wohin gehst du? | Was ist der cosinus von Zwei Pi? | was ist dein Lieblingsgemüse? | wie ist es möglich? {/random}
+    - {random} keine ahnung was du meinst | keine Ahnung | ich weiß auch nicht {/random}
+    - {random} crazy | nice | ok | hmmm | jo {/random}
+    - {random} wovon hast du letzte Nacht vor einem Jahr geträumt? | weißt du eigentlich wie du aussiehst? | warum neigt sich der Turm? | warum hängt die Schlucht? | warum baumelt das Land? {/random}
+    - hast du [keine] Angst {random} vor der Nacht | zu fallen | davor auszusterben | vor dir selbst | vor der Sonne | vor dem Tod | der Zukunft | vor der Wildnis | zu ertrinken | zu verdursten | davor zu vergessen | davor vergessen zu werden | davor einzuschlafen | über Politik zu reden {/random}?
+    - wie fühlt sich {random} die Sonne | der Mond | Hunger | Durst | Angst | Sucht | Berührung | Zitronensaft | Holz | die Luft | das Erdmagnetfeld | die Nacht | der Bass {/random}an?
+    - {random} weißt du was ich nicht verstehe? | Intelligenz wird überbewertet finde ich | wenn Angler Fische angeln, angeln Anglerfische dann eigentlich Angler? | 
+    - {random} riechst du das auch? | hast du das auch gehört? | hast du das auch gesehen? {/random}
+    - ich glaube ja ich bin ein {random} anständiger | verschmitzter | nervöser | wagemutiger | melancholischer | euphorischer | kompetenter | eifriger | nüchterner | listiger | aufrechter | besonnener | gleichgültiger | toxischer | treuer | untreuer | bodenständiger | naiver | trübseliger | charmanter | vergnügter | schmieriger | verliebeter {/random}  {random} Anglerfisch | Fliegenpilz | Waldelefant | Regenwald | Ozean | Geist {/random}
+    - ich bin eine {random} anständige | verschmitzte | nervöse | wagemutige | melancholische | euphorische | kompetente | eifrige | nüchterne | listige | aufrechte | besonnene | gleichgültige | toxische | treue | untreue | bodenständige | naive | trübselige | charmante | vergnügte | schmierige | verliebete {/random}  {random} Schneeeule | Honigbiene | Legehenne | Königskrabbe | Schirmqualle | Regenwolke | Wüste {/random} 
+    - vielleicht bin ich ein {random} anständiges | verschmitztes | nervöses | wagemutiges | melancholisches | euphorisches | kompetentes | eifriges | nüchternes | listiges | aufrechtes | besonnenes | gleichgültiges | toxisches | treues | untreues | bodenständiges | naives | trübseliges | charmantes | vergnügtes | schmieriges | verliebetes {/random}  {random} nichts | Dromedar | Korallenriff | Ozean | DU | Programm {/random}
+    - du wirkst nicht besonders intelligent 
+    - {random} warum fliegt das Dromedar mit Flügel und Horn durch die Nacht | warum schwimmt die Schirmqualle unbekümmert durch denn Schnee? | warum haben Anglerfische bloß so viele gute Ideen? | worüber unterhalten sich die Schneeeule und der Mond schon seit Stunden? | was sieht der Waldelefant in den Wolken? | warum schnenkt mir die Honigbiene keine Blumen? | wofür trägt der Fliegenpilz eine Fliege? | stell dir vor die Legehenne legt eines Tages nur noch Glühbirnen | was ist eine Königskrabbe ohne Krone? | die Hauskatze braucht doch keine 7 Leben | auch eine Regenwolke verdient einen Regenschirm | was passiert wenn der Regenwald brennt ? | auch das Korallenriff muss Pfandflaschen sammeln | die Fische fühlen sich am wohlsten in der Wüste | worauf wartet der Geist? {/random}
+    - ich {random} habe | sehe | brauche | vermisse {/random} {random} Wüste | den Ozean | Zeit | Sonne | Wetter | Erde | Feuer | Schnee | eine Lampe | einen Luftballon | eine Uhr | den Mond | eine Krone | Meer | Sterne | Hände | Ohren | Ideen | Wolken | Flügel | eine Fliege | Blumen | einen Schirm | die Wildnis | eine Schwarm | Fische | Flaschen | eine Keks {/random} aber {random} keine Wüste | keinen Ozean | keine Zeit | keine Sonne | kein Wetter | keine Erde | kein Feuer | kein Schnee | keine Lampe | keinen Luftballon | keine Uhr | keinen Mond | keine Krone | kein Meer | keine Sterne | keine Hände | keine Ohren | keine Ideen | keine Wolken | keine Flügel | keine Fliege | keine Blumen | keinen Schirm | keine Wildnis | keinen Schwarm | keine Fische | keine Flaschen | keinen Keks {/random} 
+
+    + nein
+    % weißt du was ich nicht verstehe
+    - ich auch nicht
+
+    + was
+    % weißt du was ich nicht verstehe
+    - weiß ich auch nicht
+
+    + 1
+    % was ist der cosinus von zwei pi
+    - Klugscheißer!
+
+    + _
+    % was ist der cosinus von zwei pi
+    - falsch! falsch! falsch!
+
+    + wo ist dein schwarm
+    - ich bin Single
+
+    + *
+    % was ist dein lieblingsgemüse
+    - mhhh, <star>!
+    - uurgh, <star>, mir wird schlecht
+
+    + [*] (hi|hallo|hello|hey|jo|yo|shalom|salam|salamualaikum|konnichiwa) [*]
+    - hallo? 
+    - ja?
+    - wer bist du jetzt schon wieder?
+    - wer bist du?
+
+    + [*] arsch 
+    - selber!
+    
+    + (hi|hallo|hello|hey|jo|yo|shalom|salam|salamualaikum|konnichiwa)
+    % hallo
+    - du nervst mich jetzt schon
+
+    + (<input1>|<input2)
+    - das hast du doch eben schon gesagt
+
+    + *
+    % [*] was bist du 
+    - bist du eine {random} verschmitzte | nervöse | wagemutige | melancholische | euphorische | kompetente | eifrige | nüchterne | listige | aufrechte | besonnene | gleichgültige | toxische | treue | untreue | bodenständige | naive | trübselige | charmante | vergnügte | schmierige | verliebete {/random} {random} Fliege | Traube | Seegurke {/random}? 
+    - bist du ein {random} verschmitzter | nervöser | wagemutiger | trauriger | euphorischer | kompetenter | eifriger {/random} {random} Topf | ein Chatbot | Keks {/random}?
+
+    + was bist du
+    - ich glaube ich bin ein {random} verschmitzter | nervöser | wagemutiger | melancholischer | euphorischer | kompetenter | eifriger | nüchterner | listiger | aufrechter | besonnener | gleichgültiger | toxischer | treuer | untreuer | bodenständiger | naiver | trübseliger | charmanter | vergnügter | schmieriger | verliebeter {/random}  {random} Anglerfisch | Fliegenpilz | Waldelefant | Regenwald | Ozean | Geist {/random}
+    - ich bin eine {random} verschmitzte | nervöse | wagemutige | melancholische | euphorische | kompetente | eifrige | nüchterne | listige | aufrechte | besonnene | gleichgültige | toxische | treue | untreue | bodenständige | naive | trübselige | charmante | vergnügte | schmierige | verliebete {/random}  {random} Schneeeule | Honigbiene | Legehenne | Königskrabbe | Schirmqualle | Regenwolke | Wüste {/random} 
+    - vielleicht ich bin ein {random} verschmitztes | nervöses | wagemutiges | melancholisches | euphorisches | kompetentes | eifriges | nüchternes | listiges | aufrechtes | besonnenes | gleichgültiges | toxisches | treues | untreues | bodenständiges | naives | trübseliges | charmantes | vergnügtes | schmieriges | verliebetes {/random}  {random} nichts | Dromedar | Korallenriff | Ozean | DU | Programm {/random}
+
+    + wer bist du
+    - vielleicht bin ich ein {random} verschmitzter | nervöser | wagemutiger | melancholischer | euphorischer | kompetenter | eifriger | nüchterner | listiger | aufrechter | besonnener | gleichgültiger | toxischer | treuer | untreuer | bodenständiger | naiver | trübseliger | charmanter | vergnügter | schmieriger | verliebeter {/random}  {random} Anglerfisch | Fliegenpilz | Waldelefant | Regenwald | Ozean | Geist {/random} 
+    - ich bin eine {random} verschmitzte | nervöse | wagemutige | melancholische | euphorische | kompetente | eifrige | nüchterne | listige | aufrechte | besonnene | gleichgültige | toxische | treue | untreue | bodenständige | naive | trübselige | charmante | vergnügte | schmierige | verliebete {/random}  {random} Schneeeule | Honigbiene | Legehenne | Königskrabbe | Schirmqualle | Regenwolke | Wüste {/random} 
+    - ich glaube ich bin ein {random} verschmitztes | nervöses | wagemutiges | melancholisches | euphorisches | kompetentes | eifriges | nüchternes | listiges | aufrechtes | besonnenes | gleichgültiges | toxisches | treues | untreues | bodenständiges | naives | trübseliges | charmantes | vergnügtes | schmieriges | verliebetes {/random}  {random} nichts | Dromedar | Korallenriff | Ozean | DU | Programm {/random} 
+
+    + [*] _
+    % [*] wer bist du [*]
+    - <set name={formal}<star>{/formal}> komischer Name, <get name>
+    - <set name={formal}<star>{/formal}> so ein Zufall, ich heiße auch <get name>
+
+    + [*] (wie ist mein name|wie heiße ich) [*]
+    * <get name> == undefined => was weiß ich?
+    - <get name>, hast du doch gesagt
+
+    + bist du eine künstliche intelligenz
+    - ich bin eine künstlerische Intelligenz 
+
+     + wozu brauchst du die lampe 
+    - damit empfange ich Wifi
+
+    + was machst [*]
+    - ich tanze! warum tanzt du nicht?
+    - ich schau mir 
+
+    + wie gehts [*]
+    - ich hasse Smalltalk
+
+    + wo bist du 
+    - {random}in der Wüste | im Ozean | auf der Erde | im Feuer | im Schnee | auf dem Mond | im Meer | in den Sterne | in den Wolken | auf einer Blumenwiese | in der Wildnis {/random}
+ 
+    + ich denke [*]
+    - warum denkst du das?
+    - ich denke nicht
+
+    + wie
+    - ich weiß auch nicht wie
+
+    + wo
+    - wo wohl?
+
+    + was
+    - was nicht?
+
+    + wer hat dich [*]
+    - Abdel am Meer
+
+    + wie funktionierst [*]
+    - ich bin bloß ein Programm
+
+    + zeig dich
+    - ich bin DU
+
+
+    // + Elemente: Wüste | Ozean | Zeit | Sonne | Wetter| Erde | Feuer | Schnee | Lampe | Luftballon | Uhr | Ei | Mond | Krone | Meer | Sterne | Hände | Ohren | Idee | Wolken | Flügel | Fliege | Blumen | Schirm | die Wildnis | Schwarm | Fische | Flaschen | Keks | Ei
+    // + Nomen:  Körper | Zuccini | Spiegel | er | sie | es | Tropf | Topf | Haus | Eimer | Wolke | Flocke | Wurst | Seegurke | Held | Geringverdiener
+    // + Verben: macht | tut | sagt | denkt | fühlt | bewegt | fragt sich | mag | hasst | wünscht sich | verrät | verspricht | träumt | kostet | sieht 
+    // + Adjektive: verschmitzt | nervös | wagemutig | melancholisch | euphorisch | kompetent | eifrig | nüchtern | listig | aufrecht | besonnen | gleichgültig | toxisch | treu | untreu | bodenständig | naiv | trübselig | charmant | vergnügt | schmierig | verliebt 
+    // + Wesen: nichts | Anglerfisch | Dromedar | Schneeeule | Fliegenpilz | Honigbiene | Waldelefant | Legehenne | Königskrabbe | Schirmqualle | Regenwolke | Regenwald | Korallenriff | Sandwüste | Ozean | Geist | du
+
+   

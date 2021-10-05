@@ -22,15 +22,20 @@ let loadedShapeCol;
 let loadedShapeColBlack = [];
 let loadedShapeColB;
 let loadedShapeColCount = [];
+let loadedMouthShapeColCount = 0;
+
 let loadedShapeBool = false;
 
 let loadBool = true;
 
 let mouthBool = false;
 let mouthOpen;
+let mouthTranslate = 0;
+
 let amplitude;
 
 let dissolve = false;
+let preDissolve = false;
 
 let phase = 0;
 let zoff = 0;
@@ -40,6 +45,9 @@ let Brightness = 0;
 let blackCount = 0;
 let softBrushBrightness = [];
 let loadedSoftColCount = 0;
+
+let animalCount = 0;
+let dissolveCount = 0;
 
 function loadShapes() {
     anim = nichts;
@@ -54,9 +62,9 @@ function loadShapes() {
     tex = createGraphics(innerWidth, innerHeight);
     tex.colorMode(HSB);
 
-    col0 = [52,87,94];   // gelb
-    col1 = [329, 30, 94];   // gelb
-    col2 = [59, 80, 97];    // light rosa
+    col0 = [50, 100, 90];
+    col1 = [240, 10, 90];
+    col2 = [290, 80, 97];
 
     if (anim.layer[1] != undefined) {
         mouthOpen = anim.layer[1].mouthOpen;
@@ -65,7 +73,7 @@ function loadShapes() {
     for (var j = 0; j < animals.length; j++) {
         loadedShapeColBlack[j] = 0;
         loadedShapeColCount[j] = 0;
-        softBrushBrightness[j] = 0.1;
+        softBrushBrightness[j] = 0;
     }
 }
 
@@ -106,18 +114,18 @@ function saveShapes() {
 }
 
 function drawLoadedShapes(shape) {
-
-    for (var j = 0; j < myWords.length; j++) {
-        if (myWords[j] == 'ciao') {
-            dissolve = true;
-            user_input.value('');
-        }
+    push();
+    if (shape.layer[0].scale != undefined) {
+        scale(shape.layer[0].scale[0],shape.layer[0].scale[1]);
+    }
+    if (shape.layer[0].translate != undefined) {
+        translate(shape.layer[0].translate[0], shape.layer[0].translate[1]);
     }
 
     //draw on tex canvas  
     loadedCol = shape.layer[0].colors[0];
 
-    loadedShapeColBlack[blackCount] += 0.1;
+    loadedShapeColBlack[blackCount] += loadedCol[2][0]/1000;
     loadedShapeCol = color(loadedCol[0], loadedCol[1], loadedShapeColBlack[blackCount]);
 
     if (loadedShapeColBlack[blackCount] > loadedCol[2][0]) {
@@ -271,7 +279,12 @@ function drawLoadedShapes(shape) {
             fill(shape.layer[0].lines[j].color);
 
             noFill();
+
             strokeWeight(15);
+            if (shape.layer[0].lines[j].strokeWeight != undefined) {
+                strokeWeight(shape.layer[0].lines[j].strokeWeight);
+            }
+
             stroke(loadedShapeCol);
 
             if (dissolve) {
@@ -341,16 +354,18 @@ function drawLoadedShapes(shape) {
                 osc = createVector(noise(shape.layer[0].softShapes[j].addPos) * x, noise(shape.layer[0].softShapes[j].addPos) * y);
             }
 
-            softBrushBrightness[blackCount] += 0.0008;
+            // softBrushBrightness[blackCount] += 0.0000001;
+            softBrushBrightness[blackCount] += 0.001;
+
             tint(255, softBrushBrightness[blackCount]);
 
-            if (softBrushBrightness[blackCount] > shape.layer[0].softShapes[j].opacity) {              
+            if (softBrushBrightness[blackCount] > shape.layer[0].softShapes[j].opacity) {
                 tint(255, shape.layer[0].softShapes[j].opacity - minOp);
             }
 
             if (shape.layer[0].softShapes[j].opacity[1] != undefined) {
                 if (softBrushBrightness[blackCount] > shape.layer[0].softShapes[j].opacity[0]) {
-                    loadedSoftColCount += 0.01
+                    loadedSoftColCount += shape.layer[0].softShapes[j].opacity[0]/1500;
                     loadedShapeColB = map(cos(loadedSoftColCount), 1, -1, shape.layer[0].softShapes[j].opacity[0], shape.layer[0].softShapes[j].opacity[1]);
                     tint(255, loadedShapeColB);
                 }
@@ -395,18 +410,38 @@ function drawLoadedShapes(shape) {
         }
         endShape(CLOSE);
     }
+    pop();
+    
 }
 
 function drawMouth(shape) {
+    push();
+    if (shape.layer[0].scale != undefined) {
+        scale(shape.layer[0].scale[0],shape.layer[0].scale[1]);
+    }
+    if (shape.layer[0].translate != undefined) {
+        translate(shape.layer[0].translate[0], shape.layer[0].translate[1]);
+    }
+
 
     if (shape.layer[1] != undefined) {
         push();
+        mouthOpen = shape.layer[1].mouthOpen;
+        mouthTranslate = 1;
 
         if (mouthBool) {
             mouthOpen = map(sin(frameCount * 5), -1, 1, 0.2, 0.6);
+            mouthTranslate = map(sin(frameCount * 5), -1, 1, 1, 4);
 
+            if (shape.layer[1].mouthKamel != undefined ) {
+                mouthTranslate = map(sin(frameCount * 5), -1, 1, 1, 2);
+            }
         }
-        scale(1, mouthOpen);
+       
+        if (shape.layer[1].mouthMove != undefined) {
+            scale(1, mouthOpen);
+        }
+        // translate(0, mouthTranslate);
 
         //tex shapes
         for (var j = 0; j < shape.layer[1].texShapes.length; j++) {
@@ -476,15 +511,11 @@ function drawMouth(shape) {
         //plain shapes in color
         for (var j = 1; j < shape.layer[1].shapes.length; j++) {
 
-            // if (shape.layer[1].shapes[j].color != undefined) {
-            //     fill(shape.layer[1].shapes[j].color);
-            // }
-
             if (shape.layer[1].shapes[j].color != undefined) {
-                shapeShapesCol = shape.layer[1].shapes[0].color;
-                if (shapeShapesCol[2][1] != undefined) {
-                    shapeShapesColB = map(cos(loadedShapeColCount), 0, 1, shapeShapesCol[2][0], shapeShapesCol[2][1]);
-                    // fill(shapeShapesCol[0], shapeShapesCol[1], shapeShapesColB);
+                shapeShapesCol = shape.layer[1].shapes[j].color;
+                // if (shapeShapesCol[2][1] != undefined) {
+                //     shapeShapesColB = map(cos(loadedShapeColCount), -1, 1, shapeShapesCol[2][0], shapeShapesCol[2][1]);
+                //     // fill(shapeShapesCol[0], shapeShapesCol[1], shapeShapesColB);
 
                     loadedShapeColBlack[blackCount] += 0.1;
                     fill(shapeShapesCol[0], shapeShapesCol[1], loadedShapeColBlack[blackCount]);
@@ -496,9 +527,9 @@ function drawMouth(shape) {
 
                     if (shapeShapesCol[2][1] != undefined) {
                         if (loadedShapeColBlack[blackCount] > shapeShapesCol[2][0]) {
-                            // loadedShapeColCount += 0.05;
+                            loadedMouthShapeColCount += 0.005;
 
-                            shapeShapesColB = map(cos(loadedShapeColCount[blackCount]), 1, -1, shapeShapesCol[2][0], shapeShapesCol[2][1]);
+                            shapeShapesColB = map(cos( loadedMouthShapeColCount ), 1, -1, shapeShapesCol[2][0], shapeShapesCol[2][1]);
                             fill(shapeShapesCol[0], shapeShapesCol[1], shapeShapesColB);
                         }
                     }
@@ -507,7 +538,7 @@ function drawMouth(shape) {
                         let colCh = map(sin(frameCount / 80), -1, 1, 0, 360);
                         fill(colCh, 15, 90);
                     }
-                }
+                // }
             }
 
             beginShape();
@@ -519,7 +550,15 @@ function drawMouth(shape) {
                     shape.layer[1].shapes[j].addPos += float(OscSlider.value);
                 }
 
-                osc = createVector(sin(shape.layer[1].shapes[j].addPos) * 3, cos(shape.layer[1].shapes[j].addPos) * 3);
+                osc = createVector(sin(shape.layer[1].shapes[j].addPos) * 3 * mouthTranslate, cos(shape.layer[1].shapes[j].addPos) * 3 * mouthTranslate);
+
+                if (shape.layer[1].mouthMove != undefined) {
+                    osc = createVector(sin(shape.layer[1].shapes[j].addPos) * 3, cos(shape.layer[1].shapes[j].addPos) * 3 );
+                }  
+                
+                // if (shape.layer[1].mouthKamel != undefined ) {
+                //     osc = createVector(sin(shape.layer[1].shapes[j].addPos) * 3, cos(shape.layer[1].shapes[j].addPos) * 3 );
+                // }
 
                 if (dissolve) {
                     let x = map(sin(i / 10), 0, 1, -1, 1);
@@ -560,12 +599,20 @@ function drawMouth(shape) {
         pop();
 
         pop();
+        pop();
     }
 }
 
 function drawRest(shape, layerNum) {
 
-    // softBrushContour(shape);
+    push();
+    if (shape.layer[layerNum].scale != undefined) {
+        scale(shape.layer[layerNum].scale[0],shape.layer[layerNum].scale[1]);
+    }
+   
+    if (shape.layer[layerNum].translate != undefined) {
+        translate(shape.layer[layerNum].translate[0], shape.layer[layerNum].translate[1]);
+    }
 
     //plain shapes in color
     for (var j = 0; j < shape.layer[layerNum].shapes.length; j++) {
@@ -579,8 +626,17 @@ function drawRest(shape, layerNum) {
                 if (shapeShapesCol[2][1] != undefined) {
                     shapeShapesColB = map(sin(frameCount / 10), 0, 1, shapeShapesCol[2][0], shapeShapesCol[2][1]);
                     fill(shapeShapesCol[0], shapeShapesCol[1], shapeShapesColB);
+
+                    if (personShowBool) {
+                        fill(shapeShapesCol[0], shapeShapesCol[1], map(sin(frameCount / 10), -1, 1, 30, shapeShapesColB));
+                    }
+
                 } else {
                     fill(shapeShapesCol[0], shapeShapesCol[1], shapeShapesCol[2]);
+                   
+                    if (personShowBool) {
+                        fill(shapeShapesCol[0], shapeShapesCol[1], map(sin(frameCount / 10), -1, 1, 30, shapeShapesCol[2]));
+                    }
                 }
             }
 
@@ -594,6 +650,12 @@ function drawRest(shape, layerNum) {
 
                 // let x = map(noise(shape.shapes[j].addPos / 10), 0, 1, 0, 5);
                 osc = createVector(sin(shape.layer[layerNum].shapes[j].addPos) * 3, cos(shape.layer[layerNum].shapes[j].addPos) * 3);
+
+                if (personShowBool) {
+                    let x = map(sin(i / 20), 0, 1, -2, 2);
+                    let y = map(cos(i / 20), 0, 1, -2, 2);
+                    osc = createVector(noise(shape.layer[layerNum].shapes[j].addPos) * x, noise(shape.layer[layerNum].shapes[j].addPos) * y);
+                }
 
                 curveVertex(shape.layer[layerNum].shapes[j].pos[i][0], shape.layer[layerNum].shapes[j].pos[i][1]);
 
@@ -623,6 +685,12 @@ function drawRest(shape, layerNum) {
             // let x = map(noise(shape.texShapes[j].addPos / 10), 0, 1, 0, 5);
             osc = createVector(sin(shape.layer[layerNum].texShapes[j].addPos) * 4, cos(shape.layer[layerNum].texShapes[j].addPos) * 4);
 
+            // if (personShowBool) {
+            //     let x = map(sin(i / 10), 0, 1, -2, 2);
+            //     let y = map(cos(i / 10), 0, 1, -2, 2);
+            //     osc = createVector(noise(shape.layer[layerNum].texShapes[j].addPos) * x, noise(shape.layer[layerNum].texShapes[j].addPos) * y);
+            // }
+            
             vertex(shape.layer[layerNum].texShapes[j].pos[i][0], shape.layer[layerNum].texShapes[j].pos[i][1], 0, (1 - cos(u)) / 2, (1 + sin(u)) / 2);
             // image(rosaBrush, shape.softShapes[j].pos[i][0], shape.softShapes[j].pos[i][1], shape.softShapes[j].size, shape.softShapes[j].size);
 
@@ -655,6 +723,12 @@ function drawRest(shape, layerNum) {
                 // let x = map(noise(shape.shapes[j].addPos / 10), 0, 1, 0, 5);
                 osc = createVector(sin(shape.layer[layerNum].lines[j].addPos) * 3, cos(shape.layer[layerNum].lines[j].addPos) * 3);
 
+                if (personShowBool) {
+                    let x = map(sin(i / 10), 0, 1, -2, 2);
+                    let y = map(cos(i / 10), 0, 1, -2, 2);
+                    osc = createVector(noise(shape.layer[layerNum].shapes[j].addPos) * x + noise(frameCount) * 5, noise(shape.layer[layerNum].shapes[j].addPos) * y + noise(frameCount) * 5);
+                }
+
                 curveVertex(shape.layer[layerNum].lines[j].pos[i][0], shape.layer[layerNum].lines[j].pos[i][1]);
 
                 shape.layer[layerNum].lines[j].pos[i][0] += osc.x;
@@ -678,14 +752,29 @@ function drawRest(shape, layerNum) {
 
             // let x = map(noise(shape.softShapes[j].addPos / 10), 0, 1, 0, 5);
             osc = createVector(sin(shape.layer[layerNum].softShapes[j].addPos) * 3, cos(shape.layer[layerNum].softShapes[j].addPos) * 3);
+
+            if (personShowBool) {
+                let x = map(sin(i / 10), 0, 1, -2, 2);
+                let y = map(cos(i / 10), 0, 1, -2, 2);
+                osc = createVector(noise(shape.layer[layerNum].softShapes[j].addPos) * x, noise(shape.layer[layerNum].softShapes[j].addPos) * y);
+            }
+
             tint(255, shape.layer[layerNum].softShapes[j].opacity);
+
+            if (shape.layer[layerNum].softShapes[j].opacity[1] != undefined) {
+                    loadedSoftColCount += shape.layer[layerNum].softShapes[j].opacity[0]/1500;
+                    loadedShapeColB = map(cos(loadedSoftColCount), 1, -1, shape.layer[layerNum].softShapes[j].opacity[0], shape.layer[layerNum].softShapes[j].opacity[1]);
+                    tint(255, loadedShapeColB);
+                
+            }
+
             image(eval(shape.layer[layerNum].softShapes[j].color), shape.layer[layerNum].softShapes[j].pos[i][0], shape.layer[layerNum].softShapes[j].pos[i][1], shape.layer[layerNum].softShapes[j].size, shape.layer[layerNum].softShapes[j].size);
 
             shape.layer[layerNum].softShapes[j].pos[i][0] += osc.x;
             shape.layer[layerNum].softShapes[j].pos[i][1] += osc.y;
         }
     }
-
+    pop();
 }
 
 function drawAllLines(shape) {
@@ -952,21 +1041,64 @@ function drawTextureShapes() {
 
 function drawShapes() {
 
+    let colCh;
+
     for (var i = 0; i < shapes.length; i++) {
+        push();
+
+        if (personShowBool) {
+            colCh = map(sin(frameCount / ((i * 100) + 100)), -1, 1, 0, 360);
+            loadedShapeCol = color(colCh, 25, 100);
+            fill(loadedShapeCol);
+        }
+
         beginShape();
         for (var j = 0; j < shapes[i].length; j++) {
             shapes[i][j].curvePoint();
         }
-        endShape(CLOSE);
+
+        // if (shapes[i].length == 100){
+        //     endShape(CLOSE);
+        // }
+
+        pop();
+
     }
 }
+
+// function drawSoftShapes() {
+
+//     let colCh;
+
+//     for (var i = 0; i < shapes.length; i++) {
+//         push();
+
+//         if (personShowBool) {
+//             colCh = map(sin(frameCount / ((i * 100) + 100)), -1, 1, 0, 360);
+//             loadedShapeCol = color(colCh, 25, 100);
+//             fill(loadedShapeCol);
+//         }
+
+//         beginShape();
+//         for (var j = 0; j < shapes[i].length; j++) {
+//             shapes[i][j].curvePoint();
+//         }
+
+//         // if (shapes[i].length == 100){
+//         //     endShape(CLOSE);
+//         // }
+        
+//         pop();
+
+//     }
+// }
 
 function drawlines() {
     push();
     fill(255);
     for (var i = 0; i < lines.length; i++) {
         noFill();
-        strokeWeight(15);
+        strokeWeight(5);
 
         beginShape();
         for (var j = 0; j < lines[i].length; j++) {
@@ -1010,6 +1142,17 @@ function randomShape() {
     phase += 0.003;
     zoff += 0.01;
     pop();
+}
+
+function handDrawShape() {
+
+
+    // pos = createVector(mouseX - innerWidth / 2, mouseY - innerHeight / 2);
+    // oldPos = createVector(pmouseX - innerWidth / 2, pmouseY - innerHeight / 2);
+    // newPos = createVector(lerp(oldPos.x, pos.x, 0.5), lerp(oldPos.y, pos.y, 0.5), 0);
+
+    // let shape = new brushes(newPos, newOsc, undefined, undefined, undefined, shapeCol);
+    // shapes[counter1].push(shape);
 }
 
 function shapesDragged() {

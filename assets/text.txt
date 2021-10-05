@@ -1,4 +1,21 @@
-Wirre Wolken ziehen sich zusammen,
-belanglose Gedanken lösen sich auf, 
-unbegreifliche Formen verschmelzen,
-formen unbeständige Bilder.
+
+function bot() {
+    bot = new RiveScript({ utf8: true });
+    bot.unicodePunctuation = new RegExp(/[.,!?;:]/g);
+    bot.loadFile("brain.rive").then(loading_done).catch(loading_error);
+    speech = new p5.Speech();
+    speechRec = new p5.SpeechRec('de-DE');
+    function chat() {
+        input = user_input.value();
+        myWords = input.split(" "); 
+        bot.sortReplies();
+    speechRec.onResult = gotSpeech;
+    function gotSpeech() {
+        if (speechRec.resultValue) {
+            input = speechRec.resultString;
+            user_input.value(input);
+            bot.sortReplies();
+         
+        }
+    }
+}

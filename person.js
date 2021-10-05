@@ -15,7 +15,7 @@ let scaleMouth = 0;
 let bodypix;
 let segmentation;
 
-let personNegBool = false;
+let personMaskBool = false;
 let personShowBool = false;
 
 const options = {
@@ -27,31 +27,45 @@ const options = {
 function personSetup() {
     mensch = createGraphics(innerWidth, innerHeight);
 
-    video.size(innerWidth, innerHeight);
+    // video.size(innerWidth, innerHeight);
     poseNet = ml5.poseNet(video, modelReady);
     poseNet.on('pose', gotPoses);
 
     mouthOpen = Anglerfisch.layer[1].mouthOpen;
-
 }
 
 function personDraw() {
     for (var j = 0; j < myWords.length; j++) {
-        if (myWords[j] == 'Person') {
+        if (myWords[j] == 'Kamera') {
             personShowBool = true;
+            drumBool1 = true;
+            anim = nichts
+        }
+       
+        for (var i = 0; i < animals.length; i++) {
+            if (myWords[j] == animals[i]){
+                personShowBool = false;
+            }
         }
     }
+
+    for (var j = 0; j < myWordsOutput.length; j++) {
+        if (myWordsOutput[j] == 'DU') {
+            personShowBool = true;
+        }
+
+        for (var i = 0; i < animals.length; i++) {
+            if (myWordsOutput[j] == animals[i]){
+                personShowBool = false;
+            }
+        }
+    }  
 
     personShow();
 }
 
 function videoReady() {
-    bodypix = ml5.bodyPix(options);
     bodypix.segment(video, gotResults);
-
-    // if(personBool){
-    //     bodypix.segmentWithParts(video, gotResults, options);
-    // }
 
 }
 
@@ -63,14 +77,11 @@ function gotResults(error, result) {
     segmentation = result;
     bodypix.segment(video, gotResults);
 
-    // if(personBool){
-    //     bodypix.segmentWithParts(video, gotResults, options);
-    // }
 }
 
 function personShow() {
     if (personShowBool) {
-        if (!personNegBool) {
+        if (!personMaskBool) {
             push();
             tint(255, 0);
             personImage = mensch.image(video, 0, 0, video.width, video.height);
@@ -82,20 +93,25 @@ function personShow() {
 
         push();
         if (segmentation) {
-            if (personNegBool) {
+            if (personMaskBool) {
                 mensch.image(segmentation.personMask, 0, 0, width, height);
             } else {
                 mensch.image(segmentation.backgroundMask, 0, 0, width, height);
             }
+            mensch.image(segmentation.backgroundMask, 0, 0, width, height);
+ 
         }
         pop();
 
         // body();
 
-        texture(mensch);
-        plane(innerWidth, innerHeight);
+        push();
+        scale(3.5, 3.5);
+        texture(video);
+        plane(video.width, video.height);
 
         face();
+        pop();
         // frame(Anglerfisch);
     }
 }
@@ -135,7 +151,7 @@ function body() {
 
 function face() {
     push();
-    scale(1.2);
+    // scale(1.2);
 
     if (pose) {
         let eyeR = pose.rightEye;
@@ -153,26 +169,46 @@ function face() {
         push();
         translate(-video.width / 2, -video.height / 2);
 
-        for (var i = 0; i < 5; i++) {
-            image(rosaBrush, eyeRX, eyeRY, d, d);
-            image(rosaBrush, eyeLX, eyeLY, d, d);
-        }
+        // for (var i = 0; i < 5; i++) {
+        //     image(rosaBrush, eyeRX, eyeRY, d, d);
+        //     image(rosaBrush, eyeLX, eyeLY, d, d);
+        // }
+        softBrushEye(d);
+
         pop();
+
 
         let d2 = map(d, 200, 500, 0.3, 0.8);
         scaleMouth = lerp(scaleMouth, d2, 0.5)
         push();
         translate(-video.width / 2, -video.height / 2);
         push();
-        translate(noseX + (d2 * 150), noseY + (d2 * 120));
+        translate(noseX + (d2 * 220) + 10, noseY + (d2 * 150));
 
-        scale(scaleMouth);
+        scale(scaleMouth * 1.6);
         drawMouth(Anglerfisch);
+
+        push();
+        scale(1.8);
+        translate(-300, -50);
+        drawRest(Anglerfisch, 8);
         pop();
 
+        pop();
+      
+        CamPos = createVector(pose.rightWrist.x + 20 , pose.rightWrist.y - 150);
+        // let shape = new brushes(CamPos, newOsc, undefined, undefined, undefined, 255);
+        // shapes[counter1].push(shape);
+
+        let softShape = new brushes(CamPos, newOsc, rosaBrush, d, 0.3);
+        softShapes[counter2].push(softShape);
+
+        // drawShapes();
+        drawSoftShapes();
+
+        pop();
     }
     pop();
-
 }
 
 function gotPoses(poses) {

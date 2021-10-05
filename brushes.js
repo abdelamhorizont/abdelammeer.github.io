@@ -14,7 +14,7 @@ class brushes {
     this.addOnadd = addOnadd;
     this.xNoise = new NoiseLoop(255, -30, 30);
     this.yNoise = new NoiseLoop(255, -30, 30);
-    this.move = false;
+    this.move = true;
     this.softRadius = softRadius;
     this.img = img;
     this.opacity = opacity;
@@ -30,8 +30,14 @@ class brushes {
     //add oscillation vector to pos vector   
     if (this.move === true) {
 
-      let x = map(noise(this.add/10), 0, 1, 0, 4);
-      this.osc = createVector(sin(this.add) * x , cos(this.add) * x);
+      let x = map(noise(this.add / 10), 0, 1, 0, 4);
+      this.osc = createVector(sin(this.add) * x, cos(this.add) * x);
+
+      if (personShowBool) {
+        let x = map(sin(frameCount / 10), 0, 1, -2, 2);
+        let y = map(cos(frameCount / 10), 0, 1, -2, 2);
+        this.osc = createVector(noise(this.add) * x, noise(this.add) * y);
+      }
 
       // Noiseloops
       // let x = this.xNoise.value(this.alpha2);
@@ -50,7 +56,7 @@ class brushes {
   }
 
   curvePoint() {
-    fill(this.shapeCol);
+    // fill(this.shapeCol);
 
     curveVertex(this.pos.x, this.pos.y);
 
@@ -61,7 +67,7 @@ class brushes {
     }
   }
 
-  linePoint(){
+  linePoint() {
     curveVertex(this.pos.x, this.pos.y);
     stroke(this.shapeCol);
 
@@ -75,9 +81,9 @@ class brushes {
   softPoint() {
     noStroke()
 
-    tint(255,this.opacity);
+    tint(255, this.opacity);
     image(this.img, this.pos.x, this.pos.y, this.softRadius, this.softRadius);
-    
+
     // growing variable for sin and noise      
     this.add += this.addOnadd;
 
