@@ -22,7 +22,7 @@
 	<div class="grid">
 		<header class="header" id="header">
 			<h1 class="logo">abdelammeer</h1>
-			<p class="info clickable" id="info" onclick="toggleDropdown('dropdown', 0)">info</p>
+			<!-- <p class="info" id="info" onclick="toggleDropdown('dropdown', 0)">info</p> -->
 
 			<div class="dropdown" id="dropdown">
 				<div class="contact">
@@ -52,7 +52,7 @@
 						<h2>terror managment theory</h2>
 						<h3>exhibition</h3>
 					</div>
-					<div class="plus clickable" id="0" onclick="toggleDropdown('works-dropdown', 0); plusRotate(this.id)">+</div>
+					<div class="plus" id="0" onclick="toggleDropdown('works-dropdown', 0); plusRotate(this.id)">+</div>
 					
 					<div class="works-dropdown">
 					<p class="works-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti labore suscipit repellat facere
@@ -78,7 +78,7 @@
 						<h2>Narrating Africa</h2>
 						<h3>exhibition</h3>
 					</div>
-					<div class="plus clickable" id="1" onclick="toggleDropdown('works-dropdown', 1); plusRotate(this.id)">+</div>
+					<div class="plus" id="1" onclick="toggleDropdown('works-dropdown', 1); plusRotate(this.id)">+</div>
 					
 					<div class="works-dropdown">
 					<p class="works-text">in Zusammenarbeit mit dem Literaturmuseum der Moderne Marbach Ausstellung „Narrating Africa“ seit November 2019 bis August 2021 flexibles Ausstellungs- und Raumkonzept durch Magnete visuelle Sprache für unterschiedliche Medien entstanden in der Klasse Cluss
@@ -92,8 +92,10 @@
 
 		<footer>
 			<div class="grid">
-				<p>&copy; abdelhamid ameur </p>
-				<p>2021</p>
+				<p class="info" id="info" onclick="toggleDropdown('dropdown', 0)">info</p>
+
+				<!-- <p>&copy; abdelhamid ameur </p>
+				<p>2021</p> -->
 			</div>
 		</footer>
 

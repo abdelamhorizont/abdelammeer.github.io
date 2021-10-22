@@ -21,7 +21,13 @@ function toggleDropdown(id, i) {
     // headerHeight = getElementsByClassName(id)[i].style.height;
 
     if (dropdown) {
-        elt.style.maxHeight = "30rem";
+
+        if (id == 'dropdown') {
+            elt.style.height = "100vh";
+        } else {
+            elt.style.maxHeight = "20rem";
+        }
+
         headerHeight = "-3rem";
 
         for (let child of elt.children) {
@@ -36,7 +42,13 @@ function toggleDropdown(id, i) {
     }
 
     if (!dropdown) {
-        elt.style.maxHeight = "0rem";
+
+        if (id == 'dropdown') {
+            elt.style.height = "0vh";
+        } else {
+            elt.style.maxHeight = "0rem";
+        }
+
         headerHeight = "0rem";
 
         for (let child of elt.children) {
@@ -69,13 +81,14 @@ window.onscroll = function () {
 
     } else {
         dropdown = false;
-        document.getElementById("dropdown").style.maxHeight = "0rem";
+
+        document.getElementById("dropdown").style.height = "0vh";
 
         for (let child of document.getElementsByClassName("dropdown")[0].children) {
             child.style.opacity = "0";
             child.style.transition = "opacity 0.2s ease";
         }
-        if(dropdown){
+        if (dropdown) {
             document.getElementById("info").innerHTML = "close";
         }
         document.getElementById("header").style.top = "-3rem";
@@ -94,8 +107,8 @@ function plusRotate(id) {
 
     if (plusBool) {
         plus.style.transform = "rotate(405deg)";
-    } 
+    }
     if (!plusBool) {
-       plus.style.transform = "rotate(0deg)";
+        plus.style.transform = "rotate(0deg)";
     }
 }
