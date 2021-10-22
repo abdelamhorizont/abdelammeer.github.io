@@ -1,0 +1,331 @@
+/* variables */
+:root{
+    --textCol: black;
+    --bgCol: whitesmoke;
+
+}
+
+/* reset */
+body, p, a, ul, li{
+    margin: 0;
+    padding: 0;
+
+    text-decoration: none;
+
+    counter-reset: section;
+}
+
+li{
+    list-style-type: none;
+}
+
+/* fonts */
+@font-face {
+    font-family: "Signifier";
+    src: url('/fonts/signifier-web-thin.woff2');
+
+}
+
+h1, h2{
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
+
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 1rem 1rem;
+
+    color: var(--bgCol);
+
+}  
+
+h3{
+    font-family: Signifier;
+
+    font-size: 1rem;
+    margin-top: -1rem;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+
+    font-weight: 300;
+    color: var(--bgCol);
+}
+
+p {
+    color: var(--bgCol);
+}
+
+/* base styles */
+body{
+    background: var(--textCol);
+    overflow-x: hidden;
+    font-family: Signifier;
+    font-size: 18px;
+    display: grid;
+}
+
+.button{
+    background: none;
+    border: 2px solid var(--textCol);
+    color: var(--textCol);
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px var(--textCol);
+    display: inline-block;
+}
+
+.buttton:hover{
+    background: var(--textCol);
+    color: var(--bgCol);
+}
+
+.clickable{
+}
+
+.info{
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 1rem;
+}
+
+.plus {
+    grid-column: 3/7;
+    margin-right: 1rem;
+
+    font-size: 2.5rem;
+    font-family: Signifier;
+    font-weight: thin;
+
+    transform-origin: 60% 35%;
+    transition: transform 0.4s ease;
+    color: var(--bgCol);
+
+    counter-increment: section;
+}
+
+main{
+    margin-top: 3rem; 
+    /* background: transparent; */
+    transition: margin-top 600ms ease;
+
+    width: 100vw;
+    height: auto;
+}
+
+.slide-content{
+    display: inline-grid;
+    grid-template-columns: auto auto auto ;
+    grid-column-gap: 0em;
+}
+
+.slide{
+    overflow: scroll;
+}
+
+.slide img {
+    width: 100vw;
+    height: auto;
+}
+
+footer{
+    font-size: 0.8rem;
+    position: fixed;
+    bottom: 0em;
+    background: var(--bgCol);
+    width: 100vw;
+    height: auto;
+    padding: 0.2rem 1rem;
+}
+
+.card{
+    height: auto; 
+}
+
+/* mobile styles */
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, auto);  
+    /* grid-template-rows: auto 1fr auto; */
+}
+
+.header{
+    height: 3rem;
+}
+
+#header{    
+    position: fixed; 
+    top: 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;  
+
+    background: var(--textCol);
+    width: 100%;
+
+    transition: height 600ms ease, top 800ms ease;
+}
+
+.dropdown{
+    max-height: 0rem;
+
+    grid-column: 1/7;
+
+    background: var(--bgCol);
+    opacity: 1;
+
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 1rem;
+
+    transition: max-height 600ms ease;
+}
+
+.dropdown > *{
+    opacity: 0;
+}
+
+.works{
+    margin-top: 3rem;
+}
+
+.works-text{
+  margin:1rem;
+  margin-bottom: 2rem;
+
+  font-family: Helvetica, sans-serif;
+  font-weight: 100;
+  line-height: 1.3rem;
+  font-size: 1rem;
+
+  color: var(--textCol);
+  /* mix-blend-mode:difference; */
+
+}
+
+.works-title{
+    max-height: auto;
+}
+
+.works-dropdown{
+    max-height: 0rem;
+
+    grid-column: 1/7;
+
+    background: var(--bgCol);
+    opacity: 1;
+
+    transition: max-height 600ms ease;
+}
+
+.info:focus-within .dropdown{
+    height: 100%;
+}
+
+.plus:focus-within .works-text{
+    height: 100%;
+}
+
+.contact, .about{
+    margin: 1em 1em;
+    /* color: var(--bgCol); */
+
+}
+
+.logo{
+    font-family: Signifier;
+    margin: 0.7em 1em;
+    grid-column: 1/2;
+}
+
+.info{
+    grid-column: 4/5;
+    margin: 0.7em 1em;
+}
+
+
+/* small tablet styles */
+@media screen and (min-width: 620px) {
+    body{
+        font-size: 16px;
+    }   
+        
+    .header{
+        /* display: grid; */
+        /* grid-template-columns: repeat(6, 1fr); */
+        gap: 10px;
+    }
+    
+    .logo{
+        grid-column: 1/4;
+    }
+    
+    .contact{
+        grid-column: 1/4;
+    }
+    
+    .info{
+        grid-column: 4/7;
+    }
+    
+    .about{
+        grid-column: 4/7;
+    }
+}
+
+/* large tablets and laptop styles */
+@media screen and (min-width: 960px) {
+body{
+    font-size: 18px;
+}
+    
+.header{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+.logo{
+    grid-column: 1/4;
+}
+
+.contact{
+    grid-column: 1/4;
+}
+
+.info{
+    grid-column: 4/7;
+}
+
+.about{
+    grid-column: 4/7;
+}
+}
+
+/* Desktop styles */
+@media screen and (min-width: 1200px) {
+body{
+    font-size: 20px;
+}   
+    
+.header{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+.logo{
+    grid-column: 1/4;
+}
+
+.contact{
+    grid-column: 1/4;
+}
+
+.info{
+    grid-column: 4/7;
+}
+
+.about{
+    grid-column: 4/7;
+}
+}
+

@@ -6,149 +6,98 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>brushes</title>
+	<title>www.abdelammeer.com</title>
 	<script src="libraries/p5.js"></script>
-	<!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
-	<!-- <script src=" 	https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.js"></script> -->
-	
-	<script src="libraries/p5.dom.js"></script>
-	<!-- <script src="https://unpkg.com/rita@2.4.91/dist/rita.js"></script>
-	<script src="https://unpkg.com/rita@2.4.91/dist/rita-micro.js"></script>	 -->
-	<!-- <script src="libraries/rita.js"></script> -->
-
-	<script src="libraries/p5.sound.js"></script>
-	<script src="libraries/p5.speech.js"></script>
-
-	<!-- <script src="https://unpkg.com/rivescript@latest/dist/rivescript.min.js"></script> -->
-	<script src="libraries/rivescript.min.js"></script>
-
-	<!-- <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js" type="text/javascript"></script> -->
-	<script src="libraries/ml5.js"></script>
-
-	<script src="sketch.js"></script>
-	<script src="NoiseLoop.js"></script>
-	<script src="Particle.js"></script>
-	<script src="brushes.js"></script>
-	<script src="shapes.js"></script>
-	<script src="bot.js"></script>
-	<script src="type.js"></script>
-	<script src="person.js"></script>
-	<script src="sound.js"></script>
-
-	<script src="https://cdn.jsdelivr.net/gh/freshfork/p5.EasyCam@1.2.0/p5.easycam.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="mystyle.css">
-	<link rel="stylesheet" href="menu.css">
+	<link rel="stylesheet" href="css/mystyle.css">
+	<script src="sketch.js"></script>
+	<script src="navbar.js"></script>
 
 </head>
 
-<body>
-	<div id="bot">
-		<button id="talk" onclick="recordAudio()"></button>
-		<input id="user_input" value="" autofocus />
+<body id="body">
+	<div class="grid">
+		<header class="header" id="header">
+			<h1 class="logo">abdelammeer</h1>
+			<p class="info clickable" id="info" onclick="toggleDropdown('dropdown', 0)">info</p>
 
-		<div id="outputDiv"><p id="output"></p></div>
-		<button id="fullScreen" onclick="openFullscreen()"></button>
+			<div class="dropdown" id="dropdown">
+				<div class="contact">
+					tel: +49 1 76878 3434 7
+				</div>
+				<div class="about">
+					I am a multidisplinary designer with a keen interest in content and visual solutions
+				</div>
+			</div>
+
+
+		</header>
+
+		<main class="works" id="works">
+
+			<div class="work">
+				<div class="slide">
+					<div class="slide-content">
+						<img src="work/tmt/1.jpg" alt="terror managment theory">
+						<img src="work/tmt/2.jpg" alt="terror managment theory">
+						<img src="work/tmt/3.jpg" alt="terror managment theory">
+					</div>
+				</div>
+
+				<div class="card grid">
+					<div class="works-title">
+						<h2>terror managment theory</h2>
+						<h3>exhibition</h3>
+					</div>
+					<div class="plus clickable" id="0" onclick="toggleDropdown('works-dropdown', 0); plusRotate(this.id)">+</div>
+					
+					<div class="works-dropdown">
+					<p class="works-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti labore suscipit repellat facere
+						nihil sed quas nobis exercitationem laboriosam inventore ipsa modi voluptate vero eligendi
+						adipisci
+						ut, facilis, repellendus nostrum!</p>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="work">
+				<div class="slide">
+					<div class="slide-content">
+						<img src="work/limo/1.jpg" alt="terror managment theory">
+						<img src="work/limo/2.jpg" alt="terror managment theory">
+						<img src="work/limo/3.jpg" alt="terror managment theory">
+					</div>
+				</div>
+
+				<div class="card grid">
+					<div class="works-title">
+						<h2>Narrating Africa</h2>
+						<h3>exhibition</h3>
+					</div>
+					<div class="plus clickable" id="1" onclick="toggleDropdown('works-dropdown', 1); plusRotate(this.id)">+</div>
+					
+					<div class="works-dropdown">
+					<p class="works-text">in Zusammenarbeit mit dem Literaturmuseum der Moderne Marbach Ausstellung „Narrating Africa“ seit November 2019 bis August 2021 flexibles Ausstellungs- und Raumkonzept durch Magnete visuelle Sprache für unterschiedliche Medien entstanden in der Klasse Cluss
+						https://www.dla-marbach.de/museen/wechselausstellungen/africa-digital/ So lautet die Beschreibung zur Ausstellung „Narrating Africa“ im Literaturmuseum der Moderne, zu der wir ein System entwickelten, um Inhalte unterschiedlicher Kuratoren in einen Ausstellungsraum zu übertragen. Das Gestaltungskonzept bietet die Möglichkeit die Ausstellung über einen längeren Zeitraum step by step um Inhalte zu erweitern und untereinander durch Kommentierungen zu verknüpfen. Die Tischplatten sind mit magnetischer Ferrofolie bedruckten Bildmotiven und Zitaten bezogen und werden um erweiterbare Karten und Leporellos ergänzt, die mit Magneten bestückt am Tisch haften, aber auch in die Hände genommen werden können. Der Besucher wird eingeladen sich auf Sitzkissen niederzulassen, die verschiedenen Inhalte auf- und zu entdecken und sich einem ungewöhnlichen Raumgefühl hinzugeben. Die visuelle Sprache findet sich auf begleitenden Medien, wie Plakaten, Postkarten, dem Programm oder die Website wieder.</p>
+					</div>
+				</div>
+
+			</div>
+
+		</main>
+
+		<footer>
+			<div class="grid">
+				<p>&copy; abdelhamid ameur </p>
+				<p>2021</p>
+			</div>
+		</footer>
+
 	</div>
-	
-	<div class="centerText">
-	<p id="centerText"> </p>
-	<!-- <p id="centerWords"> </p> -->
-	</div>
-
-	<!-- checkboxes for different shapes -->
-	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<form>
-			<input type="checkbox" id="shapesCheckbox" name="shapes" value="false">
-			<label for="shapesCheckbox"> shapes</label><br>
-			<input type="checkbox" id="softShapesCheckbox" name="softShapes" value="false">
-			<label for="softShapesCheckbox"> soft Shapes</label><br>
-			<input type="checkbox" id="textureShapesCheckbox" name="textureShapes" value="false">
-			<label for="textureShapesCheckbox"> texture Shapes</label>
-			<input type="checkbox" id="lineCheckbox" name="line" value="false">
-			<label for="lineCheckbox"> line </label>
-		</form>
-
-		<div class="slidecontainer">
-
-			<input type="submit" style="display: none" />
-			<input id="brush_input" value="blueBrush" />
-
-			<input type="submit" style="display: none" />
-			<input id="shapeCol" value="col0" />
-
-			<input type="range" min="0" max="1" value="0.06" step="0.01" class="slider" id="opacitySlider"> <br>
-			<label for="opacitySlider"> Opacity: <span id="opacitySliderValue"></span> </label><br>
-
-			<input type="range" min="1" max="300" value="160" class="slider" id="RadiusSlider"> <br>
-			<label for="RadiusSlider"> Radius: <span id="RadiusSliderValue"></span> </label><br>
-
-			<input type="range" min="0.10" max="0.80" value="0.35" step="0.01" class="slider" id="OscSlider"> <br>
-			<label for="OscSlider"> Osc: <span id="OscSliderValue"></span></label><br>
-		</div>
-
-		<button id="moveButton" onclick="moveit()">move</button>
-		<button id="saveButton" onclick="createFile()">save</button>
-		<button id="load" value="true">load</button>
-	</div>
-
-	<span id="menuButton" onclick="openNav()">&#9776;</span>
-
-	<script>
-		let menuBool = true;
-		let elem = document.documentElement;
-		let fullScreenToggle = false;
-
-		/* View in fullscreen */
-		function openFullscreen() {
-			fullScreenToggle = !fullScreenToggle;
-			
-			if(fullScreenToggle){ 
-			if (elem.requestFullscreen) {
-				elem.requestFullscreen();
-			} else if (elem.webkitRequestFullscreen) { /* Safari */
-				elem.webkitRequestFullscreen();
-			} else if (elem.msRequestFullscreen) { /* IE11 */
-				elem.msRequestFullscreen();
-			}
-			}
-
-			if(!fullScreenToggle){ 
-			if (document.exitFullscreen) {
-				document.exitFullscreen();
-			} else if (document.webkitExitFullscreen) { /* Safari */
-				document.webkitExitFullscreen();
-			} else if (document.msExitFullscreen) { /* IE11 */
-				document.msExitFullscreen();
-			}
-			}
-		}
-
-		/* Close fullscreen */
-		function closeFullscreen() {
-			if (document.exitFullscreen) {
-				document.exitFullscreen();
-			} else if (document.webkitExitFullscreen) { /* Safari */
-				document.webkitExitFullscreen();
-			} else if (document.msExitFullscreen) { /* IE11 */
-				document.msExitFullscreen();
-			}
-		}
-
-		function openNav() {
-			document.getElementById("mySidenav").style.width = "250px";
-			menuBool = false;
-		}
-		function closeNav() {
-			document.getElementById("mySidenav").style.width = "0";
-			menuBool = true;
-		}
-
-	</script>
 
 </body>
 
