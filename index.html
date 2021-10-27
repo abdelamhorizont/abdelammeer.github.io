@@ -11,48 +11,64 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/rivescript@latest/dist/rivescript.min.js"></script>
 
 	<link rel="stylesheet" href="css/mystyle.css">
 	<script src="sketch.js"></script>
-	<script src="navbar.js"></script>
+	<script src="script.js"></script>
+	<script src="type.js"></script>
+	<script src="bot.js"></script>
 
 </head>
 
 <body id="body">
 	<div class="grid">
 		<header class="header" id="header">
-			<h1 class="logo">abdelammeer</h1>
+
+			<h1 id="logo">abdel am meer</h1>
 			<!-- <p class="info" id="info" onclick="toggleDropdown('dropdown', 0)">info</p> -->
 
 			<div class="dropdown" id="dropdown">
-				<div class="contact">
+				<p id="contact">
 					tel: +49 1 76878 3434 7
-				</div>
-				<div class="about">
+				</p>
+				<p id="about">
 					I am a multidisplinary designer with a keen interest in content and visual solutions
-				</div>
+				</p>
 			</div>
 
 
 		</header>
 
 		<main class="works" id="works">
+			
+			<div id="chat">
+				<div>
+					<div id="output">hello! hey heey hi yoooooo ooooooooooo oooooooooo oooooooooooowhat would you like to see? hey heey hi yoooooo ooooooooooo oooooooooo  would you like to see?</div>
+					<div id="input"><input type="text" name="" id="user_input"></div>
+				</div>
+			</div>
 
+			<h1 id="work-title"></h2>
 			<div class="work">
 				<div class="slide">
 					<div class="slide-content">
-						<img src="work/tmt/1.jpg" alt="terror managment theory">
-						<img src="work/tmt/2.jpg" alt="terror managment theory">
-						<img src="work/tmt/3.jpg" alt="terror managment theory">
+						<img class="cropped-img" src="work/abk/1.jpg" alt="ABK Stuttgart Corporate Design">
+						<img src="work/abk/2.jpg" alt="ABK Stuttgart Corporate Design">
+						<img src="work/abk/3.png" alt="ABK Stuttgart Corporate Design">
 					</div>
 				</div>
 
-				<div class="card grid">
+				<div class="card grid" id="0" onclick="toggleDropdown('works-dropdown', this.id); plusRotate(this.id)"">
+				
 					<div class="works-title">
-						<h2>terror managment theory</h2>
-						<h3>exhibition</h3>
+						<h2>ABK Stuttgart</h2>
+						<h3>Corporate Design</h3>
 					</div>
-					<div class="plus" id="0" onclick="toggleDropdown('works-dropdown', 0); plusRotate(this.id)">+</div>
+
+					<div class="plus">
+						<div>+</div>	
+					</div>
 					
 					<div class="works-dropdown">
 					<p class="works-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti labore suscipit repellat facere
@@ -73,26 +89,30 @@
 					</div>
 				</div>
 
-				<div class="card grid">
+				<div class="card grid" id="1" onclick="toggleDropdown('works-dropdown', this.id); plusRotate(this.id)"">
+					
 					<div class="works-title">
 						<h2>Narrating Africa</h2>
 						<h3>exhibition</h3>
 					</div>
-					<div class="plus" id="1" onclick="toggleDropdown('works-dropdown', 1); plusRotate(this.id)">+</div>
-					
+
+					<div class="plus">
+						<div>+</div>	
+					</div>
+
 					<div class="works-dropdown">
 					<p class="works-text">in Zusammenarbeit mit dem Literaturmuseum der Moderne Marbach Ausstellung „Narrating Africa“ seit November 2019 bis August 2021 flexibles Ausstellungs- und Raumkonzept durch Magnete visuelle Sprache für unterschiedliche Medien entstanden in der Klasse Cluss
 						https://www.dla-marbach.de/museen/wechselausstellungen/africa-digital/ So lautet die Beschreibung zur Ausstellung „Narrating Africa“ im Literaturmuseum der Moderne, zu der wir ein System entwickelten, um Inhalte unterschiedlicher Kuratoren in einen Ausstellungsraum zu übertragen. Das Gestaltungskonzept bietet die Möglichkeit die Ausstellung über einen längeren Zeitraum step by step um Inhalte zu erweitern und untereinander durch Kommentierungen zu verknüpfen. Die Tischplatten sind mit magnetischer Ferrofolie bedruckten Bildmotiven und Zitaten bezogen und werden um erweiterbare Karten und Leporellos ergänzt, die mit Magneten bestückt am Tisch haften, aber auch in die Hände genommen werden können. Der Besucher wird eingeladen sich auf Sitzkissen niederzulassen, die verschiedenen Inhalte auf- und zu entdecken und sich einem ungewöhnlichen Raumgefühl hinzugeben. Die visuelle Sprache findet sich auf begleitenden Medien, wie Plakaten, Postkarten, dem Programm oder die Website wieder.</p>
 					</div>
 				</div>
-
+				<!-- <div class="space"></div> -->
 			</div>
 
 		</main>
 
 		<footer>
 			<div class="grid">
-				<p class="info" id="info" onclick="toggleDropdown('dropdown', 0)">info</p>
+				<p class="info" id="0" onclick="toggleDropdown('dropdown', this.id)">info</p>
 
 				<!-- <p>&copy; abdelhamid ameur </p>
 				<p>2021</p> -->
@@ -103,4 +123,4 @@
 
 </body>
 
-</html>
+</html>	<script src="navbar.js"></script>

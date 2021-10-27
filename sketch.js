@@ -5,6 +5,7 @@ function preload() {
 }
 
 function setup() {
+	bot();
 
 }
 
