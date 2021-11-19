@@ -2,6 +2,7 @@ window.onload = function () {
     bot();
 
     document.getElementById("header").style.top = "0rem";
+    let logo = document.getElementById("logo");
 
     let logoString = logo.innerHTML;
     logo.innerHTML = ""
@@ -18,89 +19,193 @@ window.onload = function () {
     document.getElementById('user_input').onkeypress = function (e) {
         if (e.keyCode == 13) {
             getLetters("output");
+            letterAnim("output", 20);
         }
     }
 
-    letterAnim("logo", 40);
+    logoAnim();
     letterAnim("output", 20);
 
     // cards dropdown hover effect
     let cards = document.getElementsByClassName("card");
     let cardDropdown = document.getElementsByClassName("card-dropdown");
-    let opa = document.getElementsByClassName("opa");
+    let worksText = document.getElementsByClassName("works-text");
 
     for (let i = 0; i < cards.length; i++) {
         cards[i].onmouseover = function () {
-            cardDropdown[i].style.maxHeight = "10vh";
-            cardDropdown[i].style.padding = "2rem 0rem";
-            opa[i].style.opacity = 1;
+            cardDropdown[i].style.maxHeight = "20vh";
+            worksText[i].style.height = "100%";
         };
         cards[i].onmouseout = function () {
             cardDropdown[i].style.maxHeight = "0vh";
-            cardDropdown[i].style.padding = "0rem 0rem";
-            opa[i].style.opacity = 0;
+            worksText[i].style.height = "0vh";
         };
     }
 
     // scroll every second element to the end
     for (let i = 1; i < worksLength; i++) {
         if (i % 2 == 0) {
-            document.getElementsByClassName("slide")[i-1].scrollLeft = 5000;
+            document.getElementsByClassName("slide")[i - 1].scrollLeft = 5000;
         } else {
-            document.getElementsByClassName("slide")[i-1].scrollLeft = 0;
+            document.getElementsByClassName("slide")[i - 1].scrollLeft = 0;
         }
     }
+
 }
 
 
 function getLetters(id) {
     let elt = document.getElementById(id);
     let eltString = elt.innerHTML;
+    const eltWords = eltString.split(" ");
 
     elt.innerHTML = "";
 
-    for (let i = 0; i < eltString.length; i++) {
-        let x = document.createElement("SPAN");
-        let t = document.createTextNode(eltString[i]);
-        x.appendChild(t);
-        elt.appendChild(x);
+    for (let i = 0; i < eltWords.length; i++) {
+
+        let word = document.createElement("SPAN");
+
+        for (let j = 0; j < eltWords[i].length; j++) {
+            let x = document.createElement("SPAN");
+            let t = document.createTextNode(eltWords[i][j]);
+
+            x.appendChild(t);
+            x.classList.add("letters");
+
+            word.appendChild(x);
+            word.classList.add("words");
+
+        }
+
+        elt.appendChild(word);
     }
+
 }
 
 function letterAnim(id, frameRate) {
 
-    let elt = document.getElementById(id);
+    let letters = document.querySelectorAll("SPAN.letters");
+    let words = document.querySelectorAll("SPAN.words");
 
     let spacing = [];
     let sinCount = [];
+    let wordSpacing = [];
+    let wordCount = [];
+    let s = 0;
 
-    for (var i = 0; i < 100; i++) {
+    // let wordCount = 0;
+    let letterCount = 0;
+    let fontSize;
+
+    for (let i = 0; i < letters.length; i++) {
         sinCount[i] = 0;
         spacing[i] = 0;
     }
 
+    for (let i = 0; i < words.length; i++) {
+        wordSpacing[i] = 0;
+        wordCount[i] = 0;
+    }
+
+    let chatCon = document.getElementsByClassName("chat-container")[0];
+    let output = document.getElementById("output");
+  
+    let chatConWidth = map(letters.length, 1, 50, 1, 100);
+    let chatConHeight = map(letters.length, 1, 50, 10, 0);
+    let spacingMax;
+
+    output.style.marginTop = chatConHeight + 'rem';
+
+    function typeResponsive(win) {
+
+        if (win.matches) { // If media query matches
+            chatCon.style.width = chatConWidth + 'vw';
+            chatCon.style.left = ((100 - chatConWidth) * 0.5) + 'vw';
+        
+            fontSize = map(words.length, 1, 10, 4, 3);
+            spacingMax = 1;
+        } else {
+            fontSize = map(words.length, 1, 10, 3, 1.8);
+            spacingMax = 0.5;
+
+        }
+    }
+
+    var win = window.matchMedia("(min-width: 960px)");
+    typeResponsive(win); // Call listener function at run time
+    win.addEventListener("keypress", typeResponsive); // Attach listener function on state 
+
+
     setInterval(function spacingAnim() {
+        let outputHeight = output.offsetHeight;
+        console.log(outputHeight);
 
-        if (elt == logo) {
-            for (let i = 0; i < elt.children.length; i++) {
-
-                sinCount[i] += noise(i) / 5;
-                spacing[i] = map(sin(sinCount[i]), -1, 1, 0.1, 0.5);
-
-                elt.children[i].style.letterSpacing = spacing[i] + 'em';
-            }
-        } else if (elt == output) {
-            for (let i = 0; i < elt.children.length; i++) {
-
-                sinCount[i] += noise(i) / 5;
-                spacing[i] = map(sin(sinCount[i]), -1, 1, 0.1, 1.5);
-
-                elt.children[i].style.marginTop = spacing[i] + 'rem';
-                // elt.children[i].style.fontSize = 2.5 + 'rem';
+        if (letterCount < letters.length) {
+            if (frameCount % 10 == 0) {
+                letters[letterCount].style.display = 'inline-block';
+                letters[letterCount].style.opacity = '1';
+               
+                letterCount++;
             }
         }
 
+        for (let i = 0; i < words.length; i++) {
+            words[i].style.fontSize = fontSize + 'rem';
+            words[i].style.padding = (fontSize/3) + 'rem';
+
+            wordCount[i] += noise(i) / 5;
+            wordSpacing[i] = map(sin(wordCount[i]), -1, 1, 0, 0.3);
+
+            // words[i].style.margin = wordSpacing[i] + 'rem';
+        }
+
+        for (let i = 0; i < letters.length; i++) {
+            
+            //disperse letters
+            // sinCount[i] += noise(i) / 50;
+            // spacing[i] = map(sin(sinCount[i]), -1, 1, 0.1,s);
+            // letters[i].style.margin = '0rem ' + (spacing[i]) + 'rem';  
+            // letters[i].style.display = 'unset';  
+         
+            //jumping letters
+            sinCount[i] += noise(i) / 5;
+            spacing[i] = map(sin(sinCount[i]), -1, 1, -spacingMax, spacingMax);
+
+            // letters[i].style.margin = (spacing[i]) + 'rem 0rem';       
+            letters[i].style.transform = 'translateY(' + (spacing[i]) + 'rem)';
+            // words[i].style.transform = 'translateX(' + (spacing[i]) + 'rem)'; 
+        }
+
+        s += 0.03;
+
     }, frameRate);
+
+}
+
+function logoAnim() {
+
+    let logo = document.getElementById("logo");
+
+    let spacing = [];
+    let sinCount = [];
+
+    for (let i = 0; i < 100; i++) {
+        spacing[i] = 0;
+        sinCount[i] = 0;
+    }
+
+
+    setInterval(function spacingAnim() {
+
+        for (let i = 0; i < logo.children.length; i++) {
+
+            sinCount[i] += noise(i) / 5;
+            spacing[i] = map(sin(sinCount[i]), -1, 1, 0.01, 0.3);
+
+            logo.children[i].style.letterSpacing = spacing[i] + 'em';
+        }
+
+    }, 30);
 
 }
 

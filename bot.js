@@ -26,7 +26,6 @@ function bot() {
             bot.reply('local-user', input).then(function (reply) {
 
                     output.html(reply);
-                    // getLetters("output", letterJumps);
                     
             });
         }

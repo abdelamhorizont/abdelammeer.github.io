@@ -27,8 +27,14 @@
 
 			<h1 id="logo" class="info" onclick="toggleDropdown('dropdown', 0)">abdel am meer</h1>
 
+			<div class="close-container" id="dropdown-close" onclick="toggleDropdown('dropdown', 0)">
+					<div class="close">
+						<img src="https://img.icons8.com/ios/50/000000/delete-sign--v1.png"/>
+				</div>
+			</div>
+
 			<div class="dropdown" id="dropdown">
-				<!-- <div class="dropdown-container"> -->
+				<div class="dropdown-container">
 
 				<div class="about">
 					<h1>about</h1>
@@ -43,11 +49,11 @@
 				<div class="contact">
 					<h1>contact</h1>
 					<ul>
-						<li>+49 1 768 783 4347</li>
-						<li>hello@abdelammeer.com</li>
+						<li style="word-break: break-all;">+49 1 768 783 4347 <br> hello@abdelammeer.com</li>
+						<!-- <li style="word-break: break-all;">hello@abdelammeer.com</li> -->
 						<li><br></li>
-						<li>Abdelhamid Ameur <br>
-							Sparrhärmlingweg 41 <br>
+						<li>Abdelhamid Ameur, <br>
+							Sparrhärmlingweg 41, <br>
 							70376 Stuttgart
 						</li>
 					</ul>
@@ -84,21 +90,24 @@
 					</ul>
 				</div>
 
-				<!-- </div> -->
+				</div>
 			</div>
 
 		</header>
+		<!-- <div class="close-container" id="chat-close" onclick="toggleDropdown('chat-container', 1)">
+					<div class="close">
+						<img style="filter: invert();"" src="https://img.icons8.com/ios/50/000000/delete-sign--v1.png"/>
+				</div>
+			</div> -->
+
+			<div class="chat-container">
+					<div id="output">hi there! how can I help you ?</div>
+					<input type="text" name="" id="user_input" autofocus></div>
+			</div>
 
 		<main class="works" id="works">
 
 			<div id="landing"></div>
-
-			<div class="chat-container">
-				<div id="chat">
-					<div id="output">hi!</div>
-					<div id="input"><input type="text" name="" id="user_input" autofocus></div>
-				</div>
-			</div>
 
 			<div class="work">
 				<div class="slide">
@@ -110,189 +119,212 @@
 				</div>
 
 				<div class="card" id="0" onclick="toggleDropdown('card', this.id)"">
-					<div class="works-title">
-						<h2>ABK Stuttgart</h2>
-						<h3>Corporate Design</h3>
-					</div>
-
-					<div class="year">
-						<p>2019</p>
-					</div>
-
-					<div class="plus-container">
-						<div class="plus">+</div>
-					</div>
-				</div>
-
-				<div class="card-dropdown">
-					<div class="works-text">
-						Das neue Logo der ABK Stuttgart leitet sich aus dem Kürzel im Namen ab – der Gedankenstrich im
-						Anschluss verbindet
-						die Akademie mit dem, was danach kommt, es folgt Freiraum. Die Schrift wurde ebenfalls im Zuge
-						des
-						neuen
-						Corporate Designs von Stefanie Schwarz und Dirk Wachowiak entwickelt und zeichnet sich aus durch
-						Details und Verweise
-						aus der traditionsreichen Schriftgeschichte der ABK Stuttgart. Die Geschäftsausstattung ist
-						möglichst funktional
-						und zurückhaltend gestaltet.
-
-						Neben der Geschäftsausstatttung, bestehend aus Briefpapier, Visitenkarten, Urkunden, Stempel,
-						Berichte etc. entstehen
-						auch Flaggen und Hausmeisterbekleidung. Außerdem ist zur Zeit ein umfassenden
-						Orientierungssystem
-						für den Campus
-						und alle Gebäude darauf in Arbeit.
-					</div>
-
-					<div class="design-elements">
-						<ul>
-							<li>Logo</li>
-							<li>Letter paper</li>
-							<li>Business cards</li>
-							<li>Flags</li>
-							<li>Folder</li>
-						</ul>
-					</div>
-
-					<div class="collabs">
-						<h2>with</h2>
-						<ul>
-							<li>Jasmina Begovic</li>
-							<li>Raphael Berg</li>
-						</ul>
-					</div>
+					<div class=" works-title ">
+						<div class=" title round-box">
+					<h2>ABK Stuttgart</h2>
+					<h3>Corporate Design</h3>
 				</div>
 			</div>
 
-			<div class="work">
-				<div class="slide">
-					<div class="slide-content">
-						<img src="work/limo/1.jpg" alt="terror managment theory">
-						<img src="work/limo/2.jpg" alt="terror managment theory">
-						<img src="work/limo/3.jpg" alt="terror managment theory">
-					</div>
-				</div>
-
-				<div class="card" id="1" onclick="toggleDropdown('card', this.id)"">					
-					<div class="works-title">
-						<h2>Narrating Africa</h2>
-						<h3>exhibition</h3>
-					</div>
-
-					<div class="year">
-						<p>2019</p>
-					</div>
-
-					<div class="plus-container">
-						<div class="plus">+</div>
-					</div>
-
-				</div>
-
-				<div class="card-dropdown">
-					<div class="works-text">
-						in Zusammenarbeit mit dem Literaturmuseum der Moderne Marbach Ausstellung „Narrating
-						Africa“ seit November 2019 bis August 2021 flexibles Ausstellungs- und Raumkonzept durch Magnete
-						visuelle Sprache für unterschiedliche Medien entstanden in der Klasse Cluss
-						https://www.dla-marbach.de/museen/wechselausstellungen/africa-digital/ So lautet die Beschreibung zur
-						Ausstellung „Narrating Africa“ im Literaturmuseum der Moderne, zu der wir ein System entwickelten, um
-						Inhalte unterschiedlicher Kuratoren in einen Ausstellungsraum zu übertragen. Das Gestaltungskonzept
-						bietet die Möglichkeit die Ausstellung über einen längeren Zeitraum step by step um Inhalte zu erweitern
-						und untereinander durch Kommentierungen zu verknüpfen. Die Tischplatten sind mit magnetischer Ferrofolie
-						bedruckten Bildmotiven und Zitaten bezogen und werden um erweiterbare Karten und Leporellos ergänzt, die
-						mit Magneten bestückt am Tisch haften, aber auch in die Hände genommen werden können. Der Besucher wird
-						eingeladen sich auf Sitzkissen niederzulassen, die verschiedenen Inhalte auf- und zu entdecken und sich
-						einem ungewöhnlichen Raumgefühl hinzugeben. Die visuelle Sprache findet sich auf begleitenden Medien,
-						wie Plakaten, Postkarten, dem Programm oder die Website wieder.
-					</div>
-
-					<div class="design-elements">
-						<ul>
-							<li>Logo</li>
-							<li>Letter paper</li>
-							<li>Business cards</li>
-							<li>Flags</li>
-							<li>Folder</li>
-						</ul>
-					</div>
-
-					<div class="collabs">
-						<h2>with</h2>
-						<ul>
-							<li>Jasmina Begovic</li>
-							<li>Raphael Berg</li>
-						</ul>
-					</div>
-
-				</div>
+			<div class="year round-box">
+				<p>2019</p>
 			</div>
 
-			<div class="work">
-				<div class="slide">
-					<div class="slide-content">
-						<img src="work/Gleismediale/1.jpg" alt="terror managment theory">
-						<img src="work/Gleismediale/2.jpg" alt="terror managment theory">
-						<img src="work/Gleismediale/3.jpg" alt="terror managment theory">
-						<img src="work/Gleismediale/4.jpg" alt="terror managment theory">
-						<img src="work/Gleismediale/5.jpg" alt="terror managment theory">
-						<img src="work/Gleismediale/6.jpg" alt="terror managment theory">
-						<img src="work/Gleismediale/7.jpg" alt="terror managment theory">
-					</div>
-				</div>
+			<div class="plus-container">
+				<div class="plus round-box">+</div>
+			</div>
+	</div>
 
-				<div class="card" id="2" onclick="toggleDropdown('card', this.id)"">	
+	<div class="card-dropdown">
+		<div class="works-text">
+			Das neue Logo der ABK Stuttgart leitet sich aus dem Kürzel im Namen ab – der Gedankenstrich im
+			Anschluss verbindet
+			die Akademie mit dem, was danach kommt, es folgt Freiraum. Die Schrift wurde ebenfalls im Zuge
+			des
+			neuen
+			Corporate Designs von Stefanie Schwarz und Dirk Wachowiak entwickelt und zeichnet sich aus durch
+			Details und Verweise
+			aus der traditionsreichen Schriftgeschichte der ABK Stuttgart. Die Geschäftsausstattung ist
+			möglichst funktional
+			und zurückhaltend gestaltet.
+
+			Neben der Geschäftsausstatttung, bestehend aus Briefpapier, Visitenkarten, Urkunden, Stempel,
+			Berichte etc. entstehen
+			auch Flaggen und Hausmeisterbekleidung. Außerdem ist zur Zeit ein umfassenden
+			Orientierungssystem
+			für den Campus
+			und alle Gebäude darauf in Arbeit.
+		</div>
+
+		<div class="design-elements">
+			<ul>
+				<li>Logo</li>
+				<li>Letter paper</li>
+				<li>Business cards</li>
+				<li>Flags</li>
+				<li>Folder</li>
+			</ul>
+		</div>
+
+		<div class="collabs">
+			<h2>with</h2>
+			<ul>
+				<li>Jasmina Begovic</li>
+				<li>Raphael Berg</li>
+			</ul>
+		</div>
+	</div>
+		</div>
+
+	<div class="work">
+		<div class="slide">
+			<div class="slide-content">
+				<img src="work/limo/1.jpg" alt="Narrating Africa">
+				<img src="work/limo/2.jpg" alt="Narrating Africa">
+				<img src="work/limo/3.jpg" alt="Narrating Africa">
+				<img src="work/limo/4.jpg" alt="Narrating Africa">
+				<img src="work/limo/5.jpg" alt="Narrating Africa">
+				<img src="work/limo/6.jpg" alt="Narrating Africa">
+				<img src="work/limo/7.jpg" alt="Narrating Africa">
+				<img src="work/limo/8.jpg" alt="Narrating Africa">
+				<img src="work/limo/9.jpg" alt="Narrating Africa">
+				<img src="work/limo/10.jpg" alt="Narrating Africa">
+				<img src="work/limo/11.jpg" alt="Narrating Africa">
+				<img src="work/limo/12.jpg" alt="Narrating Africa">
+				<img src="work/limo/13.jpg" alt="Narrating Africa">
+				<img src="work/limo/14.jpg" alt="Narrating Africa">
+				<img src="work/limo/15.jpg" alt="Narrating Africa">
+				<img src="work/limo/16.jpg" alt="Narrating Africa">
+				<img src="work/limo/17.jpg" alt="Narrating Africa">
+				<img src="work/limo/18.jpg" alt="Narrating Africa">
+			</div>
+		</div>
+
+		<div class="card" id="1" onclick="toggleDropdown('card', this.id)"">					
+		<div class=" works-title">
+			<div class="title round-box">
+				<h2>Narrating Africa</h2>
+				<h3>exhibition</h3>
+			</div>
+		</div>
+
+		<div class="plus-container">
+			<!-- <div class="round-box"> -->
+				<div class="plus round-box">
+					<img style="filter: invert();"
+						src="https://img.icons8.com/ios-glyphs/30/000000/expand-arrow--v2.png" />
+				</div>
+			<!-- </div> -->
+		</div>
+
+	</div>
+
+	<div class="card-dropdown">
+		<div class="works-text">
+			in Zusammenarbeit mit dem Literaturmuseum der Moderne Marbach Ausstellung „Narrating
+			Africa“ seit November 2019 bis August 2021 flexibles Ausstellungs- und Raumkonzept durch Magnete
+			visuelle Sprache für unterschiedliche Medien entstanden in der Klasse Cluss
+			https://www.dla-marbach.de/museen/wechselausstellungen/africa-digital/ So lautet die Beschreibung zur
+			Ausstellung „Narrating Africa“ im Literaturmuseum der Moderne, zu der wir ein System entwickelten, um
+			Inhalte unterschiedlicher Kuratoren in einen Ausstellungsraum zu übertragen. Das Gestaltungskonzept
+			bietet die Möglichkeit die Ausstellung über einen längeren Zeitraum step by step um Inhalte zu erweitern
+			und untereinander durch Kommentierungen zu verknüpfen. Die Tischplatten sind mit magnetischer Ferrofolie
+			bedruckten Bildmotiven und Zitaten bezogen und werden um erweiterbare Karten und Leporellos ergänzt, die
+			mit Magneten bestückt am Tisch haften, aber auch in die Hände genommen werden können. Der Besucher wird
+			eingeladen sich auf Sitzkissen niederzulassen, die verschiedenen Inhalte auf- und zu entdecken und sich
+			einem ungewöhnlichen Raumgefühl hinzugeben. Die visuelle Sprache findet sich auf begleitenden Medien,
+			wie Plakaten, Postkarten, dem Programm oder die Website wieder.
+		</div>
+
+		<div class="design-elements">
+			<ul>
+				<li>Logo</li>
+				<li>Letter paper</li>
+				<li>Business cards</li>
+				<li>Flags</li>
+				<li>Folder</li>
+			</ul>
+		</div>
+
+			<div class="year">
+				2019
+			</div>
+
+		<div class="collabs">
+			<h2>with</h2>
+			<ul>
+				<li>Sonja Schwarz</li>
+			</ul>
+		</div>
+
+	</div>
+	</div>
+
+	<div class="work">
+		<div class="slide">
+			<div class="slide-content">
+				<img src="work/Gleismediale/1.jpg" alt="terror managment theory">
+				<img src="work/Gleismediale/2.jpg" alt="terror managment theory">
+				<img src="work/Gleismediale/3.jpg" alt="terror managment theory">
+				<img src="work/Gleismediale/4.jpg" alt="terror managment theory">
+				<img src="work/Gleismediale/5.jpg" alt="terror managment theory">
+				<img src="work/Gleismediale/6.jpg" alt="terror managment theory">
+				<img src="work/Gleismediale/7.jpg" alt="terror managment theory">
+			</div>
+		</div>
+
+		<div class="card" id="2" onclick="toggleDropdown('card', this.id)"">	
 					<div class=" works-title">
-						<h2>Gleismediale</h2>
-						<h3>Flyer, Leitsystem</h3>
-					</div>
+			<h2>Gleismediale</h2>
+			<h3>Flyer, Leitsystem</h3>
+		</div>
 
-					<div class="year">
-						<p>2019</p>
-					</div>
+		<div class="year">
+			<p>2019</p>
+		</div>
 
-					<div class="plus-container">
-						<div class="plus">+</div>
-					</div>
+		<div class="plus-container">
+			<div class="plus">+</div>
+		</div>
 
-				</div>
+	</div>
 
-			<div class="card-dropdown">
-				<div class="works-text">
-					in Zusammenarbeit mit dem Literaturmuseum der Moderne Marbach Ausstellung „Narrating
-					Africa“ seit November 2019 bis August 2021 flexibles Ausstellungs- und Raumkonzept durch Magnete
-					visuelle Sprache für unterschiedliche Medien entstanden in der Klasse Cluss
-					https://www.dla-marbach.de/museen/wechselausstellungen/africa-digital/ So lautet die Beschreibung zur
-					Ausstellung „Narrating Africa“ im Literaturmuseum der Moderne, zu der wir ein System entwickelten, um
-					Inhalte unterschiedlicher Kuratoren in einen Ausstellungsraum zu übertragen. Das Gestaltungskonzept
-					bietet die Möglichkeit die Ausstellung über einen längeren Zeitraum step by step um Inhalte zu erweitern
-					und untereinander durch Kommentierungen zu verknüpfen. Die Tischplatten sind mit magnetischer Ferrofolie
-					bedruckten Bildmotiven und Zitaten bezogen und werden um erweiterbare Karten und Leporellos ergänzt, die
-					mit Magneten bestückt am Tisch haften, aber auch in die Hände genommen werden können. Der Besucher wird
-					eingeladen sich auf Sitzkissen niederzulassen, die verschiedenen Inhalte auf- und zu entdecken und sich
-					einem ungewöhnlichen Raumgefühl hinzugeben. Die visuelle Sprache findet sich auf begleitenden Medien,
-					wie Plakaten, Postkarten, dem Programm oder die Website wieder.
-				</div>
+	<div class="card-dropdown">
+		<div class="works-text">
+			in Zusammenarbeit mit dem Literaturmuseum der Moderne Marbach Ausstellung „Narrating
+			Africa“ seit November 2019 bis August 2021 flexibles Ausstellungs- und Raumkonzept durch Magnete
+			visuelle Sprache für unterschiedliche Medien entstanden in der Klasse Cluss
+			https://www.dla-marbach.de/museen/wechselausstellungen/africa-digital/ So lautet die Beschreibung zur
+			Ausstellung „Narrating Africa“ im Literaturmuseum der Moderne, zu der wir ein System entwickelten, um
+			Inhalte unterschiedlicher Kuratoren in einen Ausstellungsraum zu übertragen. Das Gestaltungskonzept
+			bietet die Möglichkeit die Ausstellung über einen längeren Zeitraum step by step um Inhalte zu erweitern
+			und untereinander durch Kommentierungen zu verknüpfen. Die Tischplatten sind mit magnetischer Ferrofolie
+			bedruckten Bildmotiven und Zitaten bezogen und werden um erweiterbare Karten und Leporellos ergänzt, die
+			mit Magneten bestückt am Tisch haften, aber auch in die Hände genommen werden können. Der Besucher wird
+			eingeladen sich auf Sitzkissen niederzulassen, die verschiedenen Inhalte auf- und zu entdecken und sich
+			einem ungewöhnlichen Raumgefühl hinzugeben. Die visuelle Sprache findet sich auf begleitenden Medien,
+			wie Plakaten, Postkarten, dem Programm oder die Website wieder.
+		</div>
 
-				<div class="design-elements">
-					<ul>
-						<li>Logo</li>
-						<li>Letter paper</li>
-						<li>Business cards</li>
-						<li>Flags</li>
-						<li>Folder</li>
-					</ul>
-				</div>
+		<div class="design-elements">
+			<ul>
+				<li>Logo</li>
+				<li>Letter paper</li>
+				<li>Business cards</li>
+				<li>Flags</li>
+				<li>Folder</li>
+			</ul>
+		</div>
 
-				<div class="collabs">
-					<h2>with</h2>
-					<ul>
-						<li>Jasmina Begovic</li>
-						<li>Raphael Berg</li>
-					</ul>
-				</div>
-			</div>
-			</div>
+		<div class="collabs">
+			<h2>with</h2>
+			<ul>
+				<li>Jasmina Begovic</li>
+				<li>Raphael Berg</li>
+			</ul>
+		</div>
+	</div>
+	</div>
 
 	</main>
 
@@ -305,4 +337,4 @@
 </body>
 
 </html>
-<script src="navbar.js"></script>
+<!-- <script src="navbar.js"></script> -->
