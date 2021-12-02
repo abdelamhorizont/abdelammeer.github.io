@@ -14,6 +14,13 @@ window.onload = function () {
         logo.appendChild(x);
     }
 
+    let answers = document.getElementById("output");
+    answerList = [
+        "hi there!",
+    ]
+
+    answers.innerHTML = answerList[0];
+
     getLetters("output");
 
     document.getElementById('user_input').onkeypress = function (e) {
@@ -26,20 +33,54 @@ window.onload = function () {
     logoAnim();
     letterAnim("output", 20);
 
-    // cards dropdown hover effect
+    let slide = document.getElementsByClassName("slide");
     let cards = document.getElementsByClassName("card");
     let cardDropdown = document.getElementsByClassName("card-dropdown");
     let worksText = document.getElementsByClassName("works-text");
+    let year = document.getElementsByClassName("year");
+    let collabs = document.getElementsByClassName("collabs");
+    let designElements = document.getElementsByClassName("design-elements");
 
     for (let i = 0; i < cards.length; i++) {
+
+        for (let child of worksText) {
+            child.style.height = "0%";
+        }
+
         cards[i].onmouseover = function () {
-            cardDropdown[i].style.maxHeight = "20vh";
-            worksText[i].style.height = "100%";
+            cardDropdown[i].style.maxHeight = "30vh";
+            worksText[i].style.height = "60%";
+
+
+            if (!headBools[2]) {
+
+                for (child of designElements) {
+                    child.style.opacity = "1";
+                }
+
+                for (child of year) {
+                    child.style.opacity = "1";
+                }
+            }
+
         };
         cards[i].onmouseout = function () {
             cardDropdown[i].style.maxHeight = "0vh";
-            worksText[i].style.height = "0vh";
+            worksText[i].style.height = "0%";
+
+            if (!headBools[2]) {
+
+                for (child of designElements) {
+                    child.style.opacity = "0";
+                }
+
+                for (child of year) {
+                    child.style.opacity = "0";
+                }
+
+            }
         };
+
     }
 
     // scroll every second element to the end
@@ -51,11 +92,29 @@ window.onload = function () {
         }
     }
 
+    //scroll to left/right with mosue wheel
+    // let item = document.getElementsByClassName("slide")[0];
+
+    // window.addEventListener("wheel", function (e) {
+    //     if (e.deltaY > 0) item.scrollLeft += 10;
+    //     else item.scrollLeft -= 10;
+    // });
+
+    if (headBools[1]) {
+
+        for (child of slide) {
+            child.style.filter = "blur(1000px)";
+            child.style.WebkitFilter = "blur(100px)";
+        }
+    }
+
+    // document.getElementsByClassName("chat-container")[0].style.width = '40vw';
 }
 
 
 function getLetters(id) {
     let elt = document.getElementById(id);
+
     let eltString = elt.innerHTML;
     const eltWords = eltString.split(" ");
 
@@ -96,6 +155,9 @@ function letterAnim(id, frameRate) {
     // let wordCount = 0;
     let letterCount = 0;
     let fontSize;
+    let col;
+
+    col = "white";
 
     for (let i = 0; i < letters.length; i++) {
         sinCount[i] = 0;
@@ -109,20 +171,20 @@ function letterAnim(id, frameRate) {
 
     let chatCon = document.getElementsByClassName("chat-container")[0];
     let output = document.getElementById("output");
-  
-    let chatConWidth = map(letters.length, 1, 50, 1, 100);
-    let chatConHeight = map(letters.length, 1, 50, 10, 0);
+
+    let chatConWidth = map(letters.length, 1, 50, 20, 60);
+    let chatConHeight = map(letters.length, 1, 50, 30, -5);
     let spacingMax;
 
-    output.style.marginTop = chatConHeight + 'rem';
+    output.style.marginTop = chatConHeight + 'vh';
 
     function typeResponsive(win) {
 
         if (win.matches) { // If media query matches
             chatCon.style.width = chatConWidth + 'vw';
             chatCon.style.left = ((100 - chatConWidth) * 0.5) + 'vw';
-        
-            fontSize = map(words.length, 1, 10, 4, 3);
+
+            fontSize = map(letters.length, 1, 50, 83.5, 2);
             spacingMax = 1;
         } else {
             fontSize = map(words.length, 1, 10, 3, 1.8);
@@ -131,27 +193,48 @@ function letterAnim(id, frameRate) {
         }
     }
 
-    var win = window.matchMedia("(min-width: 960px)");
+    var win = window.matchMedia("(min-width: 620)");
     typeResponsive(win); // Call listener function at run time
     win.addEventListener("keypress", typeResponsive); // Attach listener function on state 
 
+    // function typeResponsive2k(win2) {
+
+    //     if (win2.matches) { // If media query matches
+    //         fontSize =  2;
+
+    //     } else{
+    //         fontSize = 4;
+    //         let chatConWidth = map(letters.length, 1, 50, 30, 50);
+    //         chatCon.style.width = chatConWidth + 'vw';
+    //         chatCon.style.left = ((100 - chatConWidth) * 0.5) + 'vw';
+
+    //     }
+    // }
+
+    // var win2 = window.matchMedia("(max-width: 1620)");
+    // typeResponsive2k(win2); // Call listener function at run time
+    // win2.addEventListener("keypress", typeResponsive2k); // Attach listener function on state 
+
+
+    //typeResponsive2k
 
     setInterval(function spacingAnim() {
-        let outputHeight = output.offsetHeight;
-        console.log(outputHeight);
+        // let outputHeight = output.offsetHeight;
 
         if (letterCount < letters.length) {
-            if (frameCount % 10 == 0) {
+            if (frameCount % 7 == 0) {
                 letters[letterCount].style.display = 'inline-block';
                 letters[letterCount].style.opacity = '1';
-               
+                letters[letterCount].style.color = col;
+                // letters[letterCount].style.fontSize = fontSize + 'rem';
+
                 letterCount++;
             }
         }
 
         for (let i = 0; i < words.length; i++) {
-            words[i].style.fontSize = fontSize + 'rem';
-            words[i].style.padding = (fontSize/3) + 'rem';
+            // words[i].style.fontSize = fontSize + 'rem';
+            words[i].style.padding = (fontSize / 5) + 'rem';
 
             wordCount[i] += noise(i) / 5;
             wordSpacing[i] = map(sin(wordCount[i]), -1, 1, 0, 0.3);
@@ -160,13 +243,13 @@ function letterAnim(id, frameRate) {
         }
 
         for (let i = 0; i < letters.length; i++) {
-            
+
             //disperse letters
             // sinCount[i] += noise(i) / 50;
             // spacing[i] = map(sin(sinCount[i]), -1, 1, 0.1,s);
             // letters[i].style.margin = '0rem ' + (spacing[i]) + 'rem';  
             // letters[i].style.display = 'unset';  
-         
+
             //jumping letters
             sinCount[i] += noise(i) / 5;
             spacing[i] = map(sin(sinCount[i]), -1, 1, -spacingMax, spacingMax);

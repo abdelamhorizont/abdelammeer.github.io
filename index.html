@@ -18,6 +18,7 @@
 	<script src="script.js"></script>
 	<script src="type.js"></script>
 	<script src="bot.js"></script>
+	<script defer src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
 
 </head>
 
@@ -25,306 +26,765 @@
 	<div class="grid">
 		<header class="header" id="header">
 
-			<h1 id="logo" class="info" onclick="toggleDropdown('dropdown', 0)">abdel am meer</h1>
+			<p id="logo" class="info" onclick="toggleDropdown('dropdown', 0)">abdel am meer</p>
+
+			<div id="i" class="info" onclick="toggleDropdown('dropdown', 0)">i</div>
+			<div id="list" class="info" onclick="toggleDropdown('list', 2)">
+				<img id="list-img" style="filter: invert(100%);"
+					src="https://img.icons8.com/material-outlined/24/000000/list.png" />
+				<!-- <img id="rect-img" class="image-button" style="filter: invert(100%); display: none;"
+					src="https://img.icons8.com/external-neu-royyan-wijaya/64/000000/external-rectangle-neu-design-neu-royyan-wijaya-2.png" /> -->
+			</div>
 
 			<div class="close-container" id="dropdown-close" onclick="toggleDropdown('dropdown', 0)">
-					<div class="close">
-						<img src="https://img.icons8.com/ios/50/000000/delete-sign--v1.png"/>
+				<div class="close">
+					<img src="https://img.icons8.com/ios/50/000000/delete-sign--v1.png" />
 				</div>
 			</div>
 
 			<div class="dropdown" id="dropdown">
 				<div class="dropdown-container">
 
-				<div class="about">
-					<h1>about</h1>
-					<p>
-						hello there! I'm a communication designer working with text, Illustration and code. <br><br>
-						I studied both communication design as well as fine arts at the Stuttgart State Academy of
-						Arts
-						and Design and at the Tokyo University of the Arts
-					</p>
-				</div>
+					<div class="about">
+						<h1>about</h1>
+						<p>
+							Hello there! My Name is Abdel. I am a communication designer working with Illustration and
+							code, text and typography, images, identities and publications of all sort. really, anything
+							visual – or
+							hidden!
+							<br><br>
+							I studied both communication design as well as fine arts at the Stuttgart State Academy of
+							Arts and Design and at the Tokyo University of the Arts.
+						</p>
+					</div>
 
-				<div class="contact">
-					<h1>contact</h1>
-					<ul>
-						<li style="word-break: break-all;">+49 1 768 783 4347 <br> hello@abdelammeer.com</li>
-						<!-- <li style="word-break: break-all;">hello@abdelammeer.com</li> -->
-						<li><br></li>
-						<li>Abdelhamid Ameur, <br>
+					<div class="contact">
+						<h1>contact</h1>
+						<p style="word-break: break-all;">+49 1 768 783 4347 <br>
+							hello@abdelammeer.com</li>
+							<br><br>
+							Abdelhamid Ameur, <br>
 							Sparrhärmlingweg 41, <br>
 							70376 Stuttgart
-						</li>
-					</ul>
-				</div>
+						</p>
+					</div>
 
-				<div class="services">
-					<h1>services</h1>
-					<ul>
-						<li>Visual Identity</li>
-						<li>Illustration</li>
-						<li>Web Design & Development</li>
-						<li>Editorial Design</li>
-						<li>Workshops</li>
-					</ul>
-				</div>
+					<div class="services">
+						<h1>services</h1>
+						<ul>
+							<li>Visual Identity</li>
+							<li>Web Design & <br> Frontend Development</li>
+							<li>Illustration</li>
+							<li>Editorial Design</li>
+							<li>Workshops</li>
+						</ul>
+					</div>
 
-				<div class="clients">
-					<h1>clients</h1>
-					<ul>
-						<li>Staatliche Akademie der <br> Bildenden Künste Stuttgart</li>
-						<li>Deutsches Literaturarchiv Marbach</li>
-						<li>Stadtpalais Stuttgart</li>
-						<li>Fraunhofer Institut</li>
-						<li>Stiftung Digitale Spielekultur</li>
-					</ul>
-				</div>
+					<div class="clients">
+						<h1>clients</h1>
+						<ul>
+							<li>Staatliche Akademie der <br> Bildenden Künste Stuttgart</li>
+							<li>Deutsches Literaturarchiv Marbach</li>
+							<li>Stadtpalais Stuttgart</li>
+							<li>Fraunhofer Institut</li>
+							<li>Stiftung Digitale Spielekultur</li>
+						</ul>
+					</div>
 
-				<div class="workshops">
-					<h1>workshops</h1>
-					<ul>
-						<li>Jugendzentrum Penthaus Neuhausen</li>
-						<li>Kirchengemeinde Kiel Gaarden</li>
-						<li>Schülerhaus Schwabschule</li>
-					</ul>
-				</div>
+					<div class="workshops">
+						<h1>workshops</h1>
+						<ul>
+							<li>Jugendzentrum Penthaus Neuhausen</li>
+							<li>Kirchengemeinde Kiel Gaarden</li>
+							<li>Schülerhaus Schwabschule</li>
+						</ul>
+					</div>
 
 				</div>
 			</div>
 
 		</header>
-		<!-- <div class="close-container" id="chat-close" onclick="toggleDropdown('chat-container', 1)">
-					<div class="close">
-						<img style="filter: invert();"" src="https://img.icons8.com/ios/50/000000/delete-sign--v1.png"/>
-				</div>
-			</div> -->
 
-			<div class="chat-container">
-					<div id="output">hi there! how can I help you ?</div>
-					<input type="text" name="" id="user_input" autofocus></div>
+		<div class="chat-container">
+			<div id="output"></div>
+			<input type="text" name="" id="user_input" autofocus>
+		</div>
+	</div>
+
+	<main class="works" id="works">
+
+		<!-- <div id="landing"></div> -->
+
+		<!-- ABK Stuttgart-->
+		<div class="work">
+			<div class="slide">
+				<div class="slide-content">
+					<img src="work/abk/1.jpg" alt="ABK Stuttgart">
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/abk/16.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<img src="work/abk/3" alt="ABK Stuttgart">
+					<img src="work/abk/4" alt="ABK Stuttgart">
+					<img src="work/abk/5" alt="ABK Stuttgart">
+					<img src="work/abk/9" alt="ABK Stuttgart">
+					<img src="work/abk/13" alt="ABK Stuttgart">
+					<img src="work/abk/11" alt="ABK Stuttgart">
+					<img src="work/abk/6" alt="ABK Stuttgart">
+					<img src="work/abk/14b" alt="ABK Stuttgart">
+					<img src="work/abk/12" alt="ABK Stuttgart">
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/abk/17.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+				</div>
 			</div>
 
-		<main class="works" id="works">
-
-			<div id="landing"></div>
-
-			<div class="work">
-				<div class="slide">
-					<div class="slide-content">
-						<img class="cropped-img" src="work/abk/1.jpg" alt="ABK Stuttgart Corporate Design">
-						<img src="work/abk/2.jpg" alt="ABK Stuttgart Corporate Design">
-						<img src="work/abk/3.png" alt="ABK Stuttgart Corporate Design">
-					</div>
-				</div>
-
-				<div class="card" id="0" onclick="toggleDropdown('card', this.id)"">
-					<div class=" works-title ">
-						<div class=" title round-box">
+			<div class="card" id="0" onclick="toggleDropdown('card', this.id)"">					
+		<div class=" works-title">
+				<div class="title round-box">
 					<h2>ABK Stuttgart</h2>
 					<h3>Corporate Design</h3>
 				</div>
 			</div>
 
-			<div class="year round-box">
-				<p>2019</p>
-			</div>
-
 			<div class="plus-container">
-				<div class="plus round-box">+</div>
-			</div>
-	</div>
-
-	<div class="card-dropdown">
-		<div class="works-text">
-			Das neue Logo der ABK Stuttgart leitet sich aus dem Kürzel im Namen ab – der Gedankenstrich im
-			Anschluss verbindet
-			die Akademie mit dem, was danach kommt, es folgt Freiraum. Die Schrift wurde ebenfalls im Zuge
-			des
-			neuen
-			Corporate Designs von Stefanie Schwarz und Dirk Wachowiak entwickelt und zeichnet sich aus durch
-			Details und Verweise
-			aus der traditionsreichen Schriftgeschichte der ABK Stuttgart. Die Geschäftsausstattung ist
-			möglichst funktional
-			und zurückhaltend gestaltet.
-
-			Neben der Geschäftsausstatttung, bestehend aus Briefpapier, Visitenkarten, Urkunden, Stempel,
-			Berichte etc. entstehen
-			auch Flaggen und Hausmeisterbekleidung. Außerdem ist zur Zeit ein umfassenden
-			Orientierungssystem
-			für den Campus
-			und alle Gebäude darauf in Arbeit.
-		</div>
-
-		<div class="design-elements">
-			<ul>
-				<li>Logo</li>
-				<li>Letter paper</li>
-				<li>Business cards</li>
-				<li>Flags</li>
-				<li>Folder</li>
-			</ul>
-		</div>
-
-		<div class="collabs">
-			<h2>with</h2>
-			<ul>
-				<li>Jasmina Begovic</li>
-				<li>Raphael Berg</li>
-			</ul>
-		</div>
-	</div>
-		</div>
-
-	<div class="work">
-		<div class="slide">
-			<div class="slide-content">
-				<img src="work/limo/1.jpg" alt="Narrating Africa">
-				<img src="work/limo/2.jpg" alt="Narrating Africa">
-				<img src="work/limo/3.jpg" alt="Narrating Africa">
-				<img src="work/limo/4.jpg" alt="Narrating Africa">
-				<img src="work/limo/5.jpg" alt="Narrating Africa">
-				<img src="work/limo/6.jpg" alt="Narrating Africa">
-				<img src="work/limo/7.jpg" alt="Narrating Africa">
-				<img src="work/limo/8.jpg" alt="Narrating Africa">
-				<img src="work/limo/9.jpg" alt="Narrating Africa">
-				<img src="work/limo/10.jpg" alt="Narrating Africa">
-				<img src="work/limo/11.jpg" alt="Narrating Africa">
-				<img src="work/limo/12.jpg" alt="Narrating Africa">
-				<img src="work/limo/13.jpg" alt="Narrating Africa">
-				<img src="work/limo/14.jpg" alt="Narrating Africa">
-				<img src="work/limo/15.jpg" alt="Narrating Africa">
-				<img src="work/limo/16.jpg" alt="Narrating Africa">
-				<img src="work/limo/17.jpg" alt="Narrating Africa">
-				<img src="work/limo/18.jpg" alt="Narrating Africa">
-			</div>
-		</div>
-
-		<div class="card" id="1" onclick="toggleDropdown('card', this.id)"">					
-		<div class=" works-title">
-			<div class="title round-box">
-				<h2>Narrating Africa</h2>
-				<h3>exhibition</h3>
-			</div>
-		</div>
-
-		<div class="plus-container">
-			<!-- <div class="round-box"> -->
 				<div class="plus round-box">
 					<img style="filter: invert();"
 						src="https://img.icons8.com/ios-glyphs/30/000000/expand-arrow--v2.png" />
 				</div>
-			<!-- </div> -->
+			</div>
+
 		</div>
 
-	</div>
+		<div class="card-dropdown">
+			<div class="works-text" style="padding-bottom: 15rem;">
+				In 2019, the current corporate design of ABK Stuttgart was introduced. The extensive design and
+				implementation of the corporate identity was undertaken by Raphael Berg, Jasmina Begović and
+				Abdelhamid Ameur, supervised by Prof. Uli Cluss, AM Stefanie Schwarz and the professors of the
+				Communication Design program. The custom typeface ABK Stuttgart designed by Stefanie Schwarz and
+				Dirk Wachowiak reflects upon more than 100 years of typographic tradition of the
+				academy by taking up features and details of historical typefaces and reinterpreting them.
+				<br><br>
+				The Design Manual explains design principles, technical
+				details as well as guidelines and the handling of the elements, including
+				logo, business card, letterhead, templates for Microsoft Word, Excel and PowerPoint, certificate,
+				folder, stamp, as well as flags and janitorial clothing.
+			</div>
 
-	<div class="card-dropdown">
-		<div class="works-text">
-			in Zusammenarbeit mit dem Literaturmuseum der Moderne Marbach Ausstellung „Narrating
-			Africa“ seit November 2019 bis August 2021 flexibles Ausstellungs- und Raumkonzept durch Magnete
-			visuelle Sprache für unterschiedliche Medien entstanden in der Klasse Cluss
-			https://www.dla-marbach.de/museen/wechselausstellungen/africa-digital/ So lautet die Beschreibung zur
-			Ausstellung „Narrating Africa“ im Literaturmuseum der Moderne, zu der wir ein System entwickelten, um
-			Inhalte unterschiedlicher Kuratoren in einen Ausstellungsraum zu übertragen. Das Gestaltungskonzept
-			bietet die Möglichkeit die Ausstellung über einen längeren Zeitraum step by step um Inhalte zu erweitern
-			und untereinander durch Kommentierungen zu verknüpfen. Die Tischplatten sind mit magnetischer Ferrofolie
-			bedruckten Bildmotiven und Zitaten bezogen und werden um erweiterbare Karten und Leporellos ergänzt, die
-			mit Magneten bestückt am Tisch haften, aber auch in die Hände genommen werden können. Der Besucher wird
-			eingeladen sich auf Sitzkissen niederzulassen, die verschiedenen Inhalte auf- und zu entdecken und sich
-			einem ungewöhnlichen Raumgefühl hinzugeben. Die visuelle Sprache findet sich auf begleitenden Medien,
-			wie Plakaten, Postkarten, dem Programm oder die Website wieder.
-		</div>
-
-		<div class="design-elements">
-			<ul>
-				<li>Logo</li>
-				<li>Letter paper</li>
-				<li>Business cards</li>
-				<li>Flags</li>
-				<li>Folder</li>
-			</ul>
-		</div>
+			<div class="design-elements">
+				<ul>
+					<li>Logo</li>
+					<li>Business cards</li>
+					<li>Letterhead</li>
+					<li>Certificate</li>
+					<li>Folder</li>
+					<li>Stamp</li>
+					<li>Template</li>
+					<li>Clothing</li>
+					<li>Flags</li>
+					<li>Design Manual</li>
+				</ul>
+			</div>
 
 			<div class="year">
 				2019
 			</div>
 
-		<div class="collabs">
-			<h2>with</h2>
-			<ul>
-				<li>Sonja Schwarz</li>
-			</ul>
-		</div>
-
-	</div>
-	</div>
-
-	<div class="work">
-		<div class="slide">
-			<div class="slide-content">
-				<img src="work/Gleismediale/1.jpg" alt="terror managment theory">
-				<img src="work/Gleismediale/2.jpg" alt="terror managment theory">
-				<img src="work/Gleismediale/3.jpg" alt="terror managment theory">
-				<img src="work/Gleismediale/4.jpg" alt="terror managment theory">
-				<img src="work/Gleismediale/5.jpg" alt="terror managment theory">
-				<img src="work/Gleismediale/6.jpg" alt="terror managment theory">
-				<img src="work/Gleismediale/7.jpg" alt="terror managment theory">
+			<div class="collabs">
+				<h2>with</h2>
+				<ul>
+					<li>Jasmina Begović</li><br>
+					<li>Raphael Berg</li>
+				</ul>
 			</div>
+
+			<!-- <div class="credits">
+				<h2>Credits</h2>
+				<ul>
+					<li>Jasmina Begović</li><br>
+					<li>Raphael Berg</li>
+				</ul>
+			</div> -->
+
+		</div>
 		</div>
 
-		<div class="card" id="2" onclick="toggleDropdown('card', this.id)"">	
-					<div class=" works-title">
-			<h2>Gleismediale</h2>
-			<h3>Flyer, Leitsystem</h3>
+		<!-- Bots -->
+		<div class="work">
+			<div class="slide">
+				<div class="slide-content">
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Anglerfisch.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Dromedar.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Schneeeule.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Honigbiene.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Elefant.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Legehenne.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Königskrabbe.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Schirmqualle.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Hauskatze.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Regenwolke.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Geist.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Regenwald.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Korallenriff.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Wüste.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/Abdel.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/dissolve1.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/dissolve2.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/dissolve3.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/dissolve4.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Bots/dissolve5.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+
+				</div>
+			</div>
+
+			<div class="card" id="1" onclick="toggleDropdown('card', this.id)"">					
+		<div class=" works-title">
+				<div class="title round-box">
+					<h2>Bots</h2>
+					<h3>installation</h3>
+				</div>
+			</div>
+
+			<div class="plus-container">
+				<!-- <div class="round-box"> -->
+				<div class="plus round-box">
+					<img style="filter: invert();"
+						src="https://img.icons8.com/ios-glyphs/30/000000/expand-arrow--v2.png" />
+				</div>
+				<!-- </div> -->
+			</div>
+
 		</div>
 
-		<div class="year">
-			<p>2019</p>
+		<div class="card-dropdown">
+			<div class="works-text">
+				This interactive work is an exploration of what questions an artificial intelligence might ask, what
+				kind of body it
+				might have, and what identity is derived from it. It is a counter design to the common commercial
+				assistants that exist on the market. Yet the excerpts shown are only a few of many possible ones that
+				can be experienced interactively.
+				<br><br>
+				The chatbot has one goal: it wants to find out who it is. This is also related to the appearance and
+				identification with the body. Different perspectives from nature are adopted to compare the
+				evolutionary, biological and mortal with the digital.
+				<br><br>
+				Questions that the bot asks are randomly generated. Not only linguistic elements are thrown together,
+				but also visual ones. For this purpose, a tool was programmed that can be used to illustrate, animate
+				and tag the result with terms that evoke them. Thus, depending on the content of the conversation,
+				different compositions result.
+			</div>
+
+			<div class="design-elements">
+				<ul>
+					<li>Illustration</li>
+					<li>Creative Coding</li>
+					<li>Chat Bot</li>
+					<li>Interactive</li>
+					<li>Application</li>
+					<li>Installation</li>
+					<li>Sound Design</li>
+				</ul>
+			</div>
+
+			<div class="year">
+				2021
+			</div>
+
+			<div class="collabs">
+				<!-- <h2>with</h2>
+				<ul>
+					<li>Sonja Schwarz</li>
+				</ul> -->
+			</div>
+
+		</div>
 		</div>
 
-		<div class="plus-container">
-			<div class="plus">+</div>
+		<!-- Narrating Namibia-->
+		<div class="work">
+			<div class="slide">
+				<div class="slide-content">
+					<img src="work/Narrating_Namibia/1.jpg" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/3" alt="Narrating Africa">
+					<!-- <img src="work/Narrating_Namibia/4" alt="Narrating Africa"> -->
+					<img src="work/Narrating_Namibia/5" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/6" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/7" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/8" alt="Narrating Africa">
+					<!-- <img src="work/Narrating_Namibia/9" alt="Narrating Africa"> -->
+					<img src="work/Narrating_Namibia/10" alt="Narrating Africa">
+					<!-- <img src="work/Narrating_Namibia/11" alt="Narrating Africa"> -->
+					<img src="work/Narrating_Namibia/2" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/12.jpg" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/13.jpg" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/14.jpg" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/15.jpg" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/16.jpg" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/17.jpg" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/18.jpg" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/19.jpg" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/20.jpg" alt="Narrating Africa">
+					<img src="work/Narrating_Namibia/21.jpg" alt="Narrating Africa">
+				</div>
+			</div>
+
+			<div class="card" id="2" onclick="toggleDropdown('card', this.id)"">					
+		<div class=" works-title">
+				<div class="title round-box">
+					<h2>Narrating Namibia</h2>
+					<h3>exhibition</h3>
+				</div>
+			</div>
+
+			<div class="plus-container">
+				<!-- <div class="round-box"> -->
+				<div class="plus round-box">
+					<img style="filter: invert();"
+						src="https://img.icons8.com/ios-glyphs/30/000000/expand-arrow--v2.png" />
+				</div>
+				<!-- </div> -->
+			</div>
+
 		</div>
 
-	</div>
+		<div class="card-dropdown">
+			<div class="works-text">
+				‘Narrating Africa is an impossible task due to the
+				cultural, linguistic diversity’ and at the same time an
+				‘interesting’ and ‘brave topic’, reflects Namibian
+				writer Rémy Ngamije. The Deutsches Literaturarchiv Marbach – together with partners from universities
+				and institutions in Germany, Switzerland
+				and Namibia – takes on this challenge by asking
+				questions such as ‘How do we narrate Africa as a
+				continent and its diversity? Which images and
+				stereo types, which colonial and national ideologies
+				can we find in literature about Africa and how does
+				literature shape, continue or do away with them
+				in turn?’
+				<br><br>
+				STEPTHREE
+				focuses on literary texts and cultural objects that
+				narrate Namibia. The selection of texts portrays the
+				multilingual Namibian society. Together, texts and
+				objects represent snapshots of Namibian literature and culture. Scholars and writers discuss and
+				contextualise their meaning and narration, but also
+				raise further questions. Come and see for yourself.
 
-	<div class="card-dropdown">
-		<div class="works-text">
-			in Zusammenarbeit mit dem Literaturmuseum der Moderne Marbach Ausstellung „Narrating
-			Africa“ seit November 2019 bis August 2021 flexibles Ausstellungs- und Raumkonzept durch Magnete
-			visuelle Sprache für unterschiedliche Medien entstanden in der Klasse Cluss
-			https://www.dla-marbach.de/museen/wechselausstellungen/africa-digital/ So lautet die Beschreibung zur
-			Ausstellung „Narrating Africa“ im Literaturmuseum der Moderne, zu der wir ein System entwickelten, um
-			Inhalte unterschiedlicher Kuratoren in einen Ausstellungsraum zu übertragen. Das Gestaltungskonzept
-			bietet die Möglichkeit die Ausstellung über einen längeren Zeitraum step by step um Inhalte zu erweitern
-			und untereinander durch Kommentierungen zu verknüpfen. Die Tischplatten sind mit magnetischer Ferrofolie
-			bedruckten Bildmotiven und Zitaten bezogen und werden um erweiterbare Karten und Leporellos ergänzt, die
-			mit Magneten bestückt am Tisch haften, aber auch in die Hände genommen werden können. Der Besucher wird
-			eingeladen sich auf Sitzkissen niederzulassen, die verschiedenen Inhalte auf- und zu entdecken und sich
-			einem ungewöhnlichen Raumgefühl hinzugeben. Die visuelle Sprache findet sich auf begleitenden Medien,
-			wie Plakaten, Postkarten, dem Programm oder die Website wieder.
+			</div>
+
+			<div class="design-elements">
+				<ul>
+					<li>Booklet</li>
+					<li>Poster</li>
+				</ul>
+			</div>
+
+			<div class="year">
+				2021
+			</div>
+
+			<div class="collabs">
+				<h2>with</h2>
+				<ul>
+					<li>Sonja Schwarz</li>
+				</ul>
+			</div>
+
+		</div>
 		</div>
 
-		<div class="design-elements">
-			<ul>
-				<li>Logo</li>
-				<li>Letter paper</li>
-				<li>Business cards</li>
-				<li>Flags</li>
-				<li>Folder</li>
-			</ul>
+		<!-- Narrating Africa-->
+		<div class="work">
+			<div class="slide">
+				<div class="slide-content">
+					<img src="work/limo/1.jpg" alt="Narrating Africa">
+					<img src="work/limo/2.jpg" alt="Narrating Africa">
+					<img src="work/limo/3.jpg" alt="Narrating Africa">
+					<img src="work/limo/4.jpg" alt="Narrating Africa">
+					<img src="work/limo/5.jpg" alt="Narrating Africa">
+					<img src="work/limo/6.jpg" alt="Narrating Africa">
+					<img src="work/limo/7.jpg" alt="Narrating Africa">
+					<img src="work/limo/8.jpg" alt="Narrating Africa">
+					<img src="work/limo/9.jpg" alt="Narrating Africa">
+					<img src="work/limo/10.jpg" alt="Narrating Africa">
+					<img src="work/limo/11.jpg" alt="Narrating Africa">
+					<img src="work/limo/12.jpg" alt="Narrating Africa">
+					<img src="work/limo/13.jpg" alt="Narrating Africa">
+					<img src="work/limo/14.jpg" alt="Narrating Africa">
+					<img src="work/limo/15.jpg" alt="Narrating Africa">
+					<img src="work/limo/16.jpg" alt="Narrating Africa">
+					<img src="work/limo/17.jpg" alt="Narrating Africa">
+					<img src="work/limo/18.jpg" alt="Narrating Africa">
+				</div>
+			</div>
+
+			<div class="card" id="3" onclick="toggleDropdown('card', this.id)"">					
+		<div class=" works-title">
+				<div class="title round-box">
+					<h2>Narrating Africa</h2>
+					<h3>exhibition</h3>
+				</div>
+			</div>
+
+			<div class="plus-container">
+				<!-- <div class="round-box"> -->
+				<div class="plus round-box">
+					<img style="filter: invert();"
+						src="https://img.icons8.com/ios-glyphs/30/000000/expand-arrow--v2.png" />
+				</div>
+				<!-- </div> -->
+			</div>
+
 		</div>
 
-		<div class="collabs">
-			<h2>with</h2>
-			<ul>
-				<li>Jasmina Begovic</li>
-				<li>Raphael Berg</li>
-			</ul>
+		<div class="card-dropdown">
+			<div class="works-text">
+				"How do we tell stories about Africa: about a continent and its diversity? Which images and stereotypes,
+				which colonial and national ideologies determine literature about Africa and are shaped, disseminated or
+				dismantled by it? In an open space exhibition, we discuss this with texts, archival finds, lecture
+				performances, and conversations with partners from Namibia and writers from Africa and Europe, among
+				others."
+				<br><br>
+				<a href="https://www.dla-marbach.de/museen/wechselausstellungen/africa-digital/" target="_blank"
+					class="link"> https://www.dla-marbach.de/museen/wechselausstellungen/africa-digital/ </a>
+				<br><br>
+				in collaboration with the Literaturmuseum der Moderne Marbach we designed the exhibition "Narrating
+				Africa", for which we developed a system to transfer content from different curators into one exhibition
+				space. The design concept offers the possibility to add content to the exhibition step by step over a
+				longer period of time and to link it with each other by commenting on it. The table tops are covered
+				with magnetic ferrofoil printed image motifs and quotations and are supplemented by expandable cards and
+				leporellos, which, equipped with magnets, adhere to the table but can also be held in the hands. The
+				visitor is invited to settle down on seat cushions, to open and discover the various contents and to
+				surrender to an unusual sense of space. The visual language can be found on accompanying media such as
+				posters, postcards, the program or the website.
+			</div>
+
+			<div class="design-elements">
+				<ul>
+					<li>Space</li>
+					<li>System</li>
+					<li>Booklet</li>
+					<li>Leporello</li>
+					<li>Cards</li>
+					<li>Poster</li>
+				</ul>
+			</div>
+
+			<div class="year">
+				2019
+			</div>
+
+			<div class="collabs">
+				<h2>with</h2>
+				<ul>
+					<li>Sonja Schwarz</li>
+				</ul>
+			</div>
+
 		</div>
-	</div>
-	</div>
+		</div>
+
+		<!-- Odds without ends -->
+		<div class="work">
+			<div class="slide">
+				<div class="slide-content">
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Oddswithoutends/1.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Oddswithoutends/2.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Oddswithoutends/3.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+				</div>
+			</div>
+
+			<div class="card" id="4" onclick="toggleDropdown('card', this.id)"">					
+		<div class=" works-title">
+				<div class="title round-box">
+					<h2>Odds Without Ends</h2>
+					<h3>Website</h3>
+				</div>
+			</div>
+
+			<div class="plus-container">
+				<!-- <div class="round-box"> -->
+				<div class="plus round-box">
+					<img style="filter: invert();"
+						src="https://img.icons8.com/ios-glyphs/30/000000/expand-arrow--v2.png" />
+				</div>
+				<!-- </div> -->
+			</div>
+
+		</div>
+
+		<div class="card-dropdown">
+			<div class="works-text">
+				For most, digital networking has become a lifeline during the period of curfews. In addition, many have
+				decluttered their homes and offered discarded items to their neighbors via eBay Kleinanzeigen, so as not
+				to lose contact with the outside world. The exhibition Odds Without Ends uses eBay Kleinanzeigen, the
+				largest digital platform for classified ads in Germany, as an exhibition space for site-specific works.
+				<br> <br>
+				Odds Without Ends uses eBay Kleinanzeigen as an exhibition space and brings art directly to bargain
+				hunters' homes. The works on display use the ad space as their medium and the vented space as their
+				public. Each work is live for a limited time only, during which it may be discovered by accident or on
+				purpose. The works unfold over a maximum of 60 days - the maximum lifespan of ads on eBay Kleinanzeigen
+				- following their own logic of exchange and participation. The exhibition Odds Without Ends features
+				works developed specifically for eBay Kleinanzeigen by students in the Brenner/Bitnik class. It was
+				organized by the !Mediengruppe Bitnik.
+			</div>
+
+			<div class="design-elements">
+				<ul>
+					<li>Logo</li>
+					<li>Website</li>
+					<li>exhibition</li>
+				</ul>
+			</div>
+
+			<div class="year">
+				2020
+			</div>
+
+			<div class="collabs">
+				<h2>with</h2>
+				<ul>
+					<li>Valentin Wenzel</li>
+				</ul>
+			</div>
+
+		</div>
+		</div>
+
+		<!-- Silencium-->
+		<div class="work">
+			<div class="slide">
+				<div class="slide-content">
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Silencium/1.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Silencium/3.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Silencium/2.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Silencium/4.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Silencium/6.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					<video width="auto" height="100%" autoplay loop muted>
+						<source src="work/Silencium/5.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+				</div>
+			</div>
+
+			<div class="card" id="5" onclick="toggleDropdown('card', this.id)"">					
+		<div class=" works-title">
+				<div class="title round-box">
+					<h2>Silencium</h2>
+					<h3>Website</h3>
+				</div>
+			</div>
+
+			<div class="plus-container">
+				<!-- <div class="round-box"> -->
+				<div class="plus round-box">
+					<img style="filter: invert();"
+						src="https://img.icons8.com/ios-glyphs/30/000000/expand-arrow--v2.png" />
+				</div>
+				<!-- </div> -->
+			</div>
+
+		</div>
+
+		<div class="card-dropdown">
+			<div class="works-text">
+				Digitaler Raum, elektronischer Traum, widerwillige Stille, wankelmütiger Wille, Tick-Tack Tick-Tack,
+				Luftschleier steht, Windhauch weht, wandelt, wendet, klickt, Auge blinzelt und blickt, wabert, wandert,
+				wundert, Nachtschwarm schlummert und schwankt. Schlafwandel, Traumhandel, Ultraschall, Nachtigall,
+				Tontauben, Schreckschrauben, singen, sausen, summen, klirren, klatschen, klingen, brummen, brausen,
+				bimmeln. Lautgekritzel, Rauschkulisse, Traumtanz.. guten Morgen, gute Nacht!
+			</div>
+
+			<div class="design-elements">
+				<ul>
+					<li>Website</li>
+					<li>Animation</li>
+					<li>Illustration</li>
+					<li>Sound Design</li>
+				</ul>
+			</div>
+
+			<div class="year">
+				2020
+			</div>
+
+			<div class="collabs">
+				<!-- <h2>with</h2>
+				<ul>
+					<li>Sonja Schwarz</li>
+				</ul> -->
+			</div>
+
+		</div>
+		</div>
+
+		<!-- Gleismediale-->
+		<div class="work">
+			<div class="slide">
+				<div class="slide-content">
+					<img src="work/Gleismediale/1.jpg" alt="terror managment theory">
+					<img src="work/Gleismediale/2.jpg" alt="terror managment theory">
+					<img src="work/Gleismediale/3.jpg" alt="terror managment theory">
+					<img src="work/Gleismediale/4.jpg" alt="terror managment theory">
+					<img src="work/Gleismediale/5.jpg" alt="terror managment theory">
+					<img src="work/Gleismediale/6.jpg" alt="terror managment theory">
+				</div>
+			</div>
+
+			<div class="card" id="6" onclick="toggleDropdown('card', this.id)"">					
+		<div class=" works-title">
+				<div class="title round-box">
+					<h2>Gleismediale</h2>
+					<h3>Event</h3>
+				</div>
+			</div>
+
+			<div class="plus-container">
+				<div class="plus round-box">
+					<img style="filter: invert();"
+						src="https://img.icons8.com/ios-glyphs/30/000000/expand-arrow--v2.png" />
+				</div>
+			</div>
+
+		</div>
+
+		<div class="card-dropdown">
+			<div class="works-text">
+				Flyer and temporary guidance system at the Stuttgart main station for the opening of GleisMediale an
+				exhibition by ABK Stuttgart in cooperation with Ströer Media Creation and Stuttgarter Straßenbahnen
+				(SSB) AG.
+			</div>
+
+			<div class="design-elements" style="opacity: 0;">
+				<ul>
+					<li>Visual</li>
+					<li>Flyer</li>
+					<li>Orientation</li>
+				</ul>
+			</div>
+
+			<div class="year" style="opacity: 0;">
+				2020
+			</div>
+
+			<div class="collabs">
+				<!-- <h2>with</h2>
+				<ul>
+					<li>Sonja Schwarz</li>
+				</ul> -->
+			</div>
+
+		</div>
+		</div>
+
+		<div class="foot">
+
+			<div class="foot-contact">
+				<h1>contact</h1>
+				<p style="word-break: break-all;">+49 1 768 783 4347 <br>
+					hello@abdelammeer.com</li>
+					<br><br>
+					Abdelhamid Ameur, <br>
+					Sparrhärmlingweg 41, <br>
+					70376 Stuttgart
+				</p>
+			</div>
+
+			<div class="credits">
+				<h1>credits</h1>
+				<ul>
+					<li>Website Design & Code: <span class="abdel" style="white-space: nowrap">abdel am meer</span></li>
+					<li>typefaces: Signifier, Helvetica</li> <br>
+					<li>&copy; abdel am meer <br> 2021</li>
+				</ul>			
+			</div>
+
+		</div>
 
 	</main>
 
@@ -337,4 +797,3 @@
 </body>
 
 </html>
-<!-- <script src="navbar.js"></script> -->

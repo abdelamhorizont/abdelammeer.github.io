@@ -4,6 +4,7 @@ let input;
 function bot() {
     let bot;
     let output;
+    let u_input = document.getElementById("user_input");
 
     bot = new RiveScript({ utf8: true });
     bot.unicodePunctuation = new RegExp(/[.,!?;:]/g);
@@ -24,11 +25,13 @@ function bot() {
         if (keyCode === ENTER) {
 
             bot.reply('local-user', input).then(function (reply) {
-
                     output.html(reply);
-                    
-            });
+             });
+        
+             user_input.value(" ");
+
         }
+
     }
 }
 
