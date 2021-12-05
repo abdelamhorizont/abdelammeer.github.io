@@ -130,7 +130,7 @@ function toggleDropdown(id, i) {
                 }
 
                 if (!bools[i] && headBools[2]) {
-                    cardDropdown.style.marginTop = "-11.3rem";
+                    cardDropdown.style.marginTop = "-9.3rem";
                     year.style.opacity = "1";
                 }
 
@@ -381,7 +381,7 @@ function toggleDropdown(id, i) {
                 if (headBools[i]) {
 
                     for (child of cardDropdown) {
-                        child.style.marginTop = "-11.3rem";
+                        child.style.marginTop = "-9.3rem";
                     }
 
                 } else {

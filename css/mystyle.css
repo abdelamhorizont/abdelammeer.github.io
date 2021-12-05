@@ -1213,7 +1213,7 @@ html::-webkit-scrollbar-track, .slide::-webkit-scrollbar-track, .dropdown-contai
     width: 100%;     
 
     margin: 0rem 0rem;
-    padding: 2rem;
+    padding: 0rem 2rem;
 
     grid-column: 1/7;
   
