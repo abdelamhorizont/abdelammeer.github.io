@@ -14,9 +14,11 @@ window.onload = function () {
         logo.appendChild(x);
     }
 
-    let answers = document.getElementById("output");
+    let answers;
+    
+    answers = document.getElementById("output");
     answerList = [
-        "hi there!",
+        "hi there! :)",
     ]
 
     answers.innerHTML = answerList[0];
@@ -127,6 +129,13 @@ function getLetters(id) {
         for (let j = 0; j < eltWords[i].length; j++) {
             let x = document.createElement("SPAN");
             let t = document.createTextNode(eltWords[i][j]);
+
+            // if(eltWords[i] == "Ö"){
+            //     let br = document.createElement("br");
+            //     word.appendChild(br);
+
+            //     console.log(word);
+            // }
 
             x.appendChild(t);
             x.classList.add("letters");
@@ -295,3 +304,19 @@ function logoAnim() {
 function map_range(value, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
+
+function ready() {
+
+    let answers;
+
+    answers = document.getElementById("output");	
+    answerList = [
+        "hi there! :)",
+    ]
+
+    answers.innerHTML = answerList[0];
+
+    getLetters("output");
+    letterAnim("output", 20);
+
+    }

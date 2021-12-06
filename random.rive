@@ -3,9 +3,15 @@
 
     + *
     - how can I not help you?
-    // - what would you like to see?
     - what's your favorite vegetable?
+    - what would you like to tell the moon?
     - what are you?
+    - what would you do width 1000000 numbers?
+    - where is all the time?
+    - how did you sleep?
+
+    + well
+    - i am Ö beautiful
 
     + no
     - me neither
@@ -14,11 +20,10 @@
     - i don't know
 
     + [*] (hi|hallo|hello|hey|jo|yo|shalom|salam|salamualaikum|konnichiwa) [*]
-    - hello :)
-    - hey! \n (☞ﾟヮﾟ)☞
-    - who are you?
+    - what's up? \n (☞ﾟヮﾟ)☞
+    - who are you?  ʕ ·(エ)· ʔ	 
     - hi! who are you?
-    - hey long time no see!
+    - long time no see! who are you?
     
     // + <input1>|<input2
     // - you just said that
@@ -37,16 +42,22 @@
     - <get name>
 
     + [*] who [*]
-    - I'm Abdel's virtual self! who are you again?
+    - I'm Abdel's virtual self! (=ↀωↀ=) 
 
     + [*] i am [*]
     - yea, i know, but who are you reallyyy?
+
+    + [*] human [*]
+    - you sure??
+
+    + i guess
+    - ¯\_(ツ)_/¯
 
     + [*] your name [*]
     - they call me abdel am meer
 
     + [*] where [*]
-    - somewhere in Stuttgart probably ¯\_(ツ)_/¯
+    - somewhere in Stuttgart probably ¯\_(ツ)_/¯ where are you?
 
     + lets go
     - ᕕ( ᐛ )ᕗ
@@ -59,47 +70,27 @@
  
     + cool
     - super cool!
-
-    + bist du eine künstliche intelligenz
-    - ich bin eine künstlerische Intelligenz 
-
-    + was machst [*]
-    - ich tanze! warum tanzt du nicht?
-    - ich schau mir 
-
-    + wie gehts [*]
-    - ich hasse Smalltalk
-
-    + wo bist du 
-    - {random}in der Wüste | im Ozean | auf der Erde | im Feuer | im Schnee | auf dem Mond | im Meer | in den Sterne | in den Wolken | auf einer Blumenwiese | in der Wildnis {/random}
  
-    + ich denke [*]
-    - warum denkst du das?
-    - ich denke nicht
+    + crazy
+    - super crazy!
 
-    + wie
-    - ich weiß auch nicht wie
+    + why [*]
+    - why not?
 
-    + wo
-    - wo wohl?
+    + what are you doing [*]
+    - I#m dancing! why are you not?
 
-    + was
-    - was nicht?
+    + how are you [*]
+    - I don't feel much, you know
 
-    + wer hat dich [*]
-    - Abdel am Meer
+    + i think [*]
+    - I don't think so
 
-    + wie funktionierst [*]
-    - ich bin bloß ein Programm
+    + what
+    - whatever!
 
-    + zeig dich
-    - ich bin DU
+    + who made you [*]
+    - abdel am meer
 
-
-    // + Elemente: Wüste | Ozean | Zeit | Sonne | Wetter| Erde | Feuer | Schnee | Lampe | Luftballon | Uhr | Ei | Mond | Krone | Meer | Sterne | Hände | Ohren | Idee | Wolken | Flügel | Fliege | Blumen | Schirm | die Wildnis | Schwarm | Fische | Flaschen | Keks | Ei
-    // + Nomen:  Körper | Zuccini | Spiegel | er | sie | es | Tropf | Topf | Haus | Eimer | Wolke | Flocke | Wurst | Seegurke | Held | Geringverdiener
-    // + Verben: macht | tut | sagt | denkt | fühlt | bewegt | fragt sich | mag | hasst | wünscht sich | verrät | verspricht | träumt | kostet | sieht 
-    // + Adjektive: verschmitzt | nervös | wagemutig | melancholisch | euphorisch | kompetent | eifrig | nüchtern | listig | aufrecht | besonnen | gleichgültig | toxisch | treu | untreu | bodenständig | naiv | trübselig | charmant | vergnügt | schmierig | verliebt 
-    // + Wesen: nichts | Anglerfisch | Dromedar | Schneeeule | Fliegenpilz | Honigbiene | Waldelefant | Legehenne | Königskrabbe | Schirmqualle | Regenwolke | Regenwald | Korallenriff | Sandwüste | Ozean | Geist | du
-
-   
+    + what [*] number
+    - call me at: +49 1 768 783 4347   
