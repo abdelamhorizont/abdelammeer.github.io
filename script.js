@@ -66,11 +66,9 @@ function toggleDropdown(id, i) {
             worksText.style.height = "0%";
 
             worksText.style.paddingBottom = "0vh";
-            worksText.style.height = "0%";
 
             plus.style.transform = "rotate(0deg)";
         }
-
 
         elt.onmouseover = function () {
             if (!bools[i] && !headBools[2]) {
@@ -148,7 +146,7 @@ function toggleDropdown(id, i) {
                     collabs.style.opacity = "1";
 
                 } else {
-                    worksText.style.height = "0%";
+                    worksText.style.height = "0vh";
                     year.style.opacity = "0";
                     collabs.style.opacity = "0";
                 }
@@ -185,7 +183,7 @@ function toggleDropdown(id, i) {
             close.style.top = "-2vh";
             user_input.style.bottom = "-20vh";
 
-            document.getElementById("header").style.top = "0rem";
+            // document.getElementById("header").style.top = "0rem";
             document.getElementsByClassName("chat-container")[0].style.top = "105vh";
             document.getElementById("chat-close").style.top = "100rem";
 
