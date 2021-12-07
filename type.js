@@ -182,7 +182,7 @@ function letterAnim(id, frameRate) {
     let output = document.getElementById("output");
 
     let chatConWidth = map(letters.length, 1, 50, 20, 60);
-    let chatConHeight = map(letters.length, 1, 50, 30, -5);
+    let chatConHeight = map(letters.length, 10, 50, 0, -30);
     let spacingMax;
 
     output.style.marginTop = chatConHeight + 'vh';

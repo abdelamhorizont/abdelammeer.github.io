@@ -974,6 +974,7 @@ html::-webkit-scrollbar-track, .slide::-webkit-scrollbar-track, .dropdown-contai
     align-items: center;
 
     margin-bottom: 3rem;
+    /* margin-top: 20vh; */
 
     padding: 1rem;
     
@@ -1091,7 +1092,7 @@ html::-webkit-scrollbar-track, .slide::-webkit-scrollbar-track, .dropdown-contai
     max-height: 75vh;
     width: 50vw;
 
-    top: 5vh;
+    top: 35vh;
     left: 25vw;
     
     /* margin-top: rem; */
