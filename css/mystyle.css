@@ -201,7 +201,6 @@ div#landing{
     transition: opacity 1s ease;
 }
 
-
 .words{
     z-index: 3;
     /* display: inline-block; */
@@ -1148,7 +1147,6 @@ html::-webkit-scrollbar-track, .slide::-webkit-scrollbar-track, .dropdown-contai
     width: auto;
     height: 100%;
 }
-
 
 .card{
     width: 100%;
