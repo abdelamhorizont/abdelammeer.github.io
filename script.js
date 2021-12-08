@@ -113,7 +113,6 @@ function toggleDropdown(id, i) {
             designElements.style.opacity = "0";
         }
 
-
         function cardResponsive(x) {
 
             if (x.matches) { // If media query matches
@@ -144,11 +143,13 @@ function toggleDropdown(id, i) {
                     cardDropdown.style.marginTop = "5.5rem";
                     year.style.opacity = "1";
                     collabs.style.opacity = "1";
+                    designElements.style.opacity = "1";
 
                 } else {
                     worksText.style.height = "0vh";
                     year.style.opacity = "0";
                     collabs.style.opacity = "0";
+                    designElements.style.opacity = "0";
                 }
 
                 if (bools[i] && headBools[2]) {
@@ -232,7 +233,7 @@ function toggleDropdown(id, i) {
         headBools[i] = !headBools[i];
 
         if (headBools[1]) {
-            elt.style.top = "5vh";
+            // elt.style.top = "35vh";
             user_input.style.bottom = "8vh";
 
             document.getElementsByClassName("dropdown")[0].style.top = "-80rem";
@@ -265,7 +266,7 @@ function toggleDropdown(id, i) {
 
         } else if (!headBools[1]) {
 
-            elt.style.top = "115vh";
+            // elt.style.top = "115vh";
             user_input.style.bottom = "-20vh";
 
             if (!headBools[2]) {
@@ -290,13 +291,35 @@ function toggleDropdown(id, i) {
                 child.style.filter = "blur(0px)";
             }
 
-
-            // document.getElementById("landing").style.height = "0px";
-
             document.getElementById("talk").innerHTML = "talk";
             document.getElementById("header").style.top = "0rem";
 
         }
+
+        function chatResponsive(x) {
+
+            if (x.matches) { // If media query matches
+              
+                if (headBools[1]) {
+                    elt.style.top = "35vh";
+                } else if (!headBools[1]) {
+                    elt.style.top = "115vh";
+                }
+
+            } else {
+           
+                if (headBools[1]) {
+                    elt.style.top = "5vh";
+                } else if (!headBools[1]) {
+                    elt.style.top = "115vh";
+                }
+            }
+        }
+
+        var x3 = window.matchMedia("(min-width: 960px)")
+        chatResponsive(x3) // Call listener function at run time
+        x3.addEventListener("keypress", chatResponsive) // Attach listener function on state changes
+
     }
 
     if (id == 'list') {
