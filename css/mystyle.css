@@ -921,7 +921,7 @@ body{
 }
 
 /* width */
-html::-webkit-scrollbar, .slide::-webkit-scrollbar, .dropdown-container::-webkit-scrollbar, .works-text::-webkit-scrollbar {
+html::-webkit-scrollbar, .slide::-webkit-scrollbar, .works-text::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.5rem;
     background: rgba(0, 0, 0, 0.2);
@@ -929,7 +929,7 @@ html::-webkit-scrollbar, .slide::-webkit-scrollbar, .dropdown-container::-webkit
 }
   
   /* Track */
-html::-webkit-scrollbar-track, .slide::-webkit-scrollbar-track, .dropdown-container::-webkit-scrollbar-track, .works-text::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track, .slide::-webkit-scrollbar-track, .works-text::-webkit-scrollbar-track {
       background: rgba(0, 0, 0, 0.2);
       border-radius: 10rem;
 }
@@ -944,6 +944,18 @@ html::-webkit-scrollbar-track, .slide::-webkit-scrollbar-track, .dropdown-contai
 .dropdown-container::-webkit-scrollbar-thumb {
     background:rgba(0, 0, 0, 0.2);
     border-radius: 20rem;
+}
+
+.dropdown-container::-webkit-scrollbar-track{
+    background: rgba(0, 0, 0, 0);
+    border-radius: 10rem;
+}
+
+.dropdown-container::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+    background: rgba(0, 0, 0, 0);
+
 }
 
 #header{    
@@ -1329,7 +1341,7 @@ footer{
     /* max-height: 90vh; */
     width: 100%;
 
-    margin-top: 6rem;
+    margin-top: 10rem;
     /* margin: 2rem; */
     padding: 2rem;
 

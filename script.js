@@ -301,7 +301,7 @@ function toggleDropdown(id, i) {
             if (x.matches) { // If media query matches
               
                 if (headBools[1]) {
-                    elt.style.top = "35vh";
+                    elt.style.top = "15vh";
                 } else if (!headBools[1]) {
                     elt.style.top = "115vh";
                 }
