@@ -182,20 +182,24 @@ function letterAnim(id, frameRate) {
     let output = document.getElementById("output");
 
     let chatConWidth = map(letters.length, 1, 50, 20, 60);
-    let chatConHeight = map(letters.length, 10, 50, 0, -30);
     let spacingMax;
 
-    output.style.marginTop = chatConHeight + 'vh';
 
     function typeResponsive(win) {
 
         if (win.matches) { // If media query matches
+            let chatConHeight = map(letters.length, 10, 50, 0, -30);
+            output.style.marginTop = chatConHeight + 'vh';
+
             chatCon.style.width = chatConWidth + 'vw';
             chatCon.style.left = ((100 - chatConWidth) * 0.5) + 'vw';
 
             fontSize = map(letters.length, 1, 50, 83.5, 2);
             spacingMax = 1;
         } else {
+            let chatConHeight = map(letters.length, 0, 40, 33, -5);
+            output.style.marginTop = chatConHeight + 'vh';
+
             fontSize = map(words.length, 1, 10, 3, 1.8);
             spacingMax = 0.5;
 
