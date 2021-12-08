@@ -170,8 +170,8 @@ div#landing{
     /* margin-top: -5rem; */
     justify-content: center;
     align-items: flex-start;
-    /* align-self: center;
-    text-align: center; */
+    align-self: center;
+    text-align: center;
     
     /* font-size: 2.5rem; */
     color: var(--bgCol);
