@@ -15,7 +15,7 @@ window.onload = function () {
     }
 
     let answers;
-    
+
     answers = document.getElementById("output");
     answerList = [
         "hi there! :)",
@@ -315,7 +315,7 @@ function ready() {
 
     let answers;
 
-    answers = document.getElementById("output");	
+    answers = document.getElementById("output");
     answerList = [
         "hi there! :)",
     ]
@@ -325,4 +325,5 @@ function ready() {
     getLetters("output");
     letterAnim("output", 20);
 
-    }
+}
+

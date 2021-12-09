@@ -181,7 +181,7 @@ function toggleDropdown(id, i) {
             headBools[1] = false;
 
             elt.style.top = "13vh";
-            close.style.top = "-2vh";
+            close.style.top = "-4vh";
             user_input.style.bottom = "-20vh";
 
             // document.getElementById("header").style.top = "0rem";
