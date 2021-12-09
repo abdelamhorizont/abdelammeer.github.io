@@ -33,7 +33,10 @@ window.onload = function () {
     }
 
     logoAnim();
-    letterAnim("output", 20);
+
+    if (headBools[1]){
+        letterAnim("output", 20);
+    } 
 
     let slide = document.getElementsByClassName("slide");
     let cards = document.getElementsByClassName("card");
@@ -105,8 +108,8 @@ window.onload = function () {
     if (headBools[1]) {
 
         for (child of slide) {
-            child.style.filter = "blur(1000px)";
-            child.style.WebkitFilter = "blur(100px)";
+            child.style.filter = "blur(200px)";
+            child.style.WebkitFilter = "blur(200px)";
         }
     }
 
@@ -211,27 +214,6 @@ function letterAnim(id, frameRate) {
     var win = window.matchMedia("(min-width: 620)");
     typeResponsive(win); // Call listener function at run time
     win.addEventListener("keypress", typeResponsive); // Attach listener function on state 
-
-    // function typeResponsive2k(win2) {
-
-    //     if (win2.matches) { // If media query matches
-    //         fontSize =  2;
-
-    //     } else{
-    //         fontSize = 4;
-    //         let chatConWidth = map(letters.length, 1, 50, 30, 50);
-    //         chatCon.style.width = chatConWidth + 'vw';
-    //         chatCon.style.left = ((100 - chatConWidth) * 0.5) + 'vw';
-
-    //     }
-    // }
-
-    // var win2 = window.matchMedia("(max-width: 1620)");
-    // typeResponsive2k(win2); // Call listener function at run time
-    // win2.addEventListener("keypress", typeResponsive2k); // Attach listener function on state 
-
-
-    //typeResponsive2k
 
     setInterval(function spacingAnim() {
         // let outputHeight = output.offsetHeight;

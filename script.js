@@ -243,8 +243,8 @@ function toggleDropdown(id, i) {
             headBools[0] = false;
 
             for (child of slide) {
-                child.style.filter = "blur(2000px)";
-                child.style.WebkitFilter = "blur(2000px)";
+                child.style.filter = "blur(200px)";
+                child.style.WebkitFilter = "blur(200px)";
             }
 
             for (child of cards) {
@@ -272,6 +272,7 @@ function toggleDropdown(id, i) {
             if (!headBools[2]) {
                 for (child of slide) {
                     child.style.filter = "blur(0px)";
+                    child.style.WebkitFilter = "blur(0px)";
                 }
             }
 
