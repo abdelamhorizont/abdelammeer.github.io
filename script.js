@@ -439,7 +439,6 @@ function toggleDropdown(id, i) {
         x.addEventListener("keypress", listRes)
     }
 
-
 }
 
 // When the user scrolls down, hide the logo. When the user scrolls up, show the logo 
@@ -456,7 +455,7 @@ window.onscroll = function () {
             if (i % 2 == 0) {
                 document.getElementsByClassName("slide")[i].scrollLeft += -4;
             } else {
-                document.getElementsByClassName("slide")[i].scrollLeft += 4;
+                document.getElementsByClassName("slide")[i].scrollLeft += -6;
             }
         }
 
@@ -467,7 +466,7 @@ window.onscroll = function () {
             if (i % 2 == 0) {
                 document.getElementsByClassName("slide")[i].scrollLeft += 4;
             } else {
-                document.getElementsByClassName("slide")[i].scrollLeft += -4;
+                document.getElementsByClassName("slide")[i].scrollLeft += 6;
             }
         }
     }

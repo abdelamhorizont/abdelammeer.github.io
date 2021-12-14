@@ -529,7 +529,6 @@ main{
 img {
     width: auto;
     height: 100%;
-    overflow-y: hidden;
 }
 
 .link{
@@ -1154,7 +1153,6 @@ html::-webkit-scrollbar-track, .slide::-webkit-scrollbar-track, .works-text::-we
     overflow: overlay;
     overflow-y: hidden;
     grid-column: 1/7;
-
 }
 
 .slide img, .slide video{

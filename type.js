@@ -89,13 +89,13 @@ window.onload = function () {
     }
 
     // scroll every second element to the end
-    for (let i = 1; i < worksLength; i++) {
-        if (i % 2 == 0) {
-            document.getElementsByClassName("slide")[i - 1].scrollLeft = 5000;
-        } else {
-            document.getElementsByClassName("slide")[i - 1].scrollLeft = 0;
-        }
-    }
+    // for (let i = 1; i < worksLength; i++) {
+    //     if (i % 2 == 0) {
+    //         document.getElementsByClassName("slide")[i - 1].scrollLeft = 5000;
+    //     } else {
+    //         document.getElementsByClassName("slide")[i - 1].scrollLeft = 0;
+    //     }
+    // }
 
     //scroll to left/right with mosue wheel
     // let item = document.getElementsByClassName("slide")[0];
