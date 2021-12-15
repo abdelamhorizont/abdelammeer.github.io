@@ -4,14 +4,18 @@
     + *
     - how can I not help you?
     - what's your favorite vegetable?
-    - what would you like to tell the moon?
-    - what are you?
-    - what would you do with 1000000 cookies?
-    - where is all the time?
-    - how did you sleep?
+    - what would you like to tell the sun?
+    - what are you not?
+    - when will you be ready?
+    - what would you do with 1000000 cookies ?
+    - where do you exist?
+    - who is responsible for the moon?
+    - who made you like this?
+    - are you asleep right now?
+    - do you trust me?
 
     + well
-    - i am Ö beautiful
+    - well well...
 
     + no
     - me neither
@@ -21,7 +25,7 @@
 
     + [*] (hi|hallo|hello|hey|jo|yo|shalom|salam|salamualaikum|konnichiwa) [*]
     - what's up? \n (☞ﾟヮﾟ)☞
-    - who are you?  ʕ ·(エ)· ʔ	 
+    - who are you?  ʕ·(エ)·?	 
     - hi! who are you?
     - long time no see! who are you?
     
@@ -30,7 +34,19 @@
 
     + [*] _
     % [*] who [*]
-    - <set name={formal}<star>{/formal}> nice to meet you, <get name>!
+    - <set name={formal}<star>{/formal}> nice to not meet you, <get name>!
+
+    + [*] _
+    % [*] cookies [*]
+    - I would build a tower first!
+   
+    + [*] no [*]
+    % [*] trust [*]
+    - why not? ಠ_ಠ 
+
+    + [*] yes [*]
+    % [*] trust [*]
+    - (˘³˘) ♥
 
     + [*] _
     % [*] vegetable [*]

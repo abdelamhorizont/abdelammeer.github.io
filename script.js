@@ -234,7 +234,6 @@ function toggleDropdown(id, i) {
 
         if (headBools[1]) {
             // elt.style.top = "35vh";
-            user_input.style.bottom = "8vh";
 
             document.getElementsByClassName("dropdown")[0].style.top = "-80rem";
             document.getElementById("dropdown-close").style.top = "-80rem";
@@ -267,7 +266,6 @@ function toggleDropdown(id, i) {
         } else if (!headBools[1]) {
 
             // elt.style.top = "115vh";
-            user_input.style.bottom = "-20vh";
 
             if (!headBools[2]) {
                 for (child of slide) {
@@ -303,16 +301,24 @@ function toggleDropdown(id, i) {
               
                 if (headBools[1]) {
                     elt.style.top = "15vh";
+                    user_input.style.bottom = "8vh";
+
                 } else if (!headBools[1]) {
                     elt.style.top = "115vh";
+                    user_input.style.bottom = "-20vh";
+
                 }
 
             } else {
            
                 if (headBools[1]) {
                     elt.style.top = "5vh";
+                    user_input.style.bottom = "11vh";
+
                 } else if (!headBools[1]) {
                     elt.style.top = "115vh";
+                    user_input.style.bottom = "-20vh";
+
                 }
             }
         }

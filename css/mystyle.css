@@ -229,8 +229,8 @@ div#landing{
     width: 50vw;
 
     /* top:75vh; */
-    bottom: 10vh;
-    padding: 1.5rem;
+    bottom: 11vh;
+    padding: 1rem 1.5rem;
 
     background-color: rgba(0, 0, 0, 0.5);
     color: var(--bgCol);
@@ -1131,12 +1131,11 @@ html::-webkit-scrollbar-track, .slide::-webkit-scrollbar-track, .works-text::-we
 
 #user_input{
     position: fixed;
-    /* left: 37.9vw;  */
 
     width: 20vw;
-    /* top: 77.3vh; */
-    bottom: 8vh;
+    bottom: 9vh;
 
+    padding: 1.15rem;
  
 }
 
@@ -1372,6 +1371,15 @@ footer{
         font-size: 24px;
     }
 
+    #user_input{
+        position: fixed;
+    
+        width: 20vw;
+        bottom: 13vh;
+    
+        padding: 1.8rem;
+     
+    }
     
 .letters{
 

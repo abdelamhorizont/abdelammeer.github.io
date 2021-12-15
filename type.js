@@ -15,13 +15,24 @@ window.onload = function () {
     }
 
     let answers;
+    let br = document.createElement("br");
+    let randomIndex;
 
     answers = document.getElementById("output");
     answerList = [
-        "hi there! :)",
+        " (づ￣³￣)づ ",
+        " ┌(ㆆ㉨ㆆ)ʃ ",
+        " ♪♪ヽ(ˇ∀ˇ)ゞ ",
+        " (ง'̀-'́)ง ",
+        " ʕ-ᴥ-ʔ ",
+        " ฅ^-ﻌ-^ฅ ",
+        " ༼∵༽༼⍨༽༼⍢༽༼⍤༽ ", 
+        " ヽ༼ಠ益ಠ༽ﾉ ",
     ]
 
-    answers.innerHTML = answerList[0];
+    randomIndex = round(random(0, answerList.length - 1));
+    console.log(randomIndex);
+    answers.innerHTML =  "hi there!" + answerList[randomIndex];
 
     getLetters("output");
 
@@ -106,7 +117,6 @@ window.onload = function () {
     // });
 
     if (headBools[1]) {
-
         for (child of slide) {
             child.style.filter = "blur(200px)";
             child.style.WebkitFilter = "blur(200px)";
